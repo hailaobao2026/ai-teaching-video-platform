@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Teaching Video Platform · 演示视频</title>
+  <meta name="description" content="K12 教学视频生成平台演示成片在线播放" />
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #121a2b;
+      --panel-2: #18233a;
+      --text: #e8eefc;
+      --muted: #9db0d0;
+      --line: rgba(255,255,255,.08);
+      --brand: #5b8cff;
+      --brand-2: #38bdf8;
+      --ok: #34d399;
+      --shadow: 0 18px 50px rgba(0,0,0,.35);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(91,140,255,.25), transparent 50%),
+        radial-gradient(900px 500px at 90% 0%, rgba(56,189,248,.18), transparent 45%),
+        var(--bg);
+      min-height: 100vh;
+    }
+    a { color: var(--brand-2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { width: min(1100px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 60px; }
+    .hero {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), transparent);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
+    }
+    .badge {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(91,140,255,.15);
+      color: #c9d8ff;
+      font-size: 12px;
+      border: 1px solid rgba(91,140,255,.25);
+      margin-bottom: 12px;
+    }
+    h1 { margin: 0 0 10px; font-size: clamp(24px, 4vw, 34px); letter-spacing: .2px; }
+    .sub { margin: 0; color: var(--muted); line-height: 1.7; max-width: 80ch; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 14px;
+    }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--brand), #3b6ef5);
+      border-color: transparent;
+      color: white;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 18px 0 8px;
+    }
+    .card-link {
+      display: block;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      color: inherit;
+      transition: .2s ease;
+    }
+    .card-link:hover {
+      transform: translateY(-2px);
+      border-color: rgba(91,140,255,.45);
+      text-decoration: none;
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+    }
+    .card-link .k { color: var(--brand-2); font-size: 12px; margin-bottom: 6px; }
+    .card-link .t { font-weight: 600; margin-bottom: 4px; }
+    .card-link .d { color: var(--muted); font-size: 13px; line-height: 1.5; }
+    .section {
+      margin-top: 18px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .section-hd {
+      display: flex; justify-content: space-between; gap: 12px; align-items: flex-start;
+      padding: 18px 18px 12px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.03), transparent);
+    }
+    .section-hd h2 { margin: 0 0 6px; font-size: 20px; }
+    .section-hd p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .tag {
+      flex: none;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(52,211,153,.12);
+      color: var(--ok);
+      border: 1px solid rgba(52,211,153,.25);
+    }
+    .player-box { padding: 14px 18px 18px; background: #000; }
+    video {
+      width: 100%;
+      max-height: 70vh;
+      border-radius: 12px;
+      background: #000;
+      display: block;
+    }
+    .meta {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      padding: 14px 18px 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .meta a.btn { padding: 8px 12px; }
+    .note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      border: 1px dashed var(--line);
+      border-radius: 14px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,.02);
+    }
+    footer {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="badge">AI Teaching Video Platform · Demo Player</div>
+      <h1>演示视频在线播放</h1>
+      <p class="sub">
+        先看 30 秒到 2 分钟样片，比只看截图更容易理解「知识点 → 教学分镜 → 配音动画 → 成片」的效果。
+        以下为平台真实生成样例，可直接在线播放。
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="https://github.com/hailaobao2026/ai-teaching-video-platform" target="_blank" rel="noopener">GitHub 仓库</a>
+        <a class="btn" href="https://github.com/hailaobao2026/ai-teaching-video-platform#演示视频" target="_blank" rel="noopener">返回 README</a>
+      </div>
+      <div class="grid" id="nav-grid"></div>
+    </section>
+
+    <div id="players"></div>
+
+    <div class="note">
+      <strong>播放说明：</strong>
+      1）本页适合通过 GitHub Pages 打开实现稳定在线播放；
+      2）若视频加载较慢，可先点「下载源文件」；
+      3）本地预览可直接双击打开本 HTML（视频相对路径为 <code>videos/*.mp4</code>）。
+    </div>
+
+    <footer>
+      © AI Teaching Video Platform · 在线演示页
+    </footer>
+  </div>
+
+  <script>
+    // 优先使用相对路径（GitHub Pages / 本地）；失败时回退到 raw.githubusercontent.com
+    const REPO = "hailaobao2026/ai-teaching-video-platform";
+    const BRANCH = "main";
+    const demos = [
+      {
+        id: "physics",
+        subject: "物理",
+        title: "能量守恒定律",
+        file: "physics-energy-conservation.mp4",
+        desc: "定义、转化、条件辨析 · 适合概念突破与复习导入"
+      },
+      {
+        id: "math",
+        subject: "数学",
+        title: "勾股定理",
+        file: "math-pythagorean-theorem.mp4",
+        desc: "定理、几何意义、解题步骤 · 适合课堂导入"
+      },
+      {
+        id: "chemistry",
+        subject: "化学",
+        title: "二氧化碳与石灰水反应",
+        file: "chemistry-co2-limewater.mp4",
+        desc: "现象、原理、检验方法 · 适合实验预习"
+      },
+      {
+        id: "history",
+        subject: "历史",
+        title: "工业革命",
+        file: "history-industrial-revolution.mp4",
+        desc: "背景、过程、影响、评价 · 适合单元串讲"
+      },
+      {
+        id: "chinese",
+        subject: "语文",
+        title: "诗词意象",
+        file: "chinese-poetry-imagery.mp4",
+        desc: "意象、象征、情感、答题方法 · 适合古诗鉴赏"
+      }
+    ];
+
+    function localSrc(file) {
+      return `videos/${file}`;
+    }
+    function rawSrc(file) {
+      return `https://raw.githubusercontent.com/${REPO}/${BRANCH}/docs/videos/${file}`;
+    }
+    function mediaSrc(file) {
+      // jsDelivr 对 raw 文件 CDN 友好，GitHub Pages 优先用相对路径
+      return localSrc(file);
+    }
+
+    const nav = document.getElementById("nav-grid");
+    const players = document.getElementById("players");
+
+    demos.forEach((d, idx) => {
+      const navCard = document.createElement("a");
+      navCard.className = "card-link";
+      navCard.href = `#${d.id}`;
+      navCard.innerHTML = `<div class="k">${d.subject}</div><div class="t">${d.title}</div><div class="d">${d.desc}</div>`;
+      nav.appendChild(navCard);
+
+      const section = document.createElement("section");
+      section.className = "section";
+      section.id = d.id;
+      const src = mediaSrc(d.file);
+      const fallback = rawSrc(d.file);
+      section.innerHTML = `
+        <div class="section-hd">
+          <div>
+            <h2>${idx + 1}. ${d.subject} · ${d.title}</h2>
+            <p>${d.desc}</p>
+          </div>
+          <div class="tag">可在线播放</div>
+        </div>
+        <div class="player-box">
+          <video controls preload="metadata" playsinline controlsList="nodownload">
+            <source src="${src}" type="video/mp4" data-fallback="${fallback}" />
+            你的浏览器不支持 HTML5 视频，请
+            <a href="${src}">下载视频</a>
+          </video>
+        </div>
+        <div class="meta">
+          <a class="btn" href="${src}" target="_blank" rel="noopener">打开源文件</a>
+          <a class="btn" href="${fallback}" target="_blank" rel="noopener">备用链接（raw）</a>
+          <span>文件：${d.file}</span>
+        </div>
+      `;
+      players.appendChild(section);
+
+      const video = section.querySelector("video");
+      const source = section.querySelector("source");
+      let triedFallback = false;
+      video.addEventListener("error", () => {
+        if (!triedFallback) {
+          triedFallback = true;
+          source.src = fallback;
+          video.load();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
