@@ -1,0 +1,153 @@
+services:
+  mysql:
+    image: ${MYSQL_IMAGE:-mysql:8.0}
+    container_name: atv-mysql
+    environment:
+      # Compose always uses a non-root app user. Do not pass MYSQL_USER=root from host .env.
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-atv123456}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-ai_teaching_video}
+      MYSQL_USER: ${MYSQL_APP_USER:-atv}
+      MYSQL_PASSWORD: ${MYSQL_APP_PASSWORD:-atv123456}
+      TZ: Asia/Shanghai
+    ports:
+      - "${MYSQL_HOST_PORT:-3307}:3306"
+    volumes:
+      - atv_mysql_data:/var/lib/mysql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p${MYSQL_ROOT_PASSWORD:-atv123456}"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+    restart: unless-stopped
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NODE_IMAGE: ${NODE_IMAGE:-node:22-bookworm}
+    image: ${ATV_APP_IMAGE:-atv-app:local}
+    container_name: atv-api
+    environment: &app_env
+      PORT: 3002
+      USE_MYSQL: "true"
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_USER: ${MYSQL_APP_USER:-atv}
+      MYSQL_PASSWORD: ${MYSQL_APP_PASSWORD:-atv123456}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-ai_teaching_video}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-teacher@demo.local}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-demo123}
+      ADMIN_NICKNAME: ${ADMIN_NICKNAME:-系统管理员}
+      SEED_DEMO_ACCOUNTS: ${SEED_DEMO_ACCOUNTS:-true}
+      DEMO_TEACHER_EMAIL: ${DEMO_TEACHER_EMAIL:-physics.teacher@demo.local}
+      DEMO_TEACHER_PASSWORD: ${DEMO_TEACHER_PASSWORD:-demo123}
+      DEMO_STUDENT_EMAIL: ${DEMO_STUDENT_EMAIL:-student@demo.local}
+      DEMO_STUDENT_PASSWORD: ${DEMO_STUDENT_PASSWORD:-demo123}
+      MEDIA_SIGNING_SECRET: ${MEDIA_SIGNING_SECRET:-change-me-media-secret}
+      TEACHING_MEDIA_ROOT: /opt/ai-teaching-media
+      ARTIFACTS_ROOT: /data/jobs
+      DEFAULT_TTS_PROVIDER: ${DEFAULT_TTS_PROVIDER:-edge}
+      DEFAULT_EDGE_VOICE: ${DEFAULT_EDGE_VOICE:-zh-CN-XiaoxiaoNeural}
+      DEFAULT_IMAGE_PROVIDER: ${DEFAULT_IMAGE_PROVIDER:-volcengine}
+      DEFAULT_VIDEO_PROVIDER: ${DEFAULT_VIDEO_PROVIDER:-hyperframes}
+      DEFAULT_DIAGRAM_STYLE: ${DEFAULT_DIAGRAM_STYLE:-cozy-handdrawn}
+      DEFAULT_SEED_VOICE: ${DEFAULT_SEED_VOICE:-zh_female_vv_uranus_bigtts}
+      MODELS_TTS_ALLOWLIST: ${MODELS_TTS_ALLOWLIST:-edge,minimax,seed,say}
+      MODELS_IMAGE_ALLOWLIST: ${MODELS_IMAGE_ALLOWLIST:-agnes,mulerun,apimart,atlascloud,volcengine}
+      MODELS_VIDEO_ALLOWLIST: ${MODELS_VIDEO_ALLOWLIST:-hyperframes}
+      WORKER_POLL_MS: ${WORKER_POLL_MS:-3000}
+      WORKER_CONCURRENCY: ${WORKER_CONCURRENCY:-1}
+      HYPERFRAMES_QUALITY: ${HYPERFRAMES_QUALITY:-draft}
+      HYPERFRAMES_FPS: ${HYPERFRAMES_FPS:-20}
+      HYPERFRAMES_WORKERS: ${HYPERFRAMES_WORKERS:-6}
+      HYPERFRAMES_FAST_CAPTURE: ${HYPERFRAMES_FAST_CAPTURE:-true}
+      HYPERFRAMES_LOW_MEMORY_MODE: ${HYPERFRAMES_LOW_MEMORY_MODE:-false}
+      HYPERFRAMES_EXTRA_ARGS: ${HYPERFRAMES_EXTRA_ARGS:-}
+      PACKAGE_IMAGE_CONCURRENCY: ${PACKAGE_IMAGE_CONCURRENCY:-3}
+      AGNES_API_KEY: ${AGNES_API_KEY:-}
+      AGNES_HTTP_TIMEOUT: ${AGNES_HTTP_TIMEOUT:-90}
+      AGNES_HTTP_RETRIES: ${AGNES_HTTP_RETRIES:-1}
+      IMAGE_GEN_TIMEOUT_MS: ${IMAGE_GEN_TIMEOUT_MS:-225000}
+      IMAGE_HTTP_TIMEOUT: ${IMAGE_HTTP_TIMEOUT:-90}
+      IMAGE_HTTP_RETRIES: ${IMAGE_HTTP_RETRIES:-1}
+      MULERUN_API_KEY: ${MULERUN_API_KEY:-}
+      APIMART_API_KEY: ${APIMART_API_KEY:-}
+      ATLASCLOUD_API_KEY: ${ATLASCLOUD_API_KEY:-}
+      VOLCENGINE_API_KEY: ${VOLCENGINE_API_KEY:-}
+      ARK_API_KEY: ${ARK_API_KEY:-}
+      VOLCENGINE_API_BASE_URL: ${VOLCENGINE_API_BASE_URL:-https://ark.cn-beijing.volces.com/api/plan/v3}
+      VOLCENGINE_IMAGE_MODEL: ${VOLCENGINE_IMAGE_MODEL:-doubao-seedream-5.0-lite}
+      VOLCENGINE_HTTP_TIMEOUT: ${VOLCENGINE_HTTP_TIMEOUT:-180}
+      VOLCENGINE_HTTP_RETRIES: ${VOLCENGINE_HTTP_RETRIES:-2}
+      VOLCENGINE_WATERMARK: ${VOLCENGINE_WATERMARK:-false}
+      MINIMAX_API_KEY: ${MINIMAX_API_KEY:-}
+      SEED_TTS_API_KEY: ${SEED_TTS_API_KEY:-}
+      SEED_TTS_URL: ${SEED_TTS_URL:-https://openspeech.bytedance.com/api/v3/plan/tts/unidirectional}
+      SEED_TTS_RESOURCE_ID: ${SEED_TTS_RESOURCE_ID:-seed-tts-2.0}
+      SEED_TTS_VOICE: ${SEED_TTS_VOICE:-zh_female_vv_uranus_bigtts}
+      SEED_TTS_HTTP_TIMEOUT: ${SEED_TTS_HTTP_TIMEOUT:-120}
+      SEED_TTS_HTTP_RETRIES: ${SEED_TTS_HTTP_RETRIES:-2}
+      PYTHONUNBUFFERED: "1"
+      HYPERFRAMES_BROWSER_PATH: ${HYPERFRAMES_BROWSER_PATH:-}
+    ports:
+      - "${API_HOST_PORT:-3002}:3002"
+    volumes:
+      - ./server/uploads:/app/server/uploads
+      - atv_jobs_data:/data/jobs
+      - ${TEACHING_MEDIA_ROOT:-./skills/ai-teaching-media}:/opt/ai-teaching-media:ro
+      - ${HOST_PLAYWRIGHT_CACHE:-${HOME}/.cache/ms-playwright}:/root/.cache/ms-playwright:ro
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3002/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  worker:
+    image: ${ATV_APP_IMAGE:-atv-app:local}
+    container_name: atv-worker
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NODE_IMAGE: ${NODE_IMAGE:-node:22-bookworm}
+    command: ["node", "server/workers/teachingMediaWorker.js"]
+    environment:
+      <<: *app_env
+      PORT: 3002
+    volumes:
+      - ./server/uploads:/app/server/uploads
+      - atv_jobs_data:/data/jobs
+      - ${TEACHING_MEDIA_ROOT:-./skills/ai-teaching-media}:/opt/ai-teaching-media:ro
+      - ${HOST_PLAYWRIGHT_CACHE:-${HOME}/.cache/ms-playwright}:/root/.cache/ms-playwright:ro
+    depends_on:
+      mysql:
+        condition: service_healthy
+      api:
+        condition: service_started
+    restart: unless-stopped
+
+  web:
+    image: nginx:1.27-alpine
+    container_name: atv-web
+    profiles: ["web"]
+    ports:
+      - "${WEB_HOST_PORT:-3000}:80"
+    volumes:
+      - ./dist:/usr/share/nginx/html:ro
+      - ./deploy/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  atv_mysql_data:
+  atv_jobs_data:

@@ -1,0 +1,22 @@
+{
+  "name": "ai-teaching-video-platform-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "worker": "node workers/teachingMediaWorker.js",
+    "worker:dev": "node --watch workers/teachingMediaWorker.js",
+    "test": "node --test --test-concurrency=1 tests/*.test.js",
+    "test:p4": "node --test --test-concurrency=1 tests/p4-regression.test.js tests/rbac-auth.test.js tests/review-rbac.test.js tests/admin-users.test.js",
+    "test:model-settings": "node --test --test-concurrency=1 tests/model-settings.test.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "hyperframes": "^0.7.64",
+    "mysql2": "^3.11.0"
+  }
+}

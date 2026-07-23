@@ -1,0 +1,1197 @@
+[
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade7",
+    "chapter": "语法基础",
+    "topic": "一般现在时",
+    "summary": "表示经常性习惯、客观事实或现在的状态；注意三单 -s/-es。",
+    "keywords": [
+      "present simple",
+      "三单",
+      "习惯",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "理解一般现在时的用法",
+      "掌握三单变化",
+      "正确造句描述习惯与事实"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 10,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade7",
+    "chapter": "语法基础",
+    "topic": "现在进行时",
+    "summary": "表示此刻或现阶段正在进行的动作：be + doing。",
+    "keywords": [
+      "present continuous",
+      "be doing",
+      "正在",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "识别现在进行时结构",
+      "区分进行时与一般现在时",
+      "描述正在发生的动作"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 20,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade7",
+    "chapter": "语法基础",
+    "topic": "一般过去时",
+    "summary": "表示过去发生的动作或状态；规则/不规则动词过去式。",
+    "keywords": [
+      "past simple",
+      "过去式",
+      "不规则动词",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "掌握规则与不规则过去式",
+      "用过去时叙述过去事件",
+      "正确使用时间状语"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 30,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade7",
+    "chapter": "语法基础",
+    "topic": "一般将来时",
+    "summary": "will / be going to 表示将来计划、意图与预测。",
+    "keywords": [
+      "future",
+      "will",
+      "be going to",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "区分 will 与 be going to",
+      "表达计划与预测",
+      "正确使用将来时时间状语"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 40,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade7",
+    "chapter": "语法基础",
+    "topic": "There be 句型",
+    "summary": "表示某处存在某人或某物，注意就近原则。",
+    "keywords": [
+      "there be",
+      "存在句",
+      "就近原则",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "正确使用 there is/are",
+      "注意主谓一致就近原则",
+      "描述场所存在的事物"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 50,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade7",
+    "chapter": "语法基础",
+    "topic": "名词单复数与冠词",
+    "summary": "可数/不可数名词，a/an/the 与零冠词基本用法。",
+    "keywords": [
+      "名词复数",
+      "a an the",
+      "不可数",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "区分可数与不可数",
+      "正确变化复数",
+      "基本正确使用冠词"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 60,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade7",
+    "chapter": "语法基础",
+    "topic": "人称代词与物主代词",
+    "summary": "主格、宾格、形容词性/名词性物主代词对应关系。",
+    "keywords": [
+      "代词",
+      "主格",
+      "物主代词",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "区分主格宾格",
+      "正确使用物主代词",
+      "避免代词误用"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 70,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade7",
+    "chapter": "语法基础",
+    "topic": "介词基础",
+    "summary": "in/on/at 表时间地点，以及常见方位介词。",
+    "keywords": [
+      "介词",
+      "in on at",
+      "方位",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "掌握常用时间地点介词",
+      "正确描述位置与时间",
+      "避免介词搭配错误"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 80,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade7",
+    "chapter": "语法基础",
+    "topic": "形容词与副词比较级入门",
+    "summary": "-er/-est 与 more/most 的基本构成与用法。",
+    "keywords": [
+      "比较级",
+      "最高级",
+      "more most",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "构成常见比较级最高级",
+      "用比较级描述差异",
+      "初步使用最高级"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 90,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade7",
+    "chapter": "语法基础",
+    "topic": "简单句基本语序",
+    "summary": "主谓宾、主系表及常见疑问句、否定句变换。",
+    "keywords": [
+      "语序",
+      "陈述句",
+      "疑问句",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "掌握基本语序",
+      "正确变一般疑问句与否定句",
+      "写出完整简单句"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 100,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade7",
+    "chapter": "词汇与话题",
+    "topic": "校园与日常生活词汇",
+    "summary": "school, subjects, daily routines 等核心话题词汇。",
+    "keywords": [
+      "校园",
+      "日常",
+      "话题词汇",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "积累校园与日常词汇",
+      "能描述作息与课程",
+      "在对话中正确使用"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 110,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade7",
+    "chapter": "词汇与话题",
+    "topic": "家庭与外貌性格",
+    "summary": "family members, appearance, personality 描述。",
+    "keywords": [
+      "家庭",
+      "外貌",
+      "性格",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "介绍家庭成员",
+      "描述外貌与性格",
+      "完成简单人物介绍"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 120,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade7",
+    "chapter": "听说交际",
+    "topic": "课堂指令与日常问候",
+    "summary": "Listen, open your book, How are you 等交际用语。",
+    "keywords": [
+      "问候",
+      "课堂用语",
+      "交际",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "听懂课堂常用指令",
+      "得体完成问候介绍",
+      "进行简短对话"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 130,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade7",
+    "chapter": "阅读技能",
+    "topic": "细节理解与找关键信息",
+    "summary": "扫读定位 who/what/where/when 等事实信息。",
+    "keywords": [
+      "细节题",
+      "扫读",
+      "关键信息",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "快速定位细节",
+      "准确提取事实信息",
+      "回答 what/where/when 类问题"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 140,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade7",
+    "chapter": "写作表达",
+    "topic": "基础写话与连句",
+    "summary": "用 and/but/because 连接句子，写 40-60 词小段落。",
+    "keywords": [
+      "连句",
+      "段落",
+      "基础写作",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "用连词组织句子",
+      "写出完整小段落",
+      "注意时态与标点"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 150,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade8",
+    "chapter": "语法基础",
+    "topic": "现在完成时",
+    "summary": "have/has + 过去分词，表示过去发生并对现在有影响或持续。",
+    "keywords": [
+      "present perfect",
+      "过去分词",
+      "for since",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "掌握现在完成时结构",
+      "正确使用 for/since",
+      "区分现在完成与一般过去"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 210,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade8",
+    "chapter": "语法基础",
+    "topic": "过去进行时",
+    "summary": "was/were + doing，表示过去某时刻正在进行的动作。",
+    "keywords": [
+      "past continuous",
+      "was doing",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "掌握过去进行时结构",
+      "描述过去正在发生的动作",
+      "与一般过去时配合叙事"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 220,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade8",
+    "chapter": "语法基础",
+    "topic": "被动语态",
+    "summary": "be + 过去分词，强调动作承受者；常见时态的被动形式。",
+    "keywords": [
+      "passive voice",
+      "被动",
+      "be done",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "理解主动与被动转换",
+      "掌握常见时态被动结构",
+      "在语境中正确使用被动"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 230,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade8",
+    "chapter": "语法基础",
+    "topic": "情态动词",
+    "summary": "can/could/may/must/should/have to 表能力、请求、必须与建议。",
+    "keywords": [
+      "情态动词",
+      "can must should",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "区分常见情态动词含义",
+      "正确表达请求建议与义务",
+      "注意否定意义差异"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 240,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade8",
+    "chapter": "语法基础",
+    "topic": "状语从句入门",
+    "summary": "when/while/if/because/so that 等引导的时间、条件、原因、目的从句。",
+    "keywords": [
+      "状语从句",
+      "if",
+      "because",
+      "when",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "识别常见状语从句",
+      "正确选用从属连词",
+      "写出含状语从句的复合句"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 250,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade8",
+    "chapter": "语法基础",
+    "topic": "宾语从句入门",
+    "summary": "that/if/whether/wh- 引导，注意语序与时态呼应。",
+    "keywords": [
+      "宾语从句",
+      "陈述语序",
+      "时态呼应",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "掌握宾语从句三要素",
+      "保持陈述语序",
+      "初步处理时态呼应"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 260,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade8",
+    "chapter": "语法基础",
+    "topic": "不定式与动名词入门",
+    "summary": "to do / doing 作宾语、目的状语等常见用法。",
+    "keywords": [
+      "不定式",
+      "动名词",
+      "to do",
+      "doing",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "区分 to do 与 doing 常见搭配",
+      "表达目的与喜好",
+      "避免形式误用"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 270,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade8",
+    "chapter": "语法基础",
+    "topic": "感叹句与反意疑问句",
+    "summary": "What/How 感叹句；前肯后否等反意疑问结构。",
+    "keywords": [
+      "感叹句",
+      "反意疑问句",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "正确构成 What/How 感叹句",
+      "完成常见反意疑问句",
+      "注意肯否对应"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 280,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade8",
+    "chapter": "词汇与话题",
+    "topic": "旅行交通与天气",
+    "summary": "travel, transport, weather 话题词汇与表达。",
+    "keywords": [
+      "旅行",
+      "交通",
+      "天气",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "描述天气与出行方式",
+      "进行旅行相关对话",
+      "读写简单旅行短文"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 310,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade8",
+    "chapter": "词汇与话题",
+    "topic": "健康与生活方式",
+    "summary": "health, exercise, habits 相关表达。",
+    "keywords": [
+      "健康",
+      "运动",
+      "生活习惯",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "谈论健康习惯",
+      "提出简单建议",
+      "读懂健康主题短文"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 320,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade8",
+    "chapter": "阅读技能",
+    "topic": "主旨大意与标题归纳",
+    "summary": "抓 topic sentence，概括段落与全文主旨。",
+    "keywords": [
+      "主旨大意",
+      "标题",
+      "topic sentence",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "找出主题句",
+      "概括段落大意",
+      "为短文选择合适标题"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 330,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade8",
+    "chapter": "阅读技能",
+    "topic": "词义猜测",
+    "summary": "利用上下文、构词法与逻辑关系猜测生词。",
+    "keywords": [
+      "词义猜测",
+      "构词法",
+      "上下文",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "根据上下文推断词义",
+      "认识常见词缀",
+      "提高阅读容错能力"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 340,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade8",
+    "chapter": "写作表达",
+    "topic": "电子邮件与留言条",
+    "summary": "email/note 的格式、称呼、正文与结束语。",
+    "keywords": [
+      "email",
+      "留言条",
+      "应用文",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "掌握邮件与便条格式",
+      "得体完成简短交际写作",
+      "注意称谓与落款"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 350,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade8",
+    "chapter": "写作表达",
+    "topic": "看图写话与记叙短文",
+    "summary": "按时间顺序叙述事件，注意人称与时态一致。",
+    "keywords": [
+      "看图写话",
+      "记叙文",
+      "时态一致",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "按顺序组织事件",
+      "保持时态与人称一致",
+      "写出 60-80 词记叙短文"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 360,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade8",
+    "chapter": "听说交际",
+    "topic": "问路购物与点餐",
+    "summary": "asking the way, shopping, ordering food 情景对话。",
+    "keywords": [
+      "问路",
+      "购物",
+      "点餐",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "听懂情景关键信息",
+      "完成问路购物点餐对话",
+      "使用礼貌交际用语"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 370,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade9",
+    "chapter": "语法基础",
+    "topic": "现在完成进行时入门",
+    "summary": "have/has been doing 强调从过去持续到现在并可能继续。",
+    "keywords": [
+      "现在完成进行时",
+      "have been doing",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "理解完成进行时含义",
+      "与现在完成时作区分",
+      "在语境中选择合适时态"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 410,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade9",
+    "chapter": "语法基础",
+    "topic": "定语从句入门",
+    "summary": "who/which/that 引导的限制性定语从句基本用法。",
+    "keywords": [
+      "定语从句",
+      "who which that",
+      "关系代词",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "识别定语从句",
+      "正确选用关系代词",
+      "翻译并仿写简单定语从句"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 420,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade9",
+    "chapter": "语法基础",
+    "topic": "宾语从句进阶",
+    "summary": "时态呼应、语序、if/whether 与疑问词引导的综合运用。",
+    "keywords": [
+      "宾语从句",
+      "whether",
+      "时态呼应",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "综合处理语序与时态",
+      "正确使用 if/whether",
+      "完成中考常见宾语从句题"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 430,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade9",
+    "chapter": "语法基础",
+    "topic": "状语从句进阶",
+    "summary": "although/unless/as soon as/so...that 等常见引导词。",
+    "keywords": [
+      "although",
+      "unless",
+      "so that",
+      "状语从句",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "掌握更多从属连词",
+      "理解让步条件结果等逻辑",
+      "避免连词重复错误"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 440,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade9",
+    "chapter": "语法基础",
+    "topic": "被动语态进阶",
+    "summary": "含情态动词被动、双宾语与短语动词被动注意事项。",
+    "keywords": [
+      "被动语态",
+      "情态动词被动",
+      "短语动词",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "掌握情态动词被动",
+      "处理常见特殊被动",
+      "在读写中识别被动表达"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 450,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade9",
+    "chapter": "语法基础",
+    "topic": "主谓一致",
+    "summary": "就近/就远原则，集合名词、and 连接主语等一致性规则。",
+    "keywords": [
+      "主谓一致",
+      "就近原则",
+      "主谓",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "判断主语核心",
+      "应用常见一致规则",
+      "减少主谓不一致错误"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 460,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade9",
+    "chapter": "语法基础",
+    "topic": "动词时态综合",
+    "summary": "六大核心时态对比与时间状语对应关系。",
+    "keywords": [
+      "时态综合",
+      "时间状语",
+      "时态对比",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "根据语境选择正确时态",
+      "识别易混时态",
+      "完成时态综合填空"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 470,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade9",
+    "chapter": "阅读技能",
+    "topic": "推理判断题",
+    "summary": "依据事实进行合理推断，避免过度脑补。",
+    "keywords": [
+      "推理判断",
+      "infer",
+      "阅读理解",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "区分事实与推断",
+      "依据文本合理推理",
+      "排除无依据选项"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 510,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade9",
+    "chapter": "阅读技能",
+    "topic": "任务型阅读与信息还原",
+    "summary": "还原句子、匹配段落大意、完成表格信息。",
+    "keywords": [
+      "任务型阅读",
+      "信息还原",
+      "匹配",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "把握文章结构线索",
+      "完成句子还原与匹配",
+      "准确提取并转写信息"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 520,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade9",
+    "chapter": "写作表达",
+    "topic": "议论文与观点表达",
+    "summary": "给出观点、理由与总结，使用 first/second/in conclusion。",
+    "keywords": [
+      "议论文",
+      "观点",
+      "连接词",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "明确表达个人观点",
+      "用理由支撑论点",
+      "完成 80-100 词观点作文"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 530,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade9",
+    "chapter": "写作表达",
+    "topic": "材料作文与要点写作",
+    "summary": "覆盖要点、适当拓展、注意书信/邮件格式。",
+    "keywords": [
+      "材料作文",
+      "要点写作",
+      "中考作文",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "覆盖全部要点",
+      "合理拓展细节",
+      "注意格式与字数"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 540,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade9",
+    "chapter": "听说交际",
+    "topic": "情景交际得体性",
+    "summary": "请求、建议、道歉、感谢与拒绝的得体表达。",
+    "keywords": [
+      "情景交际",
+      "得体性",
+      "功能意念",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "选择得体应答",
+      "掌握常见功能句型",
+      "避免中式直译应答"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 550,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade9",
+    "chapter": "词汇与话题",
+    "topic": "环境保护与科技话题",
+    "summary": "environment, technology, internet 等中考高频话题。",
+    "keywords": [
+      "环保",
+      "科技",
+      "话题作文",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "积累话题核心词汇",
+      "讨论环保与科技利弊",
+      "读写相关主题短文"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 560,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade9",
+    "chapter": "中考专项",
+    "topic": "完形填空技巧",
+    "summary": "上下文逻辑、固定搭配、词义辨析与语篇线索。",
+    "keywords": [
+      "完形填空",
+      "搭配",
+      "语篇",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "利用上下文选择答案",
+      "关注固定搭配",
+      "提升语篇整体理解"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 610,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade9",
+    "chapter": "中考专项",
+    "topic": "阅读理解题型策略",
+    "summary": "细节、主旨、词义、推理、标题题的答题路径。",
+    "keywords": [
+      "阅读策略",
+      "题型",
+      "中考阅读",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "识别题型并选用策略",
+      "回文定位验证",
+      "提高正确率与速度"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 620,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade9",
+    "chapter": "中考专项",
+    "topic": "短文填空与语法填空",
+    "summary": "词形变化、冠词介词、时态语态与连接词综合。",
+    "keywords": [
+      "语法填空",
+      "短文填空",
+      "词形变化",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "判断词性与成分",
+      "正确进行词形变化",
+      "综合运用语法知识"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 630,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade9",
+    "chapter": "中考专项",
+    "topic": "听说考试应对",
+    "summary": "听关键词、速记、朗读注意连读停顿与交际应答。",
+    "keywords": [
+      "听说考试",
+      "听力",
+      "朗读",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "抓住听力关键词",
+      "进行有效速记",
+      "完成朗读与情景应答"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 640,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade7",
+    "chapter": "语音知识",
+    "topic": "音标与拼读入门",
+    "summary": "认识常见元音辅音音标，建立拼读意识。",
+    "keywords": [
+      "音标",
+      "拼读",
+      "发音",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "认识常用音标",
+      "按读音规则拼读单词",
+      "纠正常见发音错误"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 710,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade8",
+    "chapter": "语音知识",
+    "topic": "重音节奏与连读",
+    "summary": "句子重音、基本节奏与简单连读现象。",
+    "keywords": [
+      "重音",
+      "节奏",
+      "连读",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "把握句子重音",
+      "朗读更自然流畅",
+      "听辨连读与弱读"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 720,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade9",
+    "chapter": "词汇策略",
+    "topic": "构词法与词性转换",
+    "summary": "前缀后缀、合成词及名词动词形容词转换。",
+    "keywords": [
+      "构词法",
+      "词性转换",
+      "词缀",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "识别常见词缀",
+      "完成词性转换",
+      "扩大词汇量"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 730,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade8",
+    "chapter": "词汇策略",
+    "topic": "固定搭配与短语动词",
+    "summary": "look after, be interested in 等高频搭配。",
+    "keywords": [
+      "固定搭配",
+      "短语动词",
+      "collocation",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "积累高频搭配",
+      "在语境中正确使用",
+      "减少搭配错误"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 740,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  },
+  {
+    "subjectCode": "english",
+    "gradeCode": "grade7",
+    "chapter": "文化意识",
+    "topic": "英语国家文化常识入门",
+    "summary": "称呼、节日、礼貌用语等基础文化差异。",
+    "keywords": [
+      "文化",
+      "节日",
+      "礼貌",
+      "初中英语",
+      "english"
+    ],
+    "learningGoals": [
+      "了解基本文化差异",
+      "在交际中注意礼貌得体",
+      "增强跨文化意识"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 750,
+    "enabled": true,
+    "sourceTag": "junior-english"
+  }
+]

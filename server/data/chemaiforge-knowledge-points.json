@@ -1,0 +1,2714 @@
+[
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 酸碱反应",
+    "topic": "二元酸的分步滴定",
+    "summary": "用氢氧化钠分步滴定硫酸，结合 pH 曲线认识多元强酸的中和特征。",
+    "keywords": [
+      "ChemAIForge",
+      "酸碱反应",
+      "进阶",
+      "硫酸",
+      "氢氧化钠",
+      "酚酞",
+      "diprotic-acid-titration",
+      "二元酸的分步滴定"
+    ],
+    "learningGoals": [
+      "绘制滴定曲线",
+      "认识多元酸",
+      "计算浓度"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1001,
+    "enabled": true,
+    "slug": "diprotic-acid-titration",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 酸碱反应",
+    "topic": "二氧化碳与石灰水反应",
+    "summary": "向澄清石灰水中通入二氧化碳，观察变浑浊，掌握二氧化碳的检验方法。",
+    "keywords": [
+      "ChemAIForge",
+      "酸碱反应",
+      "入门",
+      "氢氧化钙",
+      "二氧化碳",
+      "limewater-co2",
+      "二氧化碳与石灰水反应"
+    ],
+    "learningGoals": [
+      "掌握 CO₂ 检验",
+      "理解碱与酸性氧化物反应",
+      "观察沉淀生成"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1002,
+    "enabled": true,
+    "slug": "limewater-co2",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 酸碱反应",
+    "topic": "常见溶液 pH 的测定",
+    "summary": "用 pH 试纸和 pH 计测定多种生活溶液的酸碱度，比较两种方法的精度。",
+    "keywords": [
+      "ChemAIForge",
+      "酸碱反应",
+      "入门",
+      "盐酸",
+      "氢氧化钠溶液",
+      "食盐水",
+      "pH 试纸",
+      "ph-measurement",
+      "常见溶液 pH 的测定"
+    ],
+    "learningGoals": [
+      "掌握 pH 测定方法",
+      "理解 pH 与酸碱性",
+      "比较测量精度"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1003,
+    "enabled": true,
+    "slug": "ph-measurement",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 酸碱反应",
+    "topic": "弱电解质的电离",
+    "summary": "对比相同浓度盐酸与乙酸的导电性与 pH，理解弱电解质部分电离的特点。",
+    "keywords": [
+      "ChemAIForge",
+      "酸碱反应",
+      "进阶",
+      "盐酸",
+      "乙酸",
+      "镁",
+      "weak-acid-ionization",
+      "弱电解质的电离"
+    ],
+    "learningGoals": [
+      "区分强弱电解质",
+      "理解电离平衡",
+      "解释导电性差异"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1004,
+    "enabled": true,
+    "slug": "weak-acid-ionization",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 酸碱反应",
+    "topic": "氧化铜与稀硫酸反应",
+    "summary": "观察黑色氧化铜溶于稀硫酸生成蓝色硫酸铜溶液，认识金属氧化物与酸的反应。",
+    "keywords": [
+      "ChemAIForge",
+      "酸碱反应",
+      "入门",
+      "氧化铜",
+      "硫酸",
+      "metal-oxide-acid",
+      "氧化铜与稀硫酸反应"
+    ],
+    "learningGoals": [
+      "认识碱性氧化物与酸反应",
+      "观察溶液颜色变化",
+      "书写化学方程式"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1005,
+    "enabled": true,
+    "slug": "metal-oxide-acid",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 酸碱反应",
+    "topic": "盐类水解探究",
+    "summary": "测定碳酸钠、氯化铵、氯化钠溶液的 pH，探究盐类水解使溶液呈酸碱性的规律。",
+    "keywords": [
+      "ChemAIForge",
+      "酸碱反应",
+      "进阶",
+      "碳酸钠",
+      "氯化铵",
+      "氯化钠",
+      "酚酞",
+      "salt-hydrolysis",
+      "盐类水解探究"
+    ],
+    "learningGoals": [
+      "理解盐类水解原理",
+      "判断盐溶液酸碱性",
+      "书写水解方程式"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1006,
+    "enabled": true,
+    "slug": "salt-hydrolysis",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 酸碱反应",
+    "topic": "盐酸与氢氧化钠中和热测定",
+    "summary": "在保温杯量热计中测定盐酸与氢氧化钠反应的中和热，理解放热反应能量变化。",
+    "keywords": [
+      "ChemAIForge",
+      "酸碱反应",
+      "基础",
+      "盐酸",
+      "氢氧化钠",
+      "蒸馏水",
+      "hcl-naoh-neutralization",
+      "盐酸与氢氧化钠中和热测定"
+    ],
+    "learningGoals": [
+      "测定中和热",
+      "理解放热反应",
+      "分析实验误差来源"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1007,
+    "enabled": true,
+    "slug": "hcl-naoh-neutralization",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 酸碱反应",
+    "topic": "碳酸盐的检验",
+    "summary": "用稀盐酸鉴别碳酸钠固体，依据放出能使石灰水变浑浊的气体确认碳酸根。",
+    "keywords": [
+      "ChemAIForge",
+      "酸碱反应",
+      "入门",
+      "碳酸钠",
+      "盐酸",
+      "氢氧化钙",
+      "carbonate-acid-identify",
+      "碳酸盐的检验"
+    ],
+    "learningGoals": [
+      "掌握碳酸根检验",
+      "观察产气现象",
+      "联系定性分析"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1008,
+    "enabled": true,
+    "slug": "carbonate-acid-identify",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 酸碱反应",
+    "topic": "缓冲溶液的性质",
+    "summary": "配制乙酸-乙酸钠缓冲液并测试加入少量酸碱后 pH 的稳定性，理解缓冲作用。",
+    "keywords": [
+      "ChemAIForge",
+      "酸碱反应",
+      "进阶",
+      "乙酸",
+      "氢氧化钠",
+      "盐酸",
+      "buffer-solution",
+      "缓冲溶液的性质"
+    ],
+    "learningGoals": [
+      "理解缓冲原理",
+      "测试 pH 稳定性",
+      "联系血液缓冲"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1009,
+    "enabled": true,
+    "slug": "buffer-solution",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 酸碱反应",
+    "topic": "胃药中和胃酸探究",
+    "summary": "用氢氧化铝、碳酸氢钠等胃药中和模拟胃酸的稀盐酸，联系医药中的酸碱中和。",
+    "keywords": [
+      "ChemAIForge",
+      "酸碱反应",
+      "入门",
+      "盐酸",
+      "碳酸氢钠",
+      "甲基橙",
+      "antacid-stomach",
+      "胃药中和胃酸探究"
+    ],
+    "learningGoals": [
+      "认识抗酸药原理",
+      "观察中和过程",
+      "联系医学应用"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1010,
+    "enabled": true,
+    "slug": "antacid-stomach",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 酸碱反应",
+    "topic": "酸碱中和滴定",
+    "summary": "用标准盐酸滴定未知浓度的氢氧化钠溶液，借助酚酞指示剂判断终点，掌握定量分析基本操作。",
+    "keywords": [
+      "ChemAIForge",
+      "酸碱反应",
+      "基础",
+      "0.1 mol/L 盐酸标准液",
+      "待测氢氧化钠溶液",
+      "酚酞",
+      "acid-base-titration",
+      "酸碱中和滴定"
+    ],
+    "learningGoals": [
+      "理解中和滴定原理与终点判断",
+      "规范使用滴定管",
+      "计算未知浓度"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1011,
+    "enabled": true,
+    "slug": "acid-base-titration",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 酸碱反应",
+    "topic": "酸碱指示剂变色规律",
+    "summary": "观察石蕊、酚酞、甲基橙在酸性与碱性溶液中的颜色变化，归纳变色范围。",
+    "keywords": [
+      "ChemAIForge",
+      "酸碱反应",
+      "入门",
+      "稀盐酸",
+      "氢氧化钠溶液",
+      "石蕊",
+      "酚酞",
+      "甲基橙",
+      "indicator-color-change",
+      "酸碱指示剂变色规律"
+    ],
+    "learningGoals": [
+      "认识常见指示剂",
+      "掌握变色规律",
+      "学会判断溶液酸碱性"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1012,
+    "enabled": true,
+    "slug": "indicator-color-change",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 酸碱反应",
+    "topic": "食醋与小苏打反应",
+    "summary": "探究厨房中食醋（乙酸）与小苏打反应产生二氧化碳的现象，联系生活中的化学。",
+    "keywords": [
+      "ChemAIForge",
+      "酸碱反应",
+      "入门",
+      "乙酸",
+      "碳酸氢钠",
+      "vinegar-soda",
+      "食醋与小苏打反应"
+    ],
+    "learningGoals": [
+      "观察弱酸与碳酸氢盐反应",
+      "认识二氧化碳生成",
+      "联系生活实例"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1013,
+    "enabled": true,
+    "slug": "vinegar-soda",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 气体制备与性质",
+    "topic": "二氧化硫的制取与性质",
+    "summary": "亚硫酸钠与硫酸反应制取二氧化硫，验证其漂白性与还原性。",
+    "keywords": [
+      "ChemAIForge",
+      "气体制备与性质",
+      "基础",
+      "亚硫酸钠",
+      "硫酸",
+      "石蕊",
+      "so2-preparation",
+      "二氧化硫的制取与性质"
+    ],
+    "learningGoals": [
+      "掌握 SO₂ 制取",
+      "验证漂白性",
+      "认识其污染性"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1014,
+    "enabled": true,
+    "slug": "so2-preparation",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 气体制备与性质",
+    "topic": "二氧化碳的实验室制取",
+    "summary": "用大理石（碳酸钙）与稀盐酸反应制取二氧化碳，掌握气体发生与收集装置。",
+    "keywords": [
+      "ChemAIForge",
+      "气体制备与性质",
+      "入门",
+      "碳酸钙",
+      "盐酸",
+      "氢氧化钙",
+      "co2-preparation",
+      "二氧化碳的实验室制取"
+    ],
+    "learningGoals": [
+      "掌握 CO₂ 制取原理",
+      "学会向上排空气法收集",
+      "检验 CO₂"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1015,
+    "enabled": true,
+    "slug": "co2-preparation",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 气体制备与性质",
+    "topic": "二氧化碳的性质探究",
+    "summary": "验证二氧化碳不支持燃烧、密度比空气大，并与水反应生成碳酸使石蕊变红。",
+    "keywords": [
+      "ChemAIForge",
+      "气体制备与性质",
+      "入门",
+      "二氧化碳",
+      "石蕊",
+      "蒸馏水",
+      "co2-properties",
+      "二氧化碳的性质探究"
+    ],
+    "learningGoals": [
+      "认识 CO₂ 性质",
+      "验证与水反应",
+      "联系灭火应用"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1016,
+    "enabled": true,
+    "slug": "co2-properties",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 气体制备与性质",
+    "topic": "氧气的性质探究",
+    "summary": "用带火星木条、铁丝、硫粉验证氧气的助燃性，观察剧烈燃烧现象。",
+    "keywords": [
+      "ChemAIForge",
+      "气体制备与性质",
+      "入门",
+      "过氧化氢",
+      "二氧化锰",
+      "铁",
+      "o2-properties",
+      "氧气的性质探究"
+    ],
+    "learningGoals": [
+      "认识氧气助燃性",
+      "观察铁丝燃烧",
+      "理解助燃与可燃"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1017,
+    "enabled": true,
+    "slug": "o2-properties",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 气体制备与性质",
+    "topic": "氨气与氯化氢相遇成烟",
+    "summary": "将蘸有浓氨水与浓盐酸的玻璃棒靠近，观察生成白烟氯化铵，认识气体间反应。",
+    "keywords": [
+      "ChemAIForge",
+      "气体制备与性质",
+      "基础",
+      "氨水",
+      "盐酸",
+      "ammonia-fountain-hcl",
+      "氨气与氯化氢相遇成烟"
+    ],
+    "learningGoals": [
+      "观察白烟现象",
+      "理解气体反应",
+      "认识氯化铵生成"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1018,
+    "enabled": true,
+    "slug": "ammonia-fountain-hcl",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 气体制备与性质",
+    "topic": "氨气的制取与喷泉实验",
+    "summary": "氯化铵与熟石灰共热制取氨气，并完成经典的氨气喷泉实验观察其极易溶于水。",
+    "keywords": [
+      "ChemAIForge",
+      "气体制备与性质",
+      "基础",
+      "氯化铵",
+      "氢氧化钙",
+      "酚酞",
+      "nh3-preparation",
+      "氨气的制取与喷泉实验"
+    ],
+    "learningGoals": [
+      "掌握氨气制取",
+      "理解喷泉原理",
+      "检验氨气"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1019,
+    "enabled": true,
+    "slug": "nh3-preparation",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 气体制备与性质",
+    "topic": "氯气的实验室制取",
+    "summary": "用二氧化锰与浓盐酸加热制取氯气，验证其漂白性与刺激性（通风橱操作）。",
+    "keywords": [
+      "ChemAIForge",
+      "气体制备与性质",
+      "进阶",
+      "二氧化锰",
+      "盐酸",
+      "石蕊",
+      "chlorine-preparation",
+      "氯气的实验室制取"
+    ],
+    "learningGoals": [
+      "掌握氯气制取",
+      "验证漂白性",
+      "认识尾气处理"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1020,
+    "enabled": true,
+    "slug": "chlorine-preparation",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 气体制备与性质",
+    "topic": "硫化氢的制取与检验",
+    "summary": "硫化亚铁与稀盐酸反应制取硫化氢，认识其臭鸡蛋气味与强还原性（注意通风）。",
+    "keywords": [
+      "ChemAIForge",
+      "气体制备与性质",
+      "基础",
+      "硫化亚铁",
+      "盐酸",
+      "h2s-preparation",
+      "硫化氢的制取与检验"
+    ],
+    "learningGoals": [
+      "掌握 H₂S 制取",
+      "认识其毒性",
+      "了解还原性"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1021,
+    "enabled": true,
+    "slug": "h2s-preparation",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 气体制备与性质",
+    "topic": "碳酸氢钠受热与产气对比",
+    "summary": "对比碳酸氢钠与稀盐酸反应产气，理解小苏打作为膨松剂的化学原理。",
+    "keywords": [
+      "ChemAIForge",
+      "气体制备与性质",
+      "入门",
+      "碳酸氢钠",
+      "盐酸",
+      "氢氧化钙",
+      "co2-baking-soda",
+      "碳酸氢钠受热与产气对比"
+    ],
+    "learningGoals": [
+      "观察产气现象",
+      "联系生活应用",
+      "检验 CO₂"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1022,
+    "enabled": true,
+    "slug": "co2-baking-soda",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 气体制备与性质",
+    "topic": "碳酸氢铵分解探究",
+    "summary": "加热碳酸氢铵观察其完全分解为氨气、水和二氧化碳，理解不稳定铵盐特性。",
+    "keywords": [
+      "ChemAIForge",
+      "气体制备与性质",
+      "入门",
+      "碳酸铵",
+      "氢氧化钙",
+      "carbonate-thermal",
+      "碳酸氢铵分解探究"
+    ],
+    "learningGoals": [
+      "观察分解产气",
+      "检验氨气与 CO₂",
+      "认识铵盐不稳定性"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1023,
+    "enabled": true,
+    "slug": "carbonate-thermal",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 气体制备与性质",
+    "topic": "过氧化氢制氧气",
+    "summary": "以二氧化锰为催化剂分解过氧化氢制取氧气，理解催化剂的作用。",
+    "keywords": [
+      "ChemAIForge",
+      "气体制备与性质",
+      "入门",
+      "过氧化氢",
+      "二氧化锰",
+      "o2-from-h2o2",
+      "过氧化氢制氧气"
+    ],
+    "learningGoals": [
+      "掌握氧气制取",
+      "理解催化剂作用",
+      "学会排水法收集"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1024,
+    "enabled": true,
+    "slug": "o2-from-h2o2",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 气体制备与性质",
+    "topic": "锌与稀硫酸制氢气",
+    "summary": "用锌粒与稀硫酸反应制取氢气，验证氢气的可燃性与爆鸣实验。",
+    "keywords": [
+      "ChemAIForge",
+      "气体制备与性质",
+      "入门",
+      "锌",
+      "硫酸",
+      "h2-from-zinc",
+      "锌与稀硫酸制氢气"
+    ],
+    "learningGoals": [
+      "掌握氢气制取",
+      "检验氢气纯度",
+      "观察爆鸣现象"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1025,
+    "enabled": true,
+    "slug": "h2-from-zinc",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 沉淀反应",
+    "topic": "复分解反应发生条件",
+    "summary": "通过多组盐与碱、盐与盐反应，归纳复分解反应需生成沉淀、气体或水的条件。",
+    "keywords": [
+      "ChemAIForge",
+      "沉淀反应",
+      "基础",
+      "硫酸铜",
+      "氢氧化钠",
+      "氯化钡",
+      "碳酸钠",
+      "double-decomposition-rule",
+      "复分解反应发生条件"
+    ],
+    "learningGoals": [
+      "归纳反应条件",
+      "对比有无沉淀",
+      "书写离子方程式"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1026,
+    "enabled": true,
+    "slug": "double-decomposition-rule",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 沉淀反应",
+    "topic": "氢氧化铁的制取",
+    "summary": "氯化铁溶液与氢氧化钠反应生成红褐色氢氧化铁沉淀，认识铁(III)的特征。",
+    "keywords": [
+      "ChemAIForge",
+      "沉淀反应",
+      "入门",
+      "氯化铁",
+      "氢氧化钠",
+      "feoh3-precipitation",
+      "氢氧化铁的制取"
+    ],
+    "learningGoals": [
+      "制取氢氧化铁",
+      "观察红褐色沉淀",
+      "区分铁的价态"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1027,
+    "enabled": true,
+    "slug": "feoh3-precipitation",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 沉淀反应",
+    "topic": "氢氧化铜的制取",
+    "summary": "硫酸铜溶液与氢氧化钠反应生成蓝色氢氧化铜沉淀，观察絮状沉淀特征。",
+    "keywords": [
+      "ChemAIForge",
+      "沉淀反应",
+      "入门",
+      "硫酸铜",
+      "氢氧化钠",
+      "cuoh2-precipitation",
+      "氢氧化铜的制取"
+    ],
+    "learningGoals": [
+      "制取氢氧化铜",
+      "观察蓝色沉淀",
+      "书写离子方程式"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1028,
+    "enabled": true,
+    "slug": "cuoh2-precipitation",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 沉淀反应",
+    "topic": "氢氧化镁的制取",
+    "summary": "氯化镁与氢氧化钠反应生成白色氢氧化镁沉淀，认识难溶碱的制备。",
+    "keywords": [
+      "ChemAIForge",
+      "沉淀反应",
+      "入门",
+      "氯化镁",
+      "氢氧化钠",
+      "mgoh2-precipitation",
+      "氢氧化镁的制取"
+    ],
+    "learningGoals": [
+      "制取氢氧化镁",
+      "观察白色沉淀",
+      "联系海水提镁"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1029,
+    "enabled": true,
+    "slug": "mgoh2-precipitation",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 沉淀反应",
+    "topic": "氯离子的检验",
+    "summary": "向氯化钠溶液滴加硝酸银，生成不溶于稀硝酸的白色沉淀，确认氯离子。",
+    "keywords": [
+      "ChemAIForge",
+      "沉淀反应",
+      "入门",
+      "氯化钠",
+      "硝酸银",
+      "硝酸",
+      "agcl-precipitation",
+      "氯离子的检验"
+    ],
+    "learningGoals": [
+      "掌握氯离子检验",
+      "观察白色沉淀",
+      "理解复分解条件"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1030,
+    "enabled": true,
+    "slug": "agcl-precipitation",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 沉淀反应",
+    "topic": "沉淀的转化",
+    "summary": "向氢氧化镁沉淀中加入氯化铁溶液，观察白色沉淀转化为红褐色，理解溶度积。",
+    "keywords": [
+      "ChemAIForge",
+      "沉淀反应",
+      "进阶",
+      "氯化镁",
+      "氢氧化钠",
+      "氯化铁",
+      "precipitation-conversion",
+      "沉淀的转化"
+    ],
+    "learningGoals": [
+      "理解沉淀转化",
+      "认识溶度积大小",
+      "分析转化方向"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1031,
+    "enabled": true,
+    "slug": "precipitation-conversion",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 沉淀反应",
+    "topic": "溴化银沉淀与感光材料",
+    "summary": "硝酸银与溴化钾反应生成浅黄色溴化银沉淀，认识其感光性与照相原理。",
+    "keywords": [
+      "ChemAIForge",
+      "沉淀反应",
+      "基础",
+      "硝酸银",
+      "溴化钾",
+      "agbr-precipitation",
+      "溴化银沉淀与感光材料"
+    ],
+    "learningGoals": [
+      "观察浅黄沉淀",
+      "了解感光性",
+      "联系胶片技术"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1032,
+    "enabled": true,
+    "slug": "agbr-precipitation",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 沉淀反应",
+    "topic": "硫酸根离子的检验",
+    "summary": "用氯化钡溶液检验硫酸钠中的硫酸根，生成不溶于酸的白色硫酸钡沉淀。",
+    "keywords": [
+      "ChemAIForge",
+      "沉淀反应",
+      "入门",
+      "硫酸钠",
+      "氯化钡",
+      "盐酸",
+      "baso4-precipitation",
+      "硫酸根离子的检验"
+    ],
+    "learningGoals": [
+      "掌握硫酸根检验",
+      "排除干扰离子",
+      "观察沉淀"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1033,
+    "enabled": true,
+    "slug": "baso4-precipitation",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 沉淀反应",
+    "topic": "硫酸钡重量法测硫含量",
+    "summary": "用氯化钡沉淀硫酸根，经过滤、洗涤、灼烧、称量测定样品中硫酸盐含量。",
+    "keywords": [
+      "ChemAIForge",
+      "沉淀反应",
+      "进阶",
+      "硫酸钠",
+      "氯化钡",
+      "盐酸",
+      "baso4-gravimetric",
+      "硫酸钡重量法测硫含量"
+    ],
+    "learningGoals": [
+      "掌握重量分析法",
+      "规范沉淀洗涤",
+      "计算硫含量"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1034,
+    "enabled": true,
+    "slug": "baso4-gravimetric",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 沉淀反应",
+    "topic": "硬水的软化",
+    "summary": "向硬水中加入碳酸钠使钙镁离子沉淀，认识硬水危害与软化方法。",
+    "keywords": [
+      "ChemAIForge",
+      "沉淀反应",
+      "基础",
+      "氯化钙",
+      "碳酸钠",
+      "肥皂水",
+      "hard-water-softening",
+      "硬水的软化"
+    ],
+    "learningGoals": [
+      "认识硬水成分",
+      "掌握软化原理",
+      "对比软硬水"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1035,
+    "enabled": true,
+    "slug": "hard-water-softening",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 沉淀反应",
+    "topic": "碘化银沉淀与人工降雨",
+    "summary": "硝酸银与碘化钾反应生成黄色碘化银沉淀，了解其在人工降雨中的应用。",
+    "keywords": [
+      "ChemAIForge",
+      "沉淀反应",
+      "基础",
+      "硝酸银",
+      "碘化钾",
+      "agi-precipitation",
+      "碘化银沉淀与人工降雨"
+    ],
+    "learningGoals": [
+      "观察黄色沉淀",
+      "比较卤化银颜色",
+      "联系实际应用"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1036,
+    "enabled": true,
+    "slug": "agi-precipitation",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 沉淀反应",
+    "topic": "碳酸钙的生成",
+    "summary": "碳酸钠溶液与氯化钙反应生成白色碳酸钙沉淀，理解微溶物的转化。",
+    "keywords": [
+      "ChemAIForge",
+      "沉淀反应",
+      "入门",
+      "碳酸钠",
+      "氯化钙",
+      "caco3-precipitation",
+      "碳酸钙的生成"
+    ],
+    "learningGoals": [
+      "观察沉淀生成",
+      "理解复分解",
+      "联系水垢成因"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1037,
+    "enabled": true,
+    "slug": "caco3-precipitation",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 氧化还原",
+    "topic": "二氧化硫使溴水褪色",
+    "summary": "将二氧化硫通入溴水，橙色褪去，验证二氧化硫的还原性而非漂白性。",
+    "keywords": [
+      "ChemAIForge",
+      "氧化还原",
+      "基础",
+      "二氧化硫",
+      "溴水",
+      "so2-bromine-water",
+      "二氧化硫使溴水褪色"
+    ],
+    "learningGoals": [
+      "认识 SO₂ 还原性",
+      "区分还原与漂白",
+      "书写方程式"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1038,
+    "enabled": true,
+    "slug": "so2-bromine-water",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 氧化还原",
+    "topic": "氯气置换溴",
+    "summary": "向溴化钾溶液通入氯气，置换出橙色溴，验证卤素氧化性强弱顺序。",
+    "keywords": [
+      "ChemAIForge",
+      "氧化还原",
+      "基础",
+      "氯水",
+      "溴化钾",
+      "四氯化碳",
+      "halogen-displacement-cl-br",
+      "氯气置换溴"
+    ],
+    "learningGoals": [
+      "验证卤素活泼性",
+      "观察萃取分层",
+      "书写离子方程式"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1039,
+    "enabled": true,
+    "slug": "halogen-displacement-cl-br",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 氧化还原",
+    "topic": "氯水的漂白作用",
+    "summary": "用氯水使有色布条或品红褪色，认识次氯酸的强氧化性与漂白原理。",
+    "keywords": [
+      "ChemAIForge",
+      "氧化还原",
+      "基础",
+      "氯水",
+      "石蕊",
+      "chlorine-bleaching",
+      "氯水的漂白作用"
+    ],
+    "learningGoals": [
+      "认识漂白原理",
+      "区分氯气与次氯酸",
+      "联系漂白粉"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1040,
+    "enabled": true,
+    "slug": "chlorine-bleaching",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 氧化还原",
+    "topic": "溴置换碘",
+    "summary": "向碘化钾溶液中加入溴水，置换出碘并以淀粉显蓝验证，比较溴碘氧化性。",
+    "keywords": [
+      "ChemAIForge",
+      "氧化还原",
+      "基础",
+      "溴水",
+      "碘化钾",
+      "淀粉",
+      "halogen-displacement-br-i",
+      "溴置换碘"
+    ],
+    "learningGoals": [
+      "验证溴碘活泼性",
+      "碘淀粉显色",
+      "理解置换规律"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1041,
+    "enabled": true,
+    "slug": "halogen-displacement-br-i",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 氧化还原",
+    "topic": "碘与淀粉显色",
+    "summary": "观察碘单质遇淀粉变蓝的特征反应，用于碘的检验与碘量法终点判断。",
+    "keywords": [
+      "ChemAIForge",
+      "氧化还原",
+      "入门",
+      "碘水",
+      "淀粉",
+      "iodine-starch",
+      "碘与淀粉显色"
+    ],
+    "learningGoals": [
+      "观察特征蓝色",
+      "理解显色原理",
+      "应用于定量分析"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1042,
+    "enabled": true,
+    "slug": "iodine-starch",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 氧化还原",
+    "topic": "碘离子催化过氧化氢分解",
+    "summary": "以碘化钾催化过氧化氢分解放出氧气，观察催化剂在反应前后不变。",
+    "keywords": [
+      "ChemAIForge",
+      "氧化还原",
+      "基础",
+      "过氧化氢",
+      "碘化钾",
+      "h2o2-ki-catalysis",
+      "碘离子催化过氧化氢分解"
+    ],
+    "learningGoals": [
+      "理解催化分解",
+      "检验氧气",
+      "认识催化剂特性"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1043,
+    "enabled": true,
+    "slug": "h2o2-ki-catalysis",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 氧化还原",
+    "topic": "碘钟反应",
+    "summary": "混合碘酸盐与还原剂体系，经一段诱导期后溶液骤然变蓝，认识反应速率与振荡现象。",
+    "keywords": [
+      "ChemAIForge",
+      "氧化还原",
+      "进阶",
+      "碘化钾",
+      "过氧化氢",
+      "硫酸",
+      "淀粉",
+      "iodine-clock",
+      "碘钟反应"
+    ],
+    "learningGoals": [
+      "观察碘钟现象",
+      "理解诱导期",
+      "探究浓度影响"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1044,
+    "enabled": true,
+    "slug": "iodine-clock",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 氧化还原",
+    "topic": "铁的两种价态相互转化",
+    "summary": "用氯水把亚铁离子氧化为铁离子、用铁粉把铁离子还原为亚铁，认识变价金属。",
+    "keywords": [
+      "ChemAIForge",
+      "氧化还原",
+      "进阶",
+      "硫酸亚铁",
+      "氯水",
+      "铁",
+      "硫氰酸钾",
+      "fe2-fe3-conversion",
+      "铁的两种价态相互转化"
+    ],
+    "learningGoals": [
+      "理解价态转化",
+      "用显色验证",
+      "书写氧化还原方程式"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1045,
+    "enabled": true,
+    "slug": "fe2-fe3-conversion",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 氧化还原",
+    "topic": "铁还原铁(III)离子",
+    "summary": "向氯化铁溶液中加入铁粉，棕黄色变浅绿，验证铁把三价铁还原为二价铁。",
+    "keywords": [
+      "ChemAIForge",
+      "氧化还原",
+      "基础",
+      "氯化铁",
+      "铁",
+      "fe3-reduction-by-iron",
+      "铁还原铁(III)离子"
+    ],
+    "learningGoals": [
+      "理解中间价态",
+      "观察颜色变化",
+      "书写离子方程式"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1046,
+    "enabled": true,
+    "slug": "fe3-reduction-by-iron",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 氧化还原",
+    "topic": "铜与硝酸反应",
+    "summary": "铜与稀硝酸反应生成蓝色溶液并放出气体，认识硝酸的强氧化性（通风操作）。",
+    "keywords": [
+      "ChemAIForge",
+      "氧化还原",
+      "进阶",
+      "铜",
+      "硝酸",
+      "copper-nitric-acid",
+      "铜与硝酸反应"
+    ],
+    "learningGoals": [
+      "认识硝酸氧化性",
+      "观察气体与变色",
+      "理解不产氢"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1047,
+    "enabled": true,
+    "slug": "copper-nitric-acid",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 氧化还原",
+    "topic": "高锰酸钾氧化乙醇",
+    "summary": "酸性高锰酸钾氧化乙醇紫红色褪去，认识醇的还原性与氧化产物。",
+    "keywords": [
+      "ChemAIForge",
+      "氧化还原",
+      "基础",
+      "高锰酸钾",
+      "乙醇",
+      "硫酸",
+      "kmno4-ethanol",
+      "高锰酸钾氧化乙醇"
+    ],
+    "learningGoals": [
+      "观察氧化褪色",
+      "认识醇被氧化",
+      "联系酒驾检测原理"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1048,
+    "enabled": true,
+    "slug": "kmno4-ethanol",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 氧化还原",
+    "topic": "高锰酸钾氧化草酸",
+    "summary": "酸性高锰酸钾与草酸反应紫红色褪去，探究浓度、温度对反应速率的影响。",
+    "keywords": [
+      "ChemAIForge",
+      "氧化还原",
+      "基础",
+      "高锰酸钾",
+      "草酸",
+      "硫酸",
+      "kmno4-oxalic-acid",
+      "高锰酸钾氧化草酸"
+    ],
+    "learningGoals": [
+      "观察氧化褪色",
+      "理解强氧化性",
+      "探究反应速率"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1049,
+    "enabled": true,
+    "slug": "kmno4-oxalic-acid",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 氧化还原",
+    "topic": "高锰酸钾滴定亚铁离子",
+    "summary": "用高锰酸钾标准液滴定硫酸亚铁，以紫红色不褪为终点，掌握氧化还原滴定。",
+    "keywords": [
+      "ChemAIForge",
+      "氧化还原",
+      "进阶",
+      "高锰酸钾",
+      "硫酸亚铁",
+      "硫酸",
+      "kmno4-fe2",
+      "高锰酸钾滴定亚铁离子"
+    ],
+    "learningGoals": [
+      "掌握氧化还原滴定",
+      "自身指示剂判断终点",
+      "计算亚铁含量"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1050,
+    "enabled": true,
+    "slug": "kmno4-fe2",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 金属及其化合物",
+    "topic": "湿法炼铜",
+    "summary": "用铁置换硫酸铜溶液中的铜，模拟古代湿法炼铜，理解金属冶炼原理。",
+    "keywords": [
+      "ChemAIForge",
+      "金属及其化合物",
+      "基础",
+      "铁",
+      "硫酸铜",
+      "metal-displacement-series",
+      "湿法炼铜"
+    ],
+    "learningGoals": [
+      "理解湿法冶金",
+      "回收金属铜",
+      "联系历史文化"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1051,
+    "enabled": true,
+    "slug": "metal-displacement-series",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 金属及其化合物",
+    "topic": "金属活动性顺序探究",
+    "summary": "比较镁、锌、铁与稀盐酸反应放出氢气的剧烈程度，排列金属活动性顺序。",
+    "keywords": [
+      "ChemAIForge",
+      "金属及其化合物",
+      "入门",
+      "镁",
+      "锌",
+      "铁",
+      "盐酸",
+      "metal-activity-acid",
+      "金属活动性顺序探究"
+    ],
+    "learningGoals": [
+      "比较反应剧烈程度",
+      "排列活动性顺序",
+      "检验氢气"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1052,
+    "enabled": true,
+    "slug": "metal-activity-acid",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 金属及其化合物",
+    "topic": "钠与水反应",
+    "summary": "金属钠投入滴有酚酞的水中，浮、熔、游、响、红，认识活泼金属与水反应。",
+    "keywords": [
+      "ChemAIForge",
+      "金属及其化合物",
+      "基础",
+      "钠",
+      "蒸馏水",
+      "酚酞",
+      "sodium-water",
+      "钠与水反应"
+    ],
+    "learningGoals": [
+      "观察五大现象",
+      "认识强碱生成",
+      "理解钠的保存"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1053,
+    "enabled": true,
+    "slug": "sodium-water",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 金属及其化合物",
+    "topic": "铁生锈条件探究",
+    "summary": "对比铁钉在干燥、潮湿、隔绝空气等条件下的锈蚀，探究铁生锈需要水和氧气。",
+    "keywords": [
+      "ChemAIForge",
+      "金属及其化合物",
+      "入门",
+      "铁",
+      "蒸馏水",
+      "食盐",
+      "iron-rusting",
+      "铁生锈条件探究"
+    ],
+    "learningGoals": [
+      "探究生锈条件",
+      "理解防锈原理",
+      "设计对照实验"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1054,
+    "enabled": true,
+    "slug": "iron-rusting",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 金属及其化合物",
+    "topic": "铁置换硫酸铜中的铜",
+    "summary": "将铁钉浸入硫酸铜溶液，表面析出红色铜、溶液蓝色变浅，验证金属置换。",
+    "keywords": [
+      "ChemAIForge",
+      "金属及其化合物",
+      "入门",
+      "铁",
+      "硫酸铜",
+      "iron-copper-sulfate",
+      "铁置换硫酸铜中的铜"
+    ],
+    "learningGoals": [
+      "观察置换现象",
+      "理解活动性差异",
+      "书写方程式"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1055,
+    "enabled": true,
+    "slug": "iron-copper-sulfate",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 金属及其化合物",
+    "topic": "铜置换硝酸银中的银",
+    "summary": "铜丝插入硝酸银溶液，表面生成银白色银树、溶液变蓝，观察置换与晶体生长。",
+    "keywords": [
+      "ChemAIForge",
+      "金属及其化合物",
+      "基础",
+      "铜",
+      "硝酸银",
+      "copper-silver-nitrate",
+      "铜置换硝酸银中的银"
+    ],
+    "learningGoals": [
+      "观察银树生长",
+      "理解置换反应",
+      "认识溶液变蓝原因"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1056,
+    "enabled": true,
+    "slug": "copper-silver-nitrate",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 金属及其化合物",
+    "topic": "铝热反应",
+    "summary": "铝粉与氧化铁在高温下剧烈反应生成铁和氧化铝，认识强放热的置换反应应用。",
+    "keywords": [
+      "ChemAIForge",
+      "金属及其化合物",
+      "进阶",
+      "铝",
+      "氧化铁",
+      "thermite-reaction",
+      "铝热反应"
+    ],
+    "learningGoals": [
+      "认识铝热反应",
+      "理解工业焊接应用",
+      "注意安全操作"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1057,
+    "enabled": true,
+    "slug": "thermite-reaction",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 金属及其化合物",
+    "topic": "铝的两性探究",
+    "summary": "分别将铝片放入盐酸和氢氧化钠溶液，均放出氢气，认识铝既能与酸又能与碱反应。",
+    "keywords": [
+      "ChemAIForge",
+      "金属及其化合物",
+      "进阶",
+      "铝",
+      "盐酸",
+      "氢氧化钠",
+      "aluminum-acid-base",
+      "铝的两性探究"
+    ],
+    "learningGoals": [
+      "认识铝的两性",
+      "对比产气",
+      "书写两类方程式"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1058,
+    "enabled": true,
+    "slug": "aluminum-acid-base",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 金属及其化合物",
+    "topic": "铝的氧化膜保护作用",
+    "summary": "对比经砂纸打磨与未打磨的铝片在盐酸中的反应，认识致密氧化膜的保护性。",
+    "keywords": [
+      "ChemAIForge",
+      "金属及其化合物",
+      "基础",
+      "铝",
+      "盐酸",
+      "aluminum-oxide-film",
+      "铝的氧化膜保护作用"
+    ],
+    "learningGoals": [
+      "认识氧化膜作用",
+      "对比反应速率",
+      "联系铝制品耐腐蚀"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1059,
+    "enabled": true,
+    "slug": "aluminum-oxide-film",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 金属及其化合物",
+    "topic": "镁条燃烧",
+    "summary": "点燃镁条发出耀眼白光生成白色氧化镁，认识剧烈放热的氧化反应。",
+    "keywords": [
+      "ChemAIForge",
+      "金属及其化合物",
+      "入门",
+      "镁",
+      "氧气",
+      "magnesium-burning",
+      "镁条燃烧"
+    ],
+    "learningGoals": [
+      "观察燃烧现象",
+      "认识氧化镁",
+      "理解放热反应"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1060,
+    "enabled": true,
+    "slug": "magnesium-burning",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 配位化学",
+    "topic": "普鲁士蓝的生成",
+    "summary": "亚铁离子与铁氰化钾反应生成蓝色沉淀，认识经典颜料普鲁士蓝并用于铁离子检验。",
+    "keywords": [
+      "ChemAIForge",
+      "配位化学",
+      "基础",
+      "硫酸亚铁",
+      "氢氧化钠",
+      "prussian-blue",
+      "普鲁士蓝的生成"
+    ],
+    "learningGoals": [
+      "认识普鲁士蓝",
+      "检验亚铁离子",
+      "联系颜料历史"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1061,
+    "enabled": true,
+    "slug": "prussian-blue",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 配位化学",
+    "topic": "氯化钴显色平衡",
+    "summary": "观察氯化钴溶液在加水稀释与加热时粉红与蓝色间的转变，认识配位平衡移动。",
+    "keywords": [
+      "ChemAIForge",
+      "配位化学",
+      "进阶",
+      "盐酸",
+      "蒸馏水",
+      "cobalt-chloride-equilibrium",
+      "氯化钴显色平衡"
+    ],
+    "learningGoals": [
+      "认识配位平衡",
+      "观察颜色互变",
+      "理解平衡移动"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1062,
+    "enabled": true,
+    "slug": "cobalt-chloride-equilibrium",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 配位化学",
+    "topic": "硬水中钙镁离子的配位滴定",
+    "summary": "用 EDTA 配位滴定法测定水样硬度，以铬黑 T 为指示剂判断终点。",
+    "keywords": [
+      "ChemAIForge",
+      "配位化学",
+      "进阶",
+      "氯化钙",
+      "氢氧化钠",
+      "氨水",
+      "diammine-silver-test",
+      "硬水中钙镁离子的配位滴定"
+    ],
+    "learningGoals": [
+      "掌握配位滴定",
+      "测定水硬度",
+      "判断显色终点"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1063,
+    "enabled": true,
+    "slug": "diammine-silver-test",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 配位化学",
+    "topic": "苯酚的显色检验",
+    "summary": "向苯酚溶液中加入氯化铁，溶液显紫色，掌握酚羟基的特征检验。",
+    "keywords": [
+      "ChemAIForge",
+      "配位化学",
+      "基础",
+      "苯酚",
+      "氯化铁",
+      "phenol-fecl3-coloring",
+      "苯酚的显色检验"
+    ],
+    "learningGoals": [
+      "掌握苯酚检验",
+      "观察紫色显色",
+      "认识酚的特性"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1064,
+    "enabled": true,
+    "slug": "phenol-fecl3-coloring",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 配位化学",
+    "topic": "铁(III)离子的硫氰酸盐检验",
+    "summary": "向氯化铁溶液滴加硫氰酸钾，溶液变血红色，掌握铁(III)的灵敏检验方法。",
+    "keywords": [
+      "ChemAIForge",
+      "配位化学",
+      "入门",
+      "氯化铁",
+      "硫氰酸钾",
+      "fe3-scn-coloring",
+      "铁(III)离子的硫氰酸盐检验"
+    ],
+    "learningGoals": [
+      "掌握 Fe³⁺ 检验",
+      "观察血红显色",
+      "认识配位反应"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1065,
+    "enabled": true,
+    "slug": "fe3-scn-coloring",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 配位化学",
+    "topic": "铁硫氰配合物平衡移动",
+    "summary": "在血红色铁硫氰溶液中改变铁离子或硫氰根浓度，观察颜色深浅变化，验证平衡移动。",
+    "keywords": [
+      "ChemAIForge",
+      "配位化学",
+      "进阶",
+      "氯化铁",
+      "硫氰酸钾",
+      "氯化钠",
+      "fe3-equilibrium-shift",
+      "铁硫氰配合物平衡移动"
+    ],
+    "learningGoals": [
+      "理解化学平衡",
+      "验证浓度影响",
+      "定性分析颜色"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1066,
+    "enabled": true,
+    "slug": "fe3-equilibrium-shift",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 配位化学",
+    "topic": "铜氨配离子的形成",
+    "summary": "向硫酸铜溶液中逐滴加入氨水，先生成蓝色沉淀后溶解为深蓝色铜氨溶液。",
+    "keywords": [
+      "ChemAIForge",
+      "配位化学",
+      "基础",
+      "硫酸铜",
+      "氨水",
+      "copper-ammonia-complex",
+      "铜氨配离子的形成"
+    ],
+    "learningGoals": [
+      "观察沉淀溶解",
+      "认识配离子",
+      "理解配位平衡"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1067,
+    "enabled": true,
+    "slug": "copper-ammonia-complex",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 配位化学",
+    "topic": "银氨溶液的配制",
+    "summary": "向硝酸银中滴加氨水至沉淀恰好溶解，制备银氨溶液（多伦试剂）用于醛基检验。",
+    "keywords": [
+      "ChemAIForge",
+      "配位化学",
+      "基础",
+      "硝酸银",
+      "氨水",
+      "silver-ammonia-prep",
+      "银氨溶液的配制"
+    ],
+    "learningGoals": [
+      "配制银氨溶液",
+      "理解配位溶解",
+      "为银镜反应做准备"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1068,
+    "enabled": true,
+    "slug": "silver-ammonia-prep",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 有机化学",
+    "topic": "乙烯使溴水褪色",
+    "summary": "将乙烯通入溴水，橙色褪去，验证碳碳双键的加成反应。",
+    "keywords": [
+      "ChemAIForge",
+      "有机化学",
+      "基础",
+      "乙烯",
+      "溴水",
+      "ethylene-bromine",
+      "乙烯使溴水褪色"
+    ],
+    "learningGoals": [
+      "认识加成反应",
+      "区分饱和与不饱和",
+      "观察褪色"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1069,
+    "enabled": true,
+    "slug": "ethylene-bromine",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 有机化学",
+    "topic": "乙酸乙酯的制取",
+    "summary": "乙酸与乙醇在浓硫酸催化下酯化生成有果香味的乙酸乙酯，掌握酯化反应。",
+    "keywords": [
+      "ChemAIForge",
+      "有机化学",
+      "基础",
+      "乙酸",
+      "乙醇",
+      "硫酸",
+      "碳酸钠",
+      "ester-synthesis",
+      "乙酸乙酯的制取"
+    ],
+    "learningGoals": [
+      "掌握酯化反应",
+      "理解催化与脱水",
+      "认识可逆反应"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1070,
+    "enabled": true,
+    "slug": "ester-synthesis",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 有机化学",
+    "topic": "乙醇与钠反应",
+    "summary": "金属钠投入无水乙醇缓慢放出氢气，对比与水反应的剧烈程度，认识羟基活泼氢。",
+    "keywords": [
+      "ChemAIForge",
+      "有机化学",
+      "基础",
+      "乙醇",
+      "钠",
+      "ethanol-sodium",
+      "乙醇与钠反应"
+    ],
+    "learningGoals": [
+      "认识羟基反应",
+      "对比反应速率",
+      "检验氢气"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1071,
+    "enabled": true,
+    "slug": "ethanol-sodium",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 有机化学",
+    "topic": "乙醇的催化氧化",
+    "summary": "用灼热铜丝催化乙醇氧化为乙醛，铜丝黑红交替变化，认识醇的催化氧化。",
+    "keywords": [
+      "ChemAIForge",
+      "有机化学",
+      "基础",
+      "乙醇",
+      "铜",
+      "氧气",
+      "ethanol-oxidation-copper",
+      "乙醇的催化氧化"
+    ],
+    "learningGoals": [
+      "认识催化氧化",
+      "观察铜丝变化",
+      "理解催化剂循环"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1072,
+    "enabled": true,
+    "slug": "ethanol-oxidation-copper",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 有机化学",
+    "topic": "淀粉的检验",
+    "summary": "用碘液检验食物中的淀粉，变蓝则含淀粉，联系食品成分分析。",
+    "keywords": [
+      "ChemAIForge",
+      "有机化学",
+      "入门",
+      "淀粉",
+      "碘水",
+      "starch-iodine-test",
+      "淀粉的检验"
+    ],
+    "learningGoals": [
+      "检验淀粉",
+      "观察显色",
+      "联系生活食品"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1073,
+    "enabled": true,
+    "slug": "starch-iodine-test",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 有机化学",
+    "topic": "肥皂的制取（皂化反应）",
+    "summary": "油脂在氢氧化钠溶液中加热水解生成高级脂肪酸钠（肥皂）与甘油。",
+    "keywords": [
+      "ChemAIForge",
+      "有机化学",
+      "进阶",
+      "氢氧化钠",
+      "食盐",
+      "蒸馏水",
+      "soap-saponification",
+      "肥皂的制取（皂化反应）"
+    ],
+    "learningGoals": [
+      "认识皂化反应",
+      "掌握盐析操作",
+      "联系日用化工"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1074,
+    "enabled": true,
+    "slug": "soap-saponification",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 有机化学",
+    "topic": "苯酚与溴水反应",
+    "summary": "向苯酚溶液中加入溴水生成白色三溴苯酚沉淀，验证苯环受羟基活化的取代反应。",
+    "keywords": [
+      "ChemAIForge",
+      "有机化学",
+      "进阶",
+      "苯酚",
+      "溴水",
+      "phenol-bromine-water",
+      "苯酚与溴水反应"
+    ],
+    "learningGoals": [
+      "认识取代反应",
+      "观察白色沉淀",
+      "理解基团影响"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1075,
+    "enabled": true,
+    "slug": "phenol-bromine-water",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 有机化学",
+    "topic": "葡萄糖与新制氢氧化铜反应",
+    "summary": "葡萄糖与新制氢氧化铜加热生成砖红色氧化亚铜，检验葡萄糖中的醛基。",
+    "keywords": [
+      "ChemAIForge",
+      "有机化学",
+      "基础",
+      "葡萄糖",
+      "硫酸铜",
+      "氢氧化钠",
+      "glucose-fehling",
+      "葡萄糖与新制氢氧化铜反应"
+    ],
+    "learningGoals": [
+      "检验葡萄糖",
+      "观察砖红沉淀",
+      "联系糖尿病检测"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1076,
+    "enabled": true,
+    "slug": "glucose-fehling",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 有机化学",
+    "topic": "蔗糖的水解",
+    "summary": "蔗糖在稀硫酸催化下水解为葡萄糖与果糖，再用银氨溶液检验产物。",
+    "keywords": [
+      "ChemAIForge",
+      "有机化学",
+      "进阶",
+      "蔗糖",
+      "硫酸",
+      "氢氧化钠",
+      "硝酸银",
+      "sucrose-hydrolysis",
+      "蔗糖的水解"
+    ],
+    "learningGoals": [
+      "认识水解反应",
+      "理解催化作用",
+      "检验水解产物"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1077,
+    "enabled": true,
+    "slug": "sucrose-hydrolysis",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 有机化学",
+    "topic": "银镜反应",
+    "summary": "乙醛与银氨溶液水浴加热，在试管壁形成光亮银镜，检验醛基的还原性。",
+    "keywords": [
+      "ChemAIForge",
+      "有机化学",
+      "基础",
+      "乙醛",
+      "硝酸银",
+      "氨水",
+      "silver-mirror",
+      "银镜反应"
+    ],
+    "learningGoals": [
+      "掌握醛基检验",
+      "观察银镜生成",
+      "理解还原性"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1078,
+    "enabled": true,
+    "slug": "silver-mirror",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 化学热力学",
+    "topic": "中和反应反应热测定",
+    "summary": "测定强酸强碱中和反应的反应热，理解放热反应与能量守恒。",
+    "keywords": [
+      "ChemAIForge",
+      "化学热力学",
+      "基础",
+      "盐酸",
+      "氢氧化钠",
+      "neutralization-enthalpy",
+      "中和反应反应热测定"
+    ],
+    "learningGoals": [
+      "测定中和热",
+      "理解反应热",
+      "分析误差"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1079,
+    "enabled": true,
+    "slug": "neutralization-enthalpy",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 化学热力学",
+    "topic": "催化剂对反应速率的影响",
+    "summary": "对比有无二氧化锰时过氧化氢分解产氧速率，认识催化剂显著加快反应。",
+    "keywords": [
+      "ChemAIForge",
+      "化学热力学",
+      "入门",
+      "过氧化氢",
+      "二氧化锰",
+      "catalyst-rate",
+      "催化剂对反应速率的影响"
+    ],
+    "learningGoals": [
+      "认识催化作用",
+      "对比反应速率",
+      "理解催化机理"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1080,
+    "enabled": true,
+    "slug": "catalyst-rate",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 化学热力学",
+    "topic": "化学冷热袋原理",
+    "summary": "利用硝酸铵溶解吸热制作简易冷敷袋，联系溶解热在生活中的应用。",
+    "keywords": [
+      "ChemAIForge",
+      "化学热力学",
+      "入门",
+      "硝酸铵",
+      "蒸馏水",
+      "instant-cold-pack",
+      "化学冷热袋原理"
+    ],
+    "learningGoals": [
+      "应用溶解吸热",
+      "测量降温幅度",
+      "联系医用冷敷"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1081,
+    "enabled": true,
+    "slug": "instant-cold-pack",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 化学热力学",
+    "topic": "吸热反应探究",
+    "summary": "氢氧化钡晶体与氯化铵固体混合反应温度骤降，认识典型吸热反应。",
+    "keywords": [
+      "ChemAIForge",
+      "化学热力学",
+      "基础",
+      "氢氧化钡",
+      "氯化铵",
+      "endothermic-reaction",
+      "吸热反应探究"
+    ],
+    "learningGoals": [
+      "认识吸热反应",
+      "观察结冰现象",
+      "理解能量变化"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1082,
+    "enabled": true,
+    "slug": "endothermic-reaction",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 化学热力学",
+    "topic": "接触面积对反应速率的影响",
+    "summary": "对比块状与粉末状碳酸钙与盐酸反应的快慢，认识反应物接触面积的影响。",
+    "keywords": [
+      "ChemAIForge",
+      "化学热力学",
+      "入门",
+      "碳酸钙",
+      "盐酸",
+      "surface-area-rate",
+      "接触面积对反应速率的影响"
+    ],
+    "learningGoals": [
+      "探究接触面积",
+      "控制变量",
+      "记录产气量"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1083,
+    "enabled": true,
+    "slug": "surface-area-rate",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 化学热力学",
+    "topic": "浓度对反应速率的影响",
+    "summary": "对比不同浓度盐酸与同样大小镁条反应产气快慢，定量认识浓度对速率的影响。",
+    "keywords": [
+      "ChemAIForge",
+      "化学热力学",
+      "基础",
+      "盐酸",
+      "镁",
+      "concentration-rate",
+      "浓度对反应速率的影响"
+    ],
+    "learningGoals": [
+      "探究浓度影响",
+      "控制变量",
+      "记录产气速率"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1084,
+    "enabled": true,
+    "slug": "concentration-rate",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 化学热力学",
+    "topic": "温度对化学平衡的影响",
+    "summary": "通过二氧化氮与四氧化二氮平衡体系在冷热水中的颜色变化，认识温度对平衡的影响。",
+    "keywords": [
+      "ChemAIForge",
+      "化学热力学",
+      "进阶",
+      "蒸馏水",
+      "chemical-equilibrium-temp",
+      "温度对化学平衡的影响"
+    ],
+    "learningGoals": [
+      "认识平衡移动",
+      "观察颜色变化",
+      "理解勒夏特列原理"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1085,
+    "enabled": true,
+    "slug": "chemical-equilibrium-temp",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 化学热力学",
+    "topic": "温度对反应速率的影响",
+    "summary": "对比不同温度下硫代硫酸钠与稀硫酸反应出现浑浊的时间，探究温度对速率的影响。",
+    "keywords": [
+      "ChemAIForge",
+      "化学热力学",
+      "基础",
+      "硫酸",
+      "蒸馏水",
+      "reaction-rate-temperature",
+      "温度对反应速率的影响"
+    ],
+    "learningGoals": [
+      "探究温度影响",
+      "控制变量",
+      "记录反应时间"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1086,
+    "enabled": true,
+    "slug": "reaction-rate-temperature",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 化学热力学",
+    "topic": "溶解过程的吸热与放热",
+    "summary": "对比氢氧化钠、硝酸铵、氯化钠溶于水时的温度变化，认识溶解热效应。",
+    "keywords": [
+      "ChemAIForge",
+      "化学热力学",
+      "入门",
+      "氢氧化钠",
+      "硝酸铵",
+      "氯化钠",
+      "蒸馏水",
+      "dissolution-heat",
+      "溶解过程的吸热与放热"
+    ],
+    "learningGoals": [
+      "认识溶解热",
+      "区分吸放热",
+      "联系即热即冷包"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1087,
+    "enabled": true,
+    "slug": "dissolution-heat",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 化学热力学",
+    "topic": "硝酸钾溶解度测定",
+    "summary": "在不同温度下测定硝酸钾溶解度并绘制溶解度曲线，探究温度对溶解度的影响。",
+    "keywords": [
+      "ChemAIForge",
+      "化学热力学",
+      "进阶",
+      "硝酸钾",
+      "蒸馏水",
+      "solubility-measurement",
+      "硝酸钾溶解度测定"
+    ],
+    "learningGoals": [
+      "掌握溶解度概念",
+      "探究温度影响",
+      "绘制溶解度曲线"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1088,
+    "enabled": true,
+    "slug": "solubility-measurement",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 电化学",
+    "topic": "牺牲阳极保护法",
+    "summary": "用锌块连接铁制品减缓铁的腐蚀，认识牺牲阳极的阴极保护原理。",
+    "keywords": [
+      "ChemAIForge",
+      "电化学",
+      "基础",
+      "铁",
+      "锌",
+      "食盐",
+      "sacrificial-anode",
+      "牺牲阳极保护法"
+    ],
+    "learningGoals": [
+      "理解阴极保护",
+      "对比腐蚀速率",
+      "联系船舶防腐"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1089,
+    "enabled": true,
+    "slug": "sacrificial-anode",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 电化学",
+    "topic": "电解硫酸铜溶液",
+    "summary": "电解硫酸铜溶液，阴极析出铜、阳极放出氧气，认识电解原理与电极反应。",
+    "keywords": [
+      "ChemAIForge",
+      "电化学",
+      "进阶",
+      "硫酸铜",
+      "蒸馏水",
+      "copper-electrolysis",
+      "电解硫酸铜溶液"
+    ],
+    "learningGoals": [
+      "理解电解原理",
+      "书写电极反应",
+      "观察两极现象"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1090,
+    "enabled": true,
+    "slug": "copper-electrolysis",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 电化学",
+    "topic": "电镀铜实验",
+    "summary": "以待镀件为阴极、铜为阳极在硫酸铜溶液中电镀，认识电镀原理与应用。",
+    "keywords": [
+      "ChemAIForge",
+      "电化学",
+      "进阶",
+      "硫酸铜",
+      "铜",
+      "electroplating-copper",
+      "电镀铜实验"
+    ],
+    "learningGoals": [
+      "理解电镀原理",
+      "控制电流",
+      "观察镀层"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1091,
+    "enabled": true,
+    "slug": "electroplating-copper",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 电化学",
+    "topic": "铁的电化学腐蚀",
+    "summary": "用食盐水模拟钢铁吸氧腐蚀，结合铁氰化钾指示剂观察腐蚀微电池。",
+    "keywords": [
+      "ChemAIForge",
+      "电化学",
+      "进阶",
+      "铁",
+      "食盐",
+      "酚酞",
+      "iron-electrochemical-corrosion",
+      "铁的电化学腐蚀"
+    ],
+    "learningGoals": [
+      "认识吸氧腐蚀",
+      "理解微电池",
+      "联系金属防护"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1092,
+    "enabled": true,
+    "slug": "iron-electrochemical-corrosion",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade10",
+    "chapter": "ChemAIForge · 电化学",
+    "topic": "铜锌原电池",
+    "summary": "用铜片、锌片和稀硫酸构成原电池，使电流计偏转，认识化学能转化为电能。",
+    "keywords": [
+      "ChemAIForge",
+      "电化学",
+      "基础",
+      "锌",
+      "铜",
+      "硫酸",
+      "copper-zinc-cell",
+      "铜锌原电池"
+    ],
+    "learningGoals": [
+      "认识原电池",
+      "判断正负极",
+      "理解能量转化"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1093,
+    "enabled": true,
+    "slug": "copper-zinc-cell",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 化学分析",
+    "topic": "气体体积的测量",
+    "summary": "用排水量气法测定碳酸钙与盐酸反应放出二氧化碳的体积，练习定量气体测量。",
+    "keywords": [
+      "ChemAIForge",
+      "化学分析",
+      "基础",
+      "碳酸钙",
+      "盐酸",
+      "gas-volume-measurement",
+      "气体体积的测量"
+    ],
+    "learningGoals": [
+      "掌握量气法",
+      "读取气体体积",
+      "计算反应量"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1094,
+    "enabled": true,
+    "slug": "gas-volume-measurement",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 化学分析",
+    "topic": "氯离子的定性检验",
+    "summary": "用硝酸银和稀硝酸检验溶液中的氯离子，依据白色沉淀确认。",
+    "keywords": [
+      "ChemAIForge",
+      "化学分析",
+      "入门",
+      "氯化钠",
+      "硝酸银",
+      "硝酸",
+      "chloride-identification",
+      "氯离子的定性检验"
+    ],
+    "learningGoals": [
+      "掌握氯离子检验",
+      "排除干扰",
+      "观察沉淀"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1095,
+    "enabled": true,
+    "slug": "chloride-identification",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 化学分析",
+    "topic": "焰色反应",
+    "summary": "用铂丝蘸取不同金属盐在火焰中灼烧，观察钠黄、钾紫、钙砖红等特征焰色。",
+    "keywords": [
+      "ChemAIForge",
+      "化学分析",
+      "入门",
+      "氯化钠",
+      "氯化钙",
+      "硝酸钾",
+      "flame-test",
+      "焰色反应"
+    ],
+    "learningGoals": [
+      "掌握焰色反应",
+      "识别金属元素",
+      "联系烟花原理"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1096,
+    "enabled": true,
+    "slug": "flame-test",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 化学分析",
+    "topic": "硫酸根的定性检验",
+    "summary": "用氯化钡和稀盐酸检验硫酸根离子，依据不溶于酸的白色沉淀确认。",
+    "keywords": [
+      "ChemAIForge",
+      "化学分析",
+      "入门",
+      "硫酸钠",
+      "氯化钡",
+      "盐酸",
+      "sulfate-identification",
+      "硫酸根的定性检验"
+    ],
+    "learningGoals": [
+      "掌握硫酸根检验",
+      "排除碳酸根干扰",
+      "观察沉淀"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1097,
+    "enabled": true,
+    "slug": "sulfate-identification",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 化学分析",
+    "topic": "碳酸根的定性检验",
+    "summary": "用稀盐酸和澄清石灰水检验碳酸根，依据产气并使石灰水变浑浊确认。",
+    "keywords": [
+      "ChemAIForge",
+      "化学分析",
+      "入门",
+      "碳酸钠",
+      "盐酸",
+      "氢氧化钙",
+      "carbonate-identification",
+      "碳酸根的定性检验"
+    ],
+    "learningGoals": [
+      "掌握碳酸根检验",
+      "观察产气",
+      "检验 CO₂"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1098,
+    "enabled": true,
+    "slug": "carbonate-identification",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 化学分析",
+    "topic": "粗盐的提纯",
+    "summary": "通过溶解、过滤、蒸发结晶提纯含泥沙的粗盐，掌握混合物分离基本操作。",
+    "keywords": [
+      "ChemAIForge",
+      "化学分析",
+      "入门",
+      "食盐",
+      "蒸馏水",
+      "crystallization-purification",
+      "粗盐的提纯"
+    ],
+    "learningGoals": [
+      "掌握过滤操作",
+      "掌握蒸发结晶",
+      "理解提纯思路"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1099,
+    "enabled": true,
+    "slug": "crystallization-purification",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 化学分析",
+    "topic": "铁(III)离子的检验",
+    "summary": "用硫氰酸钾检验铁(III)离子，溶液变血红色，掌握灵敏的定性检验。",
+    "keywords": [
+      "ChemAIForge",
+      "化学分析",
+      "入门",
+      "氯化铁",
+      "硫氰酸钾",
+      "fe3-identification",
+      "铁(III)离子的检验"
+    ],
+    "learningGoals": [
+      "掌握 Fe³⁺ 检验",
+      "观察显色",
+      "区分铁价态"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1100,
+    "enabled": true,
+    "slug": "fe3-identification",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 化学分析",
+    "topic": "铜(II)离子的检验",
+    "summary": "向含铜离子溶液中加入氢氧化钠生成蓝色沉淀，确认铜(II)离子。",
+    "keywords": [
+      "ChemAIForge",
+      "化学分析",
+      "入门",
+      "硫酸铜",
+      "氢氧化钠",
+      "copper-identification",
+      "铜(II)离子的检验"
+    ],
+    "learningGoals": [
+      "掌握铜离子检验",
+      "观察蓝色沉淀",
+      "联系颜色特征"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1101,
+    "enabled": true,
+    "slug": "copper-identification",
+    "sourceTag": "chemaiforge"
+  },
+  {
+    "subjectCode": "chemistry",
+    "gradeCode": "grade9",
+    "chapter": "ChemAIForge · 化学分析",
+    "topic": "铵根离子的检验",
+    "summary": "向铵盐中加碱共热放出氨气，使湿润红色石蕊试纸变蓝，确认铵根离子。",
+    "keywords": [
+      "ChemAIForge",
+      "化学分析",
+      "入门",
+      "氯化铵",
+      "氢氧化钠",
+      "ammonium-identification",
+      "铵根离子的检验"
+    ],
+    "learningGoals": [
+      "掌握铵根检验",
+      "检验氨气",
+      "理解产气条件"
+    ],
+    "animationPack": "chemistry",
+    "sortOrder": 1102,
+    "enabled": true,
+    "slug": "ammonium-identification",
+    "sourceTag": "chemaiforge"
+  }
+]

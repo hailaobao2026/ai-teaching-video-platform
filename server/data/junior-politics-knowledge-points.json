@@ -1,0 +1,674 @@
+[
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade7",
+    "chapter": "成长与适应",
+    "topic": "中学时代新起点",
+    "summary": "适应中学生活，树立目标与时间管理。",
+    "keywords": [
+      "适应",
+      "目标",
+      "中学时代",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "认识中学阶段意义",
+      "制定合理目标",
+      "学会自我管理"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 10,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade7",
+    "chapter": "成长与适应",
+    "topic": "学习伴成长",
+    "summary": "学习方法、学习兴趣与终身学习意识。",
+    "keywords": [
+      "学习",
+      "方法",
+      "终身学习",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "掌握科学学习方法",
+      "培养学习兴趣",
+      "树立终身学习观念"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 20,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade7",
+    "chapter": "友谊与集体",
+    "topic": "友谊的力量",
+    "summary": "真正的友谊需要信任、尊重与互助。",
+    "keywords": [
+      "友谊",
+      "交友",
+      "尊重",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "理解真正友谊特征",
+      "正确处理同学关系",
+      "学会换位思考"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 30,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade7",
+    "chapter": "友谊与集体",
+    "topic": "建设美好集体",
+    "summary": "集体生活规则、合作与主人翁意识。",
+    "keywords": [
+      "集体",
+      "合作",
+      "规则",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "认识集体意义",
+      "遵守集体规则",
+      "为集体贡献力量"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 40,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade7",
+    "chapter": "生命健康",
+    "topic": "生命可贵与安全自护",
+    "summary": "珍爱生命，掌握基本安全与自救常识。",
+    "keywords": [
+      "生命",
+      "安全",
+      "自护",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "树立生命意识",
+      "掌握基本自护方法",
+      "远离危险行为"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 50,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade7",
+    "chapter": "情绪与生活",
+    "topic": "情绪管理",
+    "summary": "认识情绪，学会调节情绪，保持积极心态。",
+    "keywords": [
+      "情绪",
+      "调节",
+      "积极心态",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "识别常见情绪",
+      "运用调节方法",
+      "保持阳光心态"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 60,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade7",
+    "chapter": "法律入门",
+    "topic": "法律在我们身边",
+    "summary": "生活离不开法律，法律具有规范和保护作用。",
+    "keywords": [
+      "法律",
+      "规范",
+      "保护",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "认识法律作用",
+      "举出生活中的法律例子",
+      "增强守法意识"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 70,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade7",
+    "chapter": "法律入门",
+    "topic": "法律伴我们成长",
+    "summary": "未成年人需要特殊保护，学会依法自律。",
+    "keywords": [
+      "未成年人保护",
+      "自律",
+      "成长",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "了解未成年人保护",
+      "做到依法自律",
+      "遇到伤害依法求助"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 80,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade8",
+    "chapter": "社会关系",
+    "topic": "网络生活新空间",
+    "summary": "理性参与网络，遵守网络道德与法律。",
+    "keywords": [
+      "网络",
+      "媒介素养",
+      "网络文明",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "正确认识网络影响",
+      "遵守网络规则",
+      "做负责任的网民"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 110,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade8",
+    "chapter": "社会关系",
+    "topic": "尊重与平等",
+    "summary": "尊重他人、平等待人，反对歧视。",
+    "keywords": [
+      "尊重",
+      "平等",
+      "歧视",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "理解尊重平等意义",
+      "反思歧视现象",
+      "践行尊重他人"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 120,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade8",
+    "chapter": "社会关系",
+    "topic": "诚信与社会责任",
+    "summary": "诚信是宝贵品质，主动承担社会责任。",
+    "keywords": [
+      "诚信",
+      "责任",
+      "社会",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "认识诚信价值",
+      "做到言而有信",
+      "增强责任意识"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 130,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade8",
+    "chapter": "道德与法治",
+    "topic": "权利与义务",
+    "summary": "公民享有权利同时必须履行义务，二者相统一。",
+    "keywords": [
+      "权利",
+      "义务",
+      "公民",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "理解权利义务关系",
+      "列举基本权利义务",
+      "做到正确行使权利"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 140,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade8",
+    "chapter": "宪法法律",
+    "topic": "宪法是根本法",
+    "summary": "宪法具有最高法律效力，是治国安邦总章程。",
+    "keywords": [
+      "宪法",
+      "根本法",
+      "最高效力",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "理解宪法地位",
+      "增强宪法意识",
+      "拥护宪法权威"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 150,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade8",
+    "chapter": "宪法法律",
+    "topic": "依法行使权利",
+    "summary": "权利行使有界限，不得损害国家社会集体和他人合法利益。",
+    "keywords": [
+      "依法行使",
+      "界限",
+      "维权",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "说明权利界限",
+      "学会合法维权",
+      "避免滥用权利"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 160,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade8",
+    "chapter": "宪法法律",
+    "topic": "依法履行义务",
+    "summary": "法定义务必须履行，违法要承担相应责任。",
+    "keywords": [
+      "法定义务",
+      "违法责任",
+      "守法",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "区分道德义务与法定义务",
+      "认识违法后果",
+      "自觉履行义务"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 170,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade8",
+    "chapter": "法治中国",
+    "topic": "法治政府与公正司法",
+    "summary": "建设法治政府、促进司法公正，维护公平正义。",
+    "keywords": [
+      "法治政府",
+      "司法公正",
+      "公平正义",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "理解法治政府要求",
+      "认识公正司法意义",
+      "树立法治信仰"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 180,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade8",
+    "chapter": "维护国家利益",
+    "topic": "国家利益至上",
+    "summary": "国家利益与人民利益的一致性，增强国家安全意识。",
+    "keywords": [
+      "国家利益",
+      "国家安全",
+      "人民利益",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "理解国家利益内涵",
+      "增强国家安全意识",
+      "维护国家利益"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 190,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade9",
+    "chapter": "国情国策",
+    "topic": "我国基本国情",
+    "summary": "处于社会主义初级阶段的基本国情与主要矛盾。",
+    "keywords": [
+      "基本国情",
+      "初级阶段",
+      "主要矛盾",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "识记基本国情",
+      "理解主要矛盾",
+      "立足国情看问题"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 210,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade9",
+    "chapter": "国情国策",
+    "topic": "改革开放",
+    "summary": "强国之路，推动中国经济社会发展与人民生活改善。",
+    "keywords": [
+      "改革开放",
+      "强国之路",
+      "发展",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "说明改革开放意义",
+      "列举发展成就",
+      "坚定改革开放信心"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 220,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade9",
+    "chapter": "国情国策",
+    "topic": "中国特色社会主义",
+    "summary": "道路、理论、制度、文化，坚持党的领导。",
+    "keywords": [
+      "中国特色社会主义",
+      "党的领导",
+      "四个自信",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "理解道路制度内涵",
+      "增强四个自信",
+      "坚持党的领导"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 230,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade9",
+    "chapter": "民主法治",
+    "topic": "人民当家作主",
+    "summary": "人民代表大会制度是根本政治制度。",
+    "keywords": [
+      "人大制度",
+      "人民当家作主",
+      "根本政治制度",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "说明人大制度地位",
+      "理解人民如何行使权利",
+      "增强制度认同"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 240,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade9",
+    "chapter": "民主法治",
+    "topic": "协商民主与基层群众自治",
+    "summary": "社会主义协商民主与村民/居民自治。",
+    "keywords": [
+      "协商民主",
+      "村民自治",
+      "基层治理",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "认识协商民主形式",
+      "了解基层自治",
+      "积极参与公共生活"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 250,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade9",
+    "chapter": "经济发展",
+    "topic": "高质量发展与创新",
+    "summary": "新发展理念与创新驱动、高质量发展。",
+    "keywords": [
+      "新发展理念",
+      "创新",
+      "高质量发展",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "识记新发展理念",
+      "理解创新驱动",
+      "支持高质量发展"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 260,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade9",
+    "chapter": "文化与文明",
+    "topic": "中华文化与民族精神",
+    "summary": "中华文化源远流长，以爱国主义为核心的民族精神。",
+    "keywords": [
+      "中华文化",
+      "民族精神",
+      "爱国主义",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "认识中华文化特点",
+      "理解民族精神内涵",
+      "传承优秀文化"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 270,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade9",
+    "chapter": "社会建设",
+    "topic": "公平正义与社会保障",
+    "summary": "维护社会公平正义，完善社会保障体系。",
+    "keywords": [
+      "公平正义",
+      "社会保障",
+      "共同富裕",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "理解公平正义意义",
+      "认识社会保障作用",
+      "树立共建共享理念"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 280,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade9",
+    "chapter": "生态文明",
+    "topic": "绿水青山就是金山银山",
+    "summary": "坚持绿色发展，建设美丽中国。",
+    "keywords": [
+      "生态文明",
+      "绿色发展",
+      "美丽中国",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "理解两山理念",
+      "说明绿色发展要求",
+      "践行环保行动"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 290,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade9",
+    "chapter": "青年责任",
+    "topic": "青春筑梦与责任担当",
+    "summary": "厚植家国情怀，担当时代责任。",
+    "keywords": [
+      "青年责任",
+      "家国情怀",
+      "理想",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "树立远大理想",
+      "增强责任担当",
+      "把小我融入大我"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 300,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  },
+  {
+    "subjectCode": "politics",
+    "gradeCode": "grade9",
+    "chapter": "全球视野",
+    "topic": "构建人类命运共同体",
+    "summary": "和平发展、合作共赢与中国担当。",
+    "keywords": [
+      "人类命运共同体",
+      "和平发展",
+      "中国担当",
+      "初中道德与法治",
+      "政治",
+      "politics"
+    ],
+    "learningGoals": [
+      "理解理念内涵",
+      "认识中国贡献",
+      "培养全球视野"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 310,
+    "enabled": true,
+    "sourceTag": "junior-politics"
+  }
+]

@@ -1,0 +1,601 @@
+[
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade7",
+    "chapter": "地球与地图",
+    "topic": "地球的形状与大小",
+    "summary": "地球是不规则球体，赤道周长与半径等基本数据。",
+    "keywords": [
+      "地球形状",
+      "赤道",
+      "球体",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "描述地球基本特征",
+      "识记重要数据",
+      "用现象证明地球形状"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 10,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade7",
+    "chapter": "地球与地图",
+    "topic": "经纬网定位",
+    "summary": "经线纬线、东西半球、南北半球与定位方法。",
+    "keywords": [
+      "经纬网",
+      "经度",
+      "纬度",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "判读经纬度",
+      "确定半球位置",
+      "用经纬网定位"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 20,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade7",
+    "chapter": "地球与地图",
+    "topic": "地图三要素",
+    "summary": "比例尺、方向、图例，学会读图用图。",
+    "keywords": [
+      "比例尺",
+      "方向",
+      "图例",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "计算图上距离",
+      "在地图上定向",
+      "识别常见图例"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 30,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade7",
+    "chapter": "地球运动",
+    "topic": "地球自转与昼夜更替",
+    "summary": "自西向东自转，昼夜更替与地方时差异。",
+    "keywords": [
+      "自转",
+      "昼夜更替",
+      "地方时",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "说明自转方向周期",
+      "解释昼夜更替",
+      "理解时差产生"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 40,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade7",
+    "chapter": "地球运动",
+    "topic": "四季的形成",
+    "summary": "公转与地轴倾斜导致太阳直射点移动，形成四季。",
+    "keywords": [
+      "公转",
+      "直射点",
+      "四季",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "说明四季成因",
+      "判读二分二至",
+      "联系生活理解季节变化"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 50,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade7",
+    "chapter": "陆地与海洋",
+    "topic": "海陆分布与七大洲四大洋",
+    "summary": "全球海陆比例与大洲大洋分布。",
+    "keywords": [
+      "七大洲",
+      "四大洋",
+      "海陆分布",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "识记大洲大洋",
+      "描述海陆分布特点",
+      "在地图上指认"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 60,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade7",
+    "chapter": "陆地与海洋",
+    "topic": "板块运动与地形",
+    "summary": "板块构造学说，火山地震带与地形变化。",
+    "keywords": [
+      "板块",
+      "火山地震",
+      "地形",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "说出六大板块",
+      "解释火山地震分布",
+      "理解地形形成"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 70,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade7",
+    "chapter": "地球上的水",
+    "topic": "水循环",
+    "summary": "蒸发、凝结、降水、径流构成的水体循环。",
+    "keywords": [
+      "水循环",
+      "蒸发",
+      "降水",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "描述水循环环节",
+      "认识水循环意义",
+      "树立节水意识"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 80,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade7",
+    "chapter": "天气与气候",
+    "topic": "天气与气候区别",
+    "summary": "天气短时多变，气候长期平均状态。",
+    "keywords": [
+      "天气",
+      "气候",
+      "区别",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "区分天气与气候",
+      "阅读简单天气图",
+      "描述气候特征"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 90,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade7",
+    "chapter": "天气与气候",
+    "topic": "世界主要气候类型",
+    "summary": "热带、温带、寒带主要气候类型分布与特征。",
+    "keywords": [
+      "气候类型",
+      "热带",
+      "温带",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "识别主要气候类型",
+      "匹配分布与特征",
+      "分析气候对生活影响"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 100,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade7",
+    "chapter": "居民与聚落",
+    "topic": "世界人口分布",
+    "summary": "人口密度、人口增长与人口问题。",
+    "keywords": [
+      "人口分布",
+      "人口密度",
+      "人口问题",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "描述人口分布特点",
+      "分析影响因素",
+      "认识人口问题"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 110,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade7",
+    "chapter": "居民与聚落",
+    "topic": "聚落与因地制宜",
+    "summary": "乡村城市聚落差异及与自然环境关系。",
+    "keywords": [
+      "聚落",
+      "城市",
+      "乡村",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "比较城乡聚落",
+      "理解因地制宜",
+      "分析聚落区位"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 120,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade7",
+    "chapter": "发展与合作",
+    "topic": "国际合作与可持续发展",
+    "summary": "认识全球性问题与可持续发展理念。",
+    "keywords": [
+      "可持续发展",
+      "国际合作",
+      "全球性问题",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "理解可持续发展内涵",
+      "举出全球性问题",
+      "认识合作重要性"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 130,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade8",
+    "chapter": "中国的疆域与人口",
+    "topic": "中国疆域与行政区划",
+    "summary": "位置优越、疆域辽阔、34 个省级行政区。",
+    "keywords": [
+      "疆域",
+      "行政区划",
+      "省级行政",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "描述中国位置与疆域",
+      "识记主要邻国与临海",
+      "掌握省级行政区简称"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 210,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade8",
+    "chapter": "中国的疆域与人口",
+    "topic": "中国人口与民族",
+    "summary": "人口基数大、分布东密西疏，统一多民族国家。",
+    "keywords": [
+      "人口",
+      "民族",
+      "东密西疏",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "描述人口分布特点",
+      "认识民族政策",
+      "理解人口国情"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 220,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade8",
+    "chapter": "中国的自然环境",
+    "topic": "中国地形地势",
+    "summary": "西高东低、三级阶梯与主要地形区。",
+    "keywords": [
+      "地形",
+      "地势",
+      "三级阶梯",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "描述地势特征",
+      "识记主要地形区",
+      "分析地形影响"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 230,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade8",
+    "chapter": "中国的自然环境",
+    "topic": "中国气候特征",
+    "summary": "季风气候显著、气候复杂多样。",
+    "keywords": [
+      "季风气候",
+      "气候复杂多样",
+      "雨热同期",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "概括气候主要特征",
+      "分析形成原因",
+      "说明对农业影响"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 240,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade8",
+    "chapter": "中国的自然环境",
+    "topic": "影响气候的因素",
+    "summary": "纬度、海陆、地形、季风等共同影响气候。",
+    "keywords": [
+      "纬度",
+      "海陆",
+      "地形",
+      "季风",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "列举影响因素",
+      "结合实例分析",
+      "读图说明差异原因"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 250,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade8",
+    "chapter": "中国的自然环境",
+    "topic": "中国河流湖泊",
+    "summary": "长江黄河概况、水文特征与治理开发。",
+    "keywords": [
+      "长江",
+      "黄河",
+      "河流",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "比较两河特征",
+      "说明开发治理措施",
+      "树立保护意识"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 260,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade8",
+    "chapter": "地形图判读",
+    "topic": "等高线",
+    "summary": "同线同高、密陡疏缓，判读山顶鞍部陡崖。",
+    "keywords": [
+      "等高线",
+      "等高距",
+      "地形判读",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "判读基本地形部位",
+      "估算相对高度",
+      "绘制简单剖面示意"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 270,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade8",
+    "chapter": "中国的自然资源",
+    "topic": "自然资源与耕地",
+    "summary": "总量丰富、人均不足，保护耕地与资源。",
+    "keywords": [
+      "自然资源",
+      "耕地",
+      "人均不足",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "认识资源国情",
+      "说明耕地保护重要性",
+      "提出合理利用建议"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 280,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade8",
+    "chapter": "中国的经济发展",
+    "topic": "农业与工业",
+    "summary": "农业地区差异、工业分布与高新技术产业。",
+    "keywords": [
+      "农业",
+      "工业",
+      "高新技术产业",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "描述农业工业分布特点",
+      "分析区位因素",
+      "认识高质量发展"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 290,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade8",
+    "chapter": "中国的经济发展",
+    "topic": "交通运输",
+    "summary": "主要铁路干线、交通枢纽与运输方式选择。",
+    "keywords": [
+      "铁路",
+      "交通枢纽",
+      "运输方式",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "识记主要铁路干线",
+      "比较运输方式",
+      "结合需求合理选择"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 300,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade8",
+    "chapter": "中国的地理差异",
+    "topic": "四大地理区域",
+    "summary": "北方、南方、西北、青藏地区自然与人文差异。",
+    "keywords": [
+      "四大地理区域",
+      "南北差异",
+      "青藏",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "划分四大区域",
+      "比较区域差异",
+      "理解因地制宜发展"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 310,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade8",
+    "chapter": "中国的地理差异",
+    "topic": "北京与台湾",
+    "summary": "首都北京职能，台湾是中国领土不可分割的一部分。",
+    "keywords": [
+      "北京",
+      "台湾",
+      "祖国统一",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "说明北京城市职能",
+      "认识台湾地理位置",
+      "坚定统一认同"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 320,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  },
+  {
+    "subjectCode": "geography",
+    "gradeCode": "grade8",
+    "chapter": "乡土地理",
+    "topic": "认识家乡",
+    "summary": "运用所学描述家乡自然与人文地理特征。",
+    "keywords": [
+      "乡土地理",
+      "家乡",
+      "区域认知",
+      "初中地理",
+      "geography"
+    ],
+    "learningGoals": [
+      "收集家乡地理信息",
+      "描述家乡特征",
+      "提出发展建议"
+    ],
+    "animationPack": "geography",
+    "sortOrder": 330,
+    "enabled": true,
+    "sourceTag": "junior-geography"
+  }
+]

@@ -1,0 +1,26 @@
+# Optional: start only MySQL for host-side API/Worker (scripts/start-mysql-stack.sh)
+services:
+  mysql:
+    image: ${MYSQL_IMAGE:-mysql:8.0}
+    container_name: atv-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-atv123456}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-ai_teaching_video}
+      MYSQL_USER: ${MYSQL_USER:-atv}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-atv123456}
+      TZ: Asia/Shanghai
+    ports:
+      - "${MYSQL_HOST_PORT:-3307}:3306"
+    volumes:
+      - atv_mysql_data:/var/lib/mysql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+    restart: unless-stopped
+
+volumes:
+  atv_mysql_data:

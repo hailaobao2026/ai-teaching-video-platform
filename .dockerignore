@@ -1,0 +1,26 @@
+# build context hygiene
+.git
+.gitignore
+**/.git
+**/node_modules
+node_modules
+server/node_modules
+**/uploads
+server/uploads
+server/data/jobs
+server/data/memory-db.json
+**/__pycache__
+**/*.log
+logs
+dist
+coverage
+.tmp
+.DS_Store
+**/.DS_Store
+progress.md
+task_plan.md
+findings.md
+*.md.original
+.env
+.env.*
+!.env.example

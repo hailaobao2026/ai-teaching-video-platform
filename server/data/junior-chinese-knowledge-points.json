@@ -1,0 +1,1495 @@
+[
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "现代文阅读",
+    "topic": "记叙文六要素",
+    "summary": "时间、地点、人物、起因、经过、结果，是把握记叙文内容的基础框架。",
+    "keywords": [
+      "记叙文",
+      "六要素",
+      "叙事",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "能找出记叙文六要素",
+      "会用六要素概括事件",
+      "理解要素对叙事完整性的作用"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 10,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "现代文阅读",
+    "topic": "记叙顺序",
+    "summary": "顺叙、倒叙、插叙的区别与表达效果，帮助理清文章线索。",
+    "keywords": [
+      "顺叙",
+      "倒叙",
+      "插叙",
+      "线索",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "区分三种记叙顺序",
+      "分析倒叙/插叙的作用",
+      "理清文章叙事线索"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 20,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "现代文阅读",
+    "topic": "记叙文中心与选材",
+    "summary": "中心思想统领材料；详略得当、围绕中心选材。",
+    "keywords": [
+      "中心",
+      "选材",
+      "详略",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "概括文章中心",
+      "判断材料是否扣题",
+      "理解详写与略写的用意"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 30,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "现代文阅读",
+    "topic": "人物描写方法",
+    "summary": "外貌、语言、动作、神态、心理描写刻画人物形象。",
+    "keywords": [
+      "人物描写",
+      "外貌",
+      "语言",
+      "动作",
+      "心理",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "识别五种人物描写",
+      "分析描写对人物形象的作用",
+      "结合语句概括人物特点"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 40,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "现代文阅读",
+    "topic": "环境描写作用",
+    "summary": "自然环境与社会环境描写可渲染气氛、烘托人物、推动情节。",
+    "keywords": [
+      "环境描写",
+      "烘托",
+      "渲染",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "区分自然环境与社会环境",
+      "分析环境描写作用",
+      "联系人物与情节理解环境"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 50,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "现代文阅读",
+    "topic": "标题的作用",
+    "summary": "标题可概括内容、点明中心、设置悬念、奠定感情基调。",
+    "keywords": [
+      "标题",
+      "作用",
+      "悬念",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "概括标题表层含义",
+      "分析标题深层作用",
+      "评价标题表达效果"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 60,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "现代文阅读",
+    "topic": "概括段落与全文大意",
+    "summary": "抓住关键句、过渡句，分层归纳，完整简洁概括。",
+    "keywords": [
+      "概括",
+      "段意",
+      "主旨",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "提取关键信息",
+      "分层概括段意",
+      "用简洁语言概括全文"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 70,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "文言文基础",
+    "topic": "文言实词积累",
+    "summary": "常见实词的本义、引申义与语境义，是读懂文言的基础。",
+    "keywords": [
+      "文言实词",
+      "词义",
+      "语境",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "积累常见文言实词",
+      "结合语境推断词义",
+      "区分古今异义"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 110,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "文言文基础",
+    "topic": "文言虚词入门",
+    "summary": "之、而、以、其、于等常见虚词的基本用法。",
+    "keywords": [
+      "文言虚词",
+      "之",
+      "而",
+      "以",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "识别常见虚词",
+      "说明基本用法",
+      "在句子中解释虚词意义"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 120,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "文言文基础",
+    "topic": "古今异义",
+    "summary": "古汉语词语与现代汉语意义不同的常见现象。",
+    "keywords": [
+      "古今异义",
+      "词义演变",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "识别古今异义词语",
+      "对比古今意义差别",
+      "避免以今释古"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 130,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "文言文基础",
+    "topic": "词类活用入门",
+    "summary": "名词作动词、形容词作动词等常见活用现象。",
+    "keywords": [
+      "词类活用",
+      "名词作动词",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "识别常见词类活用",
+      "解释活用后的意义",
+      "结合例句判断活用类型"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 140,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "文言文基础",
+    "topic": "文言翻译三原则",
+    "summary": "信、达、雅：准确、通顺、有文采；初中侧重信与达。",
+    "keywords": [
+      "文言翻译",
+      "信达雅",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "按信达原则翻译句子",
+      "落实关键词语",
+      "保持语句通顺完整"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 150,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "文言文基础",
+    "topic": "省略句与判断句",
+    "summary": "文言中主语、宾语省略及“……者……也”等判断句式。",
+    "keywords": [
+      "省略句",
+      "判断句",
+      "句式",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "识别省略成分",
+      "补出省略内容",
+      "翻译常见判断句"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 160,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "古诗词鉴赏",
+    "topic": "诗词意象",
+    "summary": "意象是融入主观情感的物象，是理解诗词意境的钥匙。",
+    "keywords": [
+      "意象",
+      "意境",
+      "诗歌",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "找出诗中主要意象",
+      "理解意象象征义",
+      "结合意象把握情感"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 210,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "古诗词鉴赏",
+    "topic": "诗词情感把握",
+    "summary": "通过意象、关键词、背景把握诗人思想感情。",
+    "keywords": [
+      "情感",
+      "诗眼",
+      "基调",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "找出情感关键词",
+      "概括诗人感情",
+      "联系背景理解情感"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 220,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "古诗词鉴赏",
+    "topic": "常见表达技巧入门",
+    "summary": "比喻、拟人、对比、动静结合等常见技巧及效果。",
+    "keywords": [
+      "表达技巧",
+      "修辞",
+      "表现手法",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "识别常见修辞与手法",
+      "分析表达效果",
+      "结合诗句具体说明"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 230,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "古诗词鉴赏",
+    "topic": "近体诗基础",
+    "summary": "绝句、律诗的句数、押韵、对仗等基本知识。",
+    "keywords": [
+      "绝句",
+      "律诗",
+      "对仗",
+      "押韵",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "区分绝句与律诗",
+      "了解押韵基本要求",
+      "认识对仗特点"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 240,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "写作表达",
+    "topic": "写人记事作文",
+    "summary": "围绕中心选材，用细节描写写活人物与事件。",
+    "keywords": [
+      "写人",
+      "记事",
+      "细节",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "确定作文中心",
+      "选取典型材料",
+      "运用细节描写写人记事"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 310,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "写作表达",
+    "topic": "开头与结尾",
+    "summary": "开门见山、设置悬念、首尾呼应等常见开头结尾方法。",
+    "keywords": [
+      "开头",
+      "结尾",
+      "结构",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "掌握常见开头方法",
+      "写好收束有力的结尾",
+      "做到首尾呼应"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 320,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "写作表达",
+    "topic": "详略安排",
+    "summary": "与中心相关的详写，次要内容略写，突出重点。",
+    "keywords": [
+      "详写",
+      "略写",
+      "重点",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "判断材料主次",
+      "合理安排详略",
+      "避免平均用力"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 330,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "写作表达",
+    "topic": "真情实感与细节",
+    "summary": "用具体细节表达真实感受，避免空喊口号。",
+    "keywords": [
+      "真情实感",
+      "细节描写",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "选择真实可感的材料",
+      "用细节表现情感",
+      "避免空泛抒情"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 340,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "语法修辞",
+    "topic": "词性与短语",
+    "summary": "名词、动词、形容词等词性及常见短语类型。",
+    "keywords": [
+      "词性",
+      "短语",
+      "语法",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "识别常见词性",
+      "区分短语类型",
+      "服务阅读与写作规范"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 410,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "语法修辞",
+    "topic": "单句成分",
+    "summary": "主语、谓语、宾语、定语、状语、补语的基本划分。",
+    "keywords": [
+      "句子成分",
+      "主语",
+      "谓语",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "找出句子主干",
+      "识别定状补",
+      "为病句修改打基础"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 420,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "语法修辞",
+    "topic": "常见修辞手法",
+    "summary": "比喻、拟人、夸张、排比、对偶、设问、反问。",
+    "keywords": [
+      "修辞",
+      "比喻",
+      "拟人",
+      "排比",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "识别常见修辞",
+      "分析表达效果",
+      "在写作中恰当运用"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 430,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade8",
+    "chapter": "现代文阅读",
+    "topic": "说明文阅读要点",
+    "summary": "说明对象、特征、顺序、方法与语言准确性。",
+    "keywords": [
+      "说明文",
+      "说明方法",
+      "说明顺序",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "明确说明对象与特征",
+      "识别说明方法及作用",
+      "分析说明语言准确性"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 510,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade8",
+    "chapter": "现代文阅读",
+    "topic": "常见说明方法",
+    "summary": "举例子、列数字、作比较、打比方、分类别、下定义等。",
+    "keywords": [
+      "举例子",
+      "列数字",
+      "作比较",
+      "下定义",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "识别说明方法",
+      "说明其作用",
+      "结合语境分析表达效果"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 520,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade8",
+    "chapter": "现代文阅读",
+    "topic": "说明顺序",
+    "summary": "时间顺序、空间顺序、逻辑顺序的辨识与作用。",
+    "keywords": [
+      "时间顺序",
+      "空间顺序",
+      "逻辑顺序",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "判断说明顺序",
+      "说明选用该顺序的原因",
+      "梳理说明层次"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 530,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade8",
+    "chapter": "现代文阅读",
+    "topic": "议论文三要素",
+    "summary": "论点、论据、论证，把握文章观点与说理过程。",
+    "keywords": [
+      "议论文",
+      "论点",
+      "论据",
+      "论证",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "找出中心论点",
+      "区分事实与道理论据",
+      "理清论证思路"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 540,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade8",
+    "chapter": "现代文阅读",
+    "topic": "常见论证方法",
+    "summary": "举例论证、道理论证、对比论证、比喻论证。",
+    "keywords": [
+      "举例论证",
+      "道理论证",
+      "对比论证",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "识别论证方法",
+      "分析论证作用",
+      "评价论证是否充分"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 550,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade8",
+    "chapter": "现代文阅读",
+    "topic": "新闻阅读基础",
+    "summary": "标题、导语、主体、背景、结语；真实性与及时性。",
+    "keywords": [
+      "新闻",
+      "导语",
+      "消息",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "把握新闻结构",
+      "提取主要信息",
+      "认识新闻基本特点"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 560,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade8",
+    "chapter": "现代文阅读",
+    "topic": "散文形散神聚",
+    "summary": "材料看似散，中心线索与情感主旨集中。",
+    "keywords": [
+      "散文",
+      "形散神聚",
+      "线索",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "找出散文线索",
+      "概括主旨情感",
+      "理解材料与中心的关系"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 570,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade8",
+    "chapter": "现代文阅读",
+    "topic": "小说三要素",
+    "summary": "人物、情节、环境；情节开端发展高潮结局。",
+    "keywords": [
+      "小说",
+      "人物",
+      "情节",
+      "环境",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "梳理小说情节",
+      "分析人物形象",
+      "理解环境与主题关系"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 580,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade8",
+    "chapter": "文言文基础",
+    "topic": "一词多义",
+    "summary": "同一文言词在不同语境中意义不同，需据上下文判断。",
+    "keywords": [
+      "一词多义",
+      "语境义",
+      "文言",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "积累常见多义词",
+      "结合语境选择义项",
+      "比较同一词不同用法"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 610,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade8",
+    "chapter": "文言文基础",
+    "topic": "通假字",
+    "summary": "古书中音同或音近替代的用字现象。",
+    "keywords": [
+      "通假字",
+      "本字",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "识别常见通假字",
+      "写出本字并释义",
+      "积累通假字表"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 620,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade8",
+    "chapter": "文言文基础",
+    "topic": "特殊句式进阶",
+    "summary": "倒装句（宾语前置、状语后置等）与被动句。",
+    "keywords": [
+      "倒装句",
+      "被动句",
+      "宾语前置",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "识别常见倒装与被动",
+      "调整语序翻译",
+      "说明句式特点"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 630,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade8",
+    "chapter": "文言文基础",
+    "topic": "文言翻译得分点",
+    "summary": "关键字词落实、句式还原、语句通顺。",
+    "keywords": [
+      "翻译得分点",
+      "关键词",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "落实关键词翻译",
+      "还原特殊句式",
+      "保证句子通顺完整"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 640,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade8",
+    "chapter": "文言文基础",
+    "topic": "课内文言名篇梳理",
+    "summary": "如《陋室铭》《爱莲说》《三峡》等常见篇目主题与写法。",
+    "keywords": [
+      "陋室铭",
+      "爱莲说",
+      "三峡",
+      "课内文言",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "把握名篇主旨",
+      "积累重点实词句式",
+      "理解托物言志等写法"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 650,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade8",
+    "chapter": "古诗词鉴赏",
+    "topic": "诗眼与炼字",
+    "summary": "抓住关键动词/形容词理解诗歌精妙与情感。",
+    "keywords": [
+      "诗眼",
+      "炼字",
+      "用词",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "找出诗眼",
+      "分析炼字效果",
+      "联系全诗情感"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 710,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade8",
+    "chapter": "古诗词鉴赏",
+    "topic": "情景交融",
+    "summary": "借景抒情、寓情于景、情景交融的表现方式。",
+    "keywords": [
+      "借景抒情",
+      "寓情于景",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "判断情与景的关系",
+      "分析写景如何抒情",
+      "概括诗歌意境"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 720,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade8",
+    "chapter": "古诗词鉴赏",
+    "topic": "常见题材类型",
+    "summary": "送别、边塞、山水田园、咏史怀古、思乡等。",
+    "keywords": [
+      "送别诗",
+      "边塞诗",
+      "田园诗",
+      "怀古",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "识别诗歌题材",
+      "联系题材把握常见情感",
+      "比较不同题材特点"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 730,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade8",
+    "chapter": "写作表达",
+    "topic": "说明文写作",
+    "summary": "抓住特征，合理安排顺序，恰当使用说明方法。",
+    "keywords": [
+      "说明文写作",
+      "特征",
+      "顺序",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "明确说明对象特征",
+      "选择合适说明顺序与方法",
+      "语言准确简明"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 810,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade8",
+    "chapter": "写作表达",
+    "topic": "议论文入门写作",
+    "summary": "提出观点、选用论据、进行说理，结构完整。",
+    "keywords": [
+      "议论文写作",
+      "论点",
+      "论据",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "明确提出中心论点",
+      "选用典型论据",
+      "进行简单说理分析"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 820,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade8",
+    "chapter": "写作表达",
+    "topic": "仿写与续写",
+    "summary": "把握原文语言风格与逻辑，进行合理仿写续写。",
+    "keywords": [
+      "仿写",
+      "续写",
+      "语言风格",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "把握原文思路与风格",
+      "合理拓展内容",
+      "保持语言协调"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 830,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade8",
+    "chapter": "写作表达",
+    "topic": "应用文常识",
+    "summary": "书信、通知、启事等格式与用语要求。",
+    "keywords": [
+      "书信",
+      "通知",
+      "应用文",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "掌握常见应用文格式",
+      "用语得体",
+      "完成规范书写"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 840,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade9",
+    "chapter": "现代文阅读",
+    "topic": "议论文论证思路",
+    "summary": "提出问题—分析问题—解决问题；并列/递进/总分结构。",
+    "keywords": [
+      "论证思路",
+      "结构",
+      "说理",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "梳理议论文结构层次",
+      "概括论证思路",
+      "分析段间关系"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 910,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade9",
+    "chapter": "现代文阅读",
+    "topic": "小说主题与人物",
+    "summary": "通过情节矛盾与人物言行把握主题思想。",
+    "keywords": [
+      "小说主题",
+      "人物形象",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "概括人物形象特点",
+      "分析塑造方法",
+      "归纳小说主题"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 920,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade9",
+    "chapter": "现代文阅读",
+    "topic": "文学作品语言品味",
+    "summary": "从用词、句式、修辞、语气品味语言表现力。",
+    "keywords": [
+      "语言品味",
+      "用词",
+      "句式",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "抓住关键词品味语言",
+      "分析表达效果",
+      "联系主旨谈理解"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 930,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade9",
+    "chapter": "现代文阅读",
+    "topic": "比较阅读",
+    "summary": "比较两文主题、写法、语言的异同并说明理由。",
+    "keywords": [
+      "比较阅读",
+      "异同",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "找出比较角度",
+      "概括异同点",
+      "结合文本说明理由"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 940,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade9",
+    "chapter": "现代文阅读",
+    "topic": "非连续性文本",
+    "summary": "图表、材料组合阅读，提取整合信息并得出结论。",
+    "keywords": [
+      "非连续性文本",
+      "图表",
+      "信息整合",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "从材料中提取关键信息",
+      "整合多则材料",
+      "形成合理结论"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 950,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade9",
+    "chapter": "文言文基础",
+    "topic": "文言综合阅读",
+    "summary": "课内外结合，整体感知、实词句式、内容与启示。",
+    "keywords": [
+      "文言阅读",
+      "课内外",
+      "启示",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "读懂文言大意",
+      "落实重点词句",
+      "概括内容并谈启示"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 1010,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade9",
+    "chapter": "文言文基础",
+    "topic": "文言断句入门",
+    "summary": "据文意、虚词、句式进行简单断句。",
+    "keywords": [
+      "文言断句",
+      "句读",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "借助虚词辅助断句",
+      "按文意划分停顿",
+      "读通浅易文言"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 1020,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade9",
+    "chapter": "古诗词鉴赏",
+    "topic": "名句赏析",
+    "summary": "从内容、情感、手法、炼字角度赏析经典名句。",
+    "keywords": [
+      "名句赏析",
+      "经典诗句",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "准确理解名句含义",
+      "分析手法与情感",
+      "评价艺术效果"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 1030,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade9",
+    "chapter": "古诗词鉴赏",
+    "topic": "诗词比较鉴赏",
+    "summary": "比较两首诗词题材、意象、情感或写法异同。",
+    "keywords": [
+      "比较鉴赏",
+      "诗词",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "确定比较点",
+      "概括异同",
+      "结合诗句分析"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 1040,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade9",
+    "chapter": "写作表达",
+    "topic": "材料作文审题立意",
+    "summary": "抓住材料关键信息，确立明确、正确、深刻的中心。",
+    "keywords": [
+      "材料作文",
+      "审题",
+      "立意",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "提炼材料核心含义",
+      "确立明确中心",
+      "选择合适文体展开"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 1110,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade9",
+    "chapter": "写作表达",
+    "topic": "议论文结构升级",
+    "summary": "并列式、递进式、正反对照式等常见结构。",
+    "keywords": [
+      "议论文结构",
+      "递进",
+      "对照",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "设计清晰论证结构",
+      "段首显示分论点",
+      "增强说理层次"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 1120,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade9",
+    "chapter": "写作表达",
+    "topic": "记叙文升格",
+    "summary": "线索清晰、细节生动、情感真挚、主题集中。",
+    "keywords": [
+      "记叙文升格",
+      "线索",
+      "细节",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "设置贯穿全文线索",
+      "强化细节与情感",
+      "提升主题表达"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 1130,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade9",
+    "chapter": "写作表达",
+    "topic": "作文点题与扣题",
+    "summary": "在关键位置点明中心，结尾回扣主题，避免偏题与空泛收束。",
+    "keywords": [
+      "点题",
+      "扣题",
+      "结尾",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "关键位置点明中心",
+      "结尾回扣主题",
+      "避免跑题"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 1140,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "名著导读",
+    "topic": "名著阅读方法",
+    "summary": "圈点批注、人物卡片、情节提纲、主题讨论。",
+    "keywords": [
+      "名著",
+      "批注",
+      "整本书阅读",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "掌握基本阅读方法",
+      "梳理人物与情节",
+      "形成阅读笔记"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 1210,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade8",
+    "chapter": "名著导读",
+    "topic": "经典名著人物与主题",
+    "summary": "如《红星照耀中国》《昆虫记》《傅雷家书》等常见篇目方向。",
+    "keywords": [
+      "名著人物",
+      "主题",
+      "整本书",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "概述主要人物",
+      "概括作品主题",
+      "结合情节谈感受"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 1220,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade9",
+    "chapter": "名著导读",
+    "topic": "名著探究与表达",
+    "summary": "就人物评价、主题意义、艺术特色进行探究表达。",
+    "keywords": [
+      "名著探究",
+      "人物评价",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "提出探究问题",
+      "结合内容分析",
+      "有条理表达观点"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 1230,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade7",
+    "chapter": "综合性学习",
+    "topic": "口语交际与倾听表达",
+    "summary": "准确倾听、清楚表达、文明得体交流。",
+    "keywords": [
+      "口语交际",
+      "倾听",
+      "表达",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "抓住对方主要信息",
+      "有条理表达看法",
+      "注意对象与场合"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 1310,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade8",
+    "chapter": "综合性学习",
+    "topic": "综合实践活动",
+    "summary": "围绕主题收集材料、合作探究、展示成果。",
+    "keywords": [
+      "综合实践",
+      "探究",
+      "展示",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "确定活动主题",
+      "收集整理材料",
+      "完成成果展示"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 1320,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade9",
+    "chapter": "语文基础知识",
+    "topic": "中考语文知识网络",
+    "summary": "积累运用、阅读、作文三大板块的知识结构梳理。",
+    "keywords": [
+      "中考语文",
+      "知识网络",
+      "复习",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "构建语文知识框架",
+      "明确各题型能力要求",
+      "有计划复习巩固"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 1410,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade9",
+    "chapter": "语文基础知识",
+    "topic": "常见病句类型",
+    "summary": "成分残缺、搭配不当、语序不当、逻辑不通等。",
+    "keywords": [
+      "病句",
+      "搭配不当",
+      "语序",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "识别常见病句类型",
+      "会修改病句",
+      "写作中减少语病"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 1420,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  },
+  {
+    "subjectCode": "chinese",
+    "gradeCode": "grade9",
+    "chapter": "语文基础知识",
+    "topic": "常用标点符号",
+    "summary": "逗号、分号、引号、破折号、省略号等常见用法。",
+    "keywords": [
+      "标点符号",
+      "引号",
+      "破折号",
+      "初中语文",
+      "chinese"
+    ],
+    "learningGoals": [
+      "掌握常见标点用法",
+      "正确给句子加标点",
+      "避免标点误用"
+    ],
+    "animationPack": "generic",
+    "sortOrder": 1430,
+    "enabled": true,
+    "sourceTag": "junior-chinese"
+  }
+]

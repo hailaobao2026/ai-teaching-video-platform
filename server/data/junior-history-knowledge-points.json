@@ -1,0 +1,737 @@
+[
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade7",
+    "chapter": "中国古代史",
+    "topic": "华夏文明起源",
+    "summary": "了解早期人类与华夏文明起源，认识中华文明源远流长。",
+    "keywords": [
+      "华夏",
+      "早期人类",
+      "文明起源",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "说出中华文明起源的基本线索",
+      "认识考古与文献的价值",
+      "增强文化认同"
+    ],
+    "animationPack": "history",
+    "sortOrder": 10,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade7",
+    "chapter": "中国古代史",
+    "topic": "夏商周更替",
+    "summary": "夏商周的建立、更替与早期国家制度特征。",
+    "keywords": [
+      "夏商周",
+      "分封制",
+      "早期国家",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "梳理三代更替",
+      "理解分封与早期政治制度",
+      "认识青铜文明"
+    ],
+    "animationPack": "history",
+    "sortOrder": 20,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade7",
+    "chapter": "中国古代史",
+    "topic": "秦汉大一统",
+    "summary": "秦统一与郡县制、汉初治理与汉武帝大一统措施。",
+    "keywords": [
+      "秦统一",
+      "郡县制",
+      "汉武帝",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "说明秦统一意义",
+      "理解郡县制特点",
+      "概括汉武帝巩固大一统措施"
+    ],
+    "animationPack": "history",
+    "sortOrder": 30,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade7",
+    "chapter": "中国古代史",
+    "topic": "丝绸之路",
+    "summary": "陆上与海上丝绸之路的开通及中外交流意义。",
+    "keywords": [
+      "丝绸之路",
+      "张骞",
+      "中外交流",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "说明丝绸之路开通过程",
+      "认识中外文化交流意义",
+      "举出交流物证例子"
+    ],
+    "animationPack": "history",
+    "sortOrder": 40,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade7",
+    "chapter": "中国古代史",
+    "topic": "三国两晋南北朝",
+    "summary": "政权分立、民族交融与江南开发。",
+    "keywords": [
+      "三国",
+      "民族交融",
+      "江南开发",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "概括政权分立形势",
+      "理解民族交融",
+      "认识江南开发意义"
+    ],
+    "animationPack": "history",
+    "sortOrder": 50,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade7",
+    "chapter": "中国古代史",
+    "topic": "隋唐盛世",
+    "summary": "科举制、大运河、盛唐气象与中外交流。",
+    "keywords": [
+      "科举制",
+      "大运河",
+      "盛唐",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "说明科举制影响",
+      "认识大运河作用",
+      "描述盛唐中外交流"
+    ],
+    "animationPack": "history",
+    "sortOrder": 60,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade7",
+    "chapter": "中国古代史",
+    "topic": "宋元社会与经济",
+    "summary": "商业繁荣、交子、都市生活与民族政权并立。",
+    "keywords": [
+      "宋元",
+      "交子",
+      "商业繁荣",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "概括宋元经济新气象",
+      "认识商业与城市发展",
+      "理解多民族政权并立"
+    ],
+    "animationPack": "history",
+    "sortOrder": 70,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade7",
+    "chapter": "中国古代史",
+    "topic": "明清统一多民族国家",
+    "summary": "郑和下西洋、统一多民族国家巩固与闭关政策影响。",
+    "keywords": [
+      "明清",
+      "郑和",
+      "统一多民族国家",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "说明统一多民族国家发展",
+      "评价郑和下西洋",
+      "认识闭关政策影响"
+    ],
+    "animationPack": "history",
+    "sortOrder": 80,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade8",
+    "chapter": "近代中国",
+    "topic": "鸦片战争",
+    "summary": "1840—1842 鸦片战争与《南京条约》，中国开始沦为半殖民地半封建社会。",
+    "keywords": [
+      "鸦片战争",
+      "南京条约",
+      "1840",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "说明战争背景与结果",
+      "识记南京条约主要内容",
+      "理解社会性质变化"
+    ],
+    "animationPack": "history",
+    "sortOrder": 110,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade8",
+    "chapter": "近代中国",
+    "topic": "第二次鸦片战争与太平天国",
+    "summary": "第二次鸦片战争、太平天国运动的背景、经过与影响。",
+    "keywords": [
+      "第二次鸦片战争",
+      "太平天国",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "梳理主要事件",
+      "分析失败原因",
+      "认识双重危机"
+    ],
+    "animationPack": "history",
+    "sortOrder": 120,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade8",
+    "chapter": "近代中国",
+    "topic": "洋务运动",
+    "summary": "师夷长技以自强，近代工业与教育起步及其局限性。",
+    "keywords": [
+      "洋务运动",
+      "自强求富",
+      "近代工业",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "概括洋务运动内容",
+      "评价其进步与局限",
+      "认识中国近代化起步"
+    ],
+    "animationPack": "history",
+    "sortOrder": 130,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade8",
+    "chapter": "近代中国",
+    "topic": "甲午中日战争",
+    "summary": "《马关条约》内容及民族危机加深。",
+    "keywords": [
+      "甲午战争",
+      "马关条约",
+      "民族危机",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "识记马关条约要点",
+      "分析战争影响",
+      "理解救亡图存高涨"
+    ],
+    "animationPack": "history",
+    "sortOrder": 140,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade8",
+    "chapter": "近代中国",
+    "topic": "戊戌变法",
+    "summary": "维新变法主张、百日维新及历史意义。",
+    "keywords": [
+      "戊戌变法",
+      "维新",
+      "百日维新",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "概括维新派主张",
+      "说明变法失败原因",
+      "认识思想启蒙意义"
+    ],
+    "animationPack": "history",
+    "sortOrder": 150,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade8",
+    "chapter": "近代中国",
+    "topic": "义和团与八国联军侵华",
+    "summary": "反帝爱国运动与《辛丑条约》严重危害。",
+    "keywords": [
+      "义和团",
+      "八国联军",
+      "辛丑条约",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "梳理事件经过",
+      "识记辛丑条约危害",
+      "理解半殖民地半封建深化"
+    ],
+    "animationPack": "history",
+    "sortOrder": 160,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade8",
+    "chapter": "近代中国",
+    "topic": "辛亥革命",
+    "summary": "1911 武昌起义，结束帝制，建立中华民国。",
+    "keywords": [
+      "辛亥革命",
+      "武昌起义",
+      "中华民国",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "说明革命背景与过程",
+      "理解结束帝制意义",
+      "客观评价局限性"
+    ],
+    "animationPack": "history",
+    "sortOrder": 170,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade8",
+    "chapter": "近代中国",
+    "topic": "新文化运动",
+    "summary": "民主与科学，思想解放与文学革命。",
+    "keywords": [
+      "新文化运动",
+      "民主科学",
+      "白话文",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "概括主要内容",
+      "认识思想解放作用",
+      "理解对近代中国的影响"
+    ],
+    "animationPack": "history",
+    "sortOrder": 180,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade8",
+    "chapter": "新民主主义革命",
+    "topic": "五四运动",
+    "summary": "1919 彻底反帝反封建的爱国运动，新民主主义革命开端。",
+    "keywords": [
+      "五四运动",
+      "1919",
+      "爱国",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "说明导火线与过程",
+      "概括历史意义",
+      "认识青年学生作用"
+    ],
+    "animationPack": "history",
+    "sortOrder": 190,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade8",
+    "chapter": "新民主主义革命",
+    "topic": "中国共产党成立",
+    "summary": "马克思主义传播与中共一大，开天辟地大事变。",
+    "keywords": [
+      "中共成立",
+      "马克思主义",
+      "中共一大",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "说明成立条件",
+      "识记一大主要内容",
+      "理解开天辟地意义"
+    ],
+    "animationPack": "history",
+    "sortOrder": 200,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade8",
+    "chapter": "新民主主义革命",
+    "topic": "北伐战争与南京国民政府",
+    "summary": "国民革命高潮、失败原因与南京国民政府建立。",
+    "keywords": [
+      "北伐",
+      "国民革命",
+      "南京国民政府",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "梳理北伐进程",
+      "分析失败原因",
+      "认识政局变化"
+    ],
+    "animationPack": "history",
+    "sortOrder": 210,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade8",
+    "chapter": "新民主主义革命",
+    "topic": "井冈山道路与长征",
+    "summary": "农村包围城市、武装夺取政权与长征精神。",
+    "keywords": [
+      "井冈山",
+      "长征",
+      "革命道路",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "理解农村包围城市道路",
+      "概述长征过程",
+      "认识长征精神"
+    ],
+    "animationPack": "history",
+    "sortOrder": 220,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade8",
+    "chapter": "中华民族抗日战争",
+    "topic": "七七事变与全民族抗战",
+    "summary": "卢沟桥事变后全民族抗战局面形成。",
+    "keywords": [
+      "七七事变",
+      "全民族抗战",
+      "卢沟桥",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "说明全面抗战开始",
+      "认识抗日民族统一战线",
+      "体会民族觉醒"
+    ],
+    "animationPack": "history",
+    "sortOrder": 230,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade8",
+    "chapter": "中华民族抗日战争",
+    "topic": "抗战胜利意义",
+    "summary": "中国人民抗日战争胜利的历史意义与国际贡献。",
+    "keywords": [
+      "抗战胜利",
+      "伟大胜利",
+      "民族复兴",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "概括胜利原因",
+      "说明历史意义",
+      "认识中国战场贡献"
+    ],
+    "animationPack": "history",
+    "sortOrder": 240,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade8",
+    "chapter": "人民解放战争",
+    "topic": "解放战争进程与胜利",
+    "summary": "战略反攻、三大战役与新中国成立前夕。",
+    "keywords": [
+      "解放战争",
+      "三大战役",
+      "解放",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "梳理主要阶段",
+      "说明胜利原因",
+      "认识人民选择"
+    ],
+    "animationPack": "history",
+    "sortOrder": 250,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade9",
+    "chapter": "中华人民共和国史",
+    "topic": "新中国成立",
+    "summary": "1949 开国大典，中国人民站起来了。",
+    "keywords": [
+      "新中国成立",
+      "1949",
+      "开国大典",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "说明成立意义",
+      "认识人民当家作主",
+      "了解初期巩固政权措施"
+    ],
+    "animationPack": "history",
+    "sortOrder": 310,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade9",
+    "chapter": "中华人民共和国史",
+    "topic": "抗美援朝",
+    "summary": "保家卫国，提高国际地位与民族自信心。",
+    "keywords": [
+      "抗美援朝",
+      "志愿军",
+      "保家卫国",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "说明战争背景",
+      "认识历史意义",
+      "学习志愿军精神"
+    ],
+    "animationPack": "history",
+    "sortOrder": 320,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade9",
+    "chapter": "中华人民共和国史",
+    "topic": "改革开放",
+    "summary": "十一届三中全会决策，中国特色社会主义道路。",
+    "keywords": [
+      "改革开放",
+      "十一届三中全会",
+      "中国特色社会主义",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "说明历史转折意义",
+      "概括改革开放成就",
+      "理解强国之路"
+    ],
+    "animationPack": "history",
+    "sortOrder": 330,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade9",
+    "chapter": "世界古代史",
+    "topic": "古代文明与交流",
+    "summary": "大河文明、古希腊罗马与文明交流互鉴。",
+    "keywords": [
+      "大河文明",
+      "希腊罗马",
+      "文明交流",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "列举主要古代文明",
+      "认识地理环境与文明关系",
+      "理解交流互鉴"
+    ],
+    "animationPack": "history",
+    "sortOrder": 410,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade9",
+    "chapter": "世界近代史",
+    "topic": "文艺复兴与新航路开辟",
+    "summary": "人文主义兴起与世界开始连为整体。",
+    "keywords": [
+      "文艺复兴",
+      "新航路",
+      "人文主义",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "概括核心思想",
+      "说明新航路影响",
+      "认识世界整体化趋势"
+    ],
+    "animationPack": "history",
+    "sortOrder": 420,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade9",
+    "chapter": "世界近代史",
+    "topic": "英法美资产阶级革命",
+    "summary": "英、法、美革命与资本主义制度确立。",
+    "keywords": [
+      "英国革命",
+      "法国大革命",
+      "美国独立",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "比较三国革命",
+      "认识资本主义制度确立",
+      "理解文献意义"
+    ],
+    "animationPack": "history",
+    "sortOrder": 430,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade9",
+    "chapter": "世界近代史",
+    "topic": "工业革命",
+    "summary": "蒸汽时代到来，生产力飞跃与社会变革。",
+    "keywords": [
+      "工业革命",
+      "蒸汽机",
+      "工业化",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "说明前提与进程",
+      "分析经济社会影响",
+      "认识科技推动力"
+    ],
+    "animationPack": "history",
+    "sortOrder": 440,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade9",
+    "chapter": "世界现代史",
+    "topic": "两次世界大战",
+    "summary": "一战二战的原因、结果与启示。",
+    "keywords": [
+      "一战",
+      "二战",
+      "反法西斯",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "概括战争原因结果",
+      "认识反法西斯胜利意义",
+      "汲取和平启示"
+    ],
+    "animationPack": "history",
+    "sortOrder": 450,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  },
+  {
+    "subjectCode": "history",
+    "gradeCode": "grade9",
+    "chapter": "世界现代史",
+    "topic": "冷战与多极化趋势",
+    "summary": "两极格局形成演变与世界多极化趋势。",
+    "keywords": [
+      "冷战",
+      "多极化",
+      "国际格局",
+      "初中历史",
+      "history"
+    ],
+    "learningGoals": [
+      "说明冷战表现",
+      "理解格局演变",
+      "认识多极化趋势"
+    ],
+    "animationPack": "history",
+    "sortOrder": 460,
+    "enabled": true,
+    "sourceTag": "junior-history"
+  }
+]
