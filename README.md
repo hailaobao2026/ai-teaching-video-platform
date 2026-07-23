@@ -805,7 +805,7 @@ npm run smoke:mysql
 - **微信**: laohaibao2025
 - **邮箱**: 75271002@qq.com
 
-![微信二维码](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20260719152032463.png)
+![微信二维码](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Screenshot_20260123_095617_com.tencent.mm.jpg)
 
 ## 打赏
 
