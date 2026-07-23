@@ -172,9 +172,9 @@
 
     <div class="note">
       <strong>播放说明：</strong>
-      1）本页适合通过 GitHub Pages 打开实现稳定在线播放；
-      2）若视频加载较慢，可先点「下载源文件」；
-      3）本地预览可直接双击打开本 HTML（视频相对路径为 <code>videos/*.mp4</code>）。
+      1）推荐通过 GitHub Pages / 本地打开本页；
+      2）也可经 htmlpreview 打开，视频会自动走 jsDelivr CDN；
+      3）单个视频也可直接点「CDN 在线播放」，浏览器会原生播放 mp4。
     </div>
 
     <footer>
@@ -183,7 +183,10 @@
   </div>
 
   <script>
-    // 优先使用相对路径（GitHub Pages / 本地）；失败时回退到 raw.githubusercontent.com
+    // 播放源策略：
+    // 1) 本地 / GitHub Pages：优先相对路径 videos/*.mp4
+    // 2) htmlpreview / 其它托管：优先 jsDelivr CDN（可在线流式播放）
+    // 3) 失败时依次回退 raw.githubusercontent.com
     const REPO = "hailaobao2026/ai-teaching-video-platform";
     const BRANCH = "main";
     const demos = [
@@ -227,12 +230,24 @@
     function localSrc(file) {
       return `videos/${file}`;
     }
+    function cdnSrc(file) {
+      return `https://cdn.jsdelivr.net/gh/${REPO}@${BRANCH}/docs/videos/${file}`;
+    }
     function rawSrc(file) {
       return `https://raw.githubusercontent.com/${REPO}/${BRANCH}/docs/videos/${file}`;
     }
-    function mediaSrc(file) {
-      // jsDelivr 对 raw 文件 CDN 友好，GitHub Pages 优先用相对路径
-      return localSrc(file);
+    function preferredSources(file) {
+      const local = localSrc(file);
+      const cdn = cdnSrc(file);
+      const raw = rawSrc(file);
+      const host = (location.hostname || "").toLowerCase();
+      const isPagesOrLocal =
+        location.protocol === "file:" ||
+        host.endsWith("github.io") ||
+        host === "localhost" ||
+        host === "127.0.0.1";
+      // htmlpreview / 直接打开仓库 HTML 时，相对路径不可用，优先 CDN
+      return isPagesOrLocal ? [local, cdn, raw] : [cdn, raw, local];
     }
 
     const nav = document.getElementById("nav-grid");
@@ -248,8 +263,11 @@
       const section = document.createElement("section");
       section.className = "section";
       section.id = d.id;
-      const src = mediaSrc(d.file);
-      const fallback = rawSrc(d.file);
+      const sources = preferredSources(d.file);
+      const primary = sources[0];
+      const sourceTags = sources
+        .map((src) => `<source src="${src}" type="video/mp4" />`)
+        .join("\n            ");
       section.innerHTML = `
         <div class="section-hd">
           <div>
@@ -259,27 +277,29 @@
           <div class="tag">可在线播放</div>
         </div>
         <div class="player-box">
-          <video controls preload="metadata" playsinline controlsList="nodownload">
-            <source src="${src}" type="video/mp4" data-fallback="${fallback}" />
+          <video controls preload="metadata" playsinline>
+            ${sourceTags}
             你的浏览器不支持 HTML5 视频，请
-            <a href="${src}">下载视频</a>
+            <a href="${primary}">下载视频</a>
           </video>
         </div>
         <div class="meta">
-          <a class="btn" href="${src}" target="_blank" rel="noopener">打开源文件</a>
-          <a class="btn" href="${fallback}" target="_blank" rel="noopener">备用链接（raw）</a>
+          <a class="btn" href="${primary}" target="_blank" rel="noopener">打开当前源</a>
+          <a class="btn" href="${cdnSrc(d.file)}" target="_blank" rel="noopener">CDN 在线播放</a>
+          <a class="btn" href="${rawSrc(d.file)}" target="_blank" rel="noopener">raw 备用</a>
           <span>文件：${d.file}</span>
         </div>
       `;
       players.appendChild(section);
 
       const video = section.querySelector("video");
-      const source = section.querySelector("source");
-      let triedFallback = false;
+      const sourceEls = Array.from(section.querySelectorAll("source"));
+      let sourceIndex = 0;
       video.addEventListener("error", () => {
-        if (!triedFallback) {
-          triedFallback = true;
-          source.src = fallback;
+        if (sourceIndex < sourceEls.length - 1) {
+          sourceIndex += 1;
+          // 某些浏览器不会自动切换失败的 source，手动推进
+          video.src = sourceEls[sourceIndex].src;
           video.load();
         }
       });

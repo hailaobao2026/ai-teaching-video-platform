@@ -17,23 +17,45 @@ K12 教学视频生成与分享管理平台
 
 先看 30 秒到 2 分钟样片，比只看截图更容易理解「知识点 → 教学动画视频」的效果。
 
-### 🎬 在线播放页（推荐）
+### 重要说明：GitHub README 本身不能可靠内嵌播放 mp4
 
-> GitHub README 对内嵌 `<video>` 支持有限。请打开下面的在线播放页，用网页播放器直接观看：
+GitHub 渲染 `README.md` 时会过滤/限制 HTML 的 `<video>` 标签，因此把相对路径写成：
 
-**[▶️ 打开演示视频在线播放页](https://hailaobao2026.github.io/ai-teaching-video-platform/demo.html)**
+```html
+<video src="docs/videos/xxx.mp4" controls></video>
+```
 
-本地预览也可打开：[`docs/demo.html`](docs/demo.html)
+在仓库网页上通常**无法点开在线播放**（只能变成下载或无法预览）。  
+要实现「打开 README → 点链接 → 浏览器在线播放」，需要用 **绝对可访问的媒体 URL** 或 **独立播放页**。
 
-| 学科 | 主题 | 在线播放（跳到对应片段） | 源文件 |
-|------|------|--------------------------|--------|
-| 物理 | 能量守恒定律 | [▶️ 播放](https://hailaobao2026.github.io/ai-teaching-video-platform/demo.html#physics) | [mp4](docs/videos/physics-energy-conservation.mp4) |
-| 数学 | 勾股定理 | [▶️ 播放](https://hailaobao2026.github.io/ai-teaching-video-platform/demo.html#math) | [mp4](docs/videos/math-pythagorean-theorem.mp4) |
-| 化学 | 二氧化碳与石灰水反应 | [▶️ 播放](https://hailaobao2026.github.io/ai-teaching-video-platform/demo.html#chemistry) | [mp4](docs/videos/chemistry-co2-limewater.mp4) |
-| 历史 | 工业革命 | [▶️ 播放](https://hailaobao2026.github.io/ai-teaching-video-platform/demo.html#history) | [mp4](docs/videos/history-industrial-revolution.mp4) |
-| 语文 | 诗词意象 | [▶️ 播放](https://hailaobao2026.github.io/ai-teaching-video-platform/demo.html#chinese) | [mp4](docs/videos/chinese-poetry-imagery.mp4) |
+### 🎬 推荐在线播放方式（已可用）
 
-> 若 GitHub Pages 尚未生效，可先点「源文件」下载/预览 mp4，或用 [htmlpreview](https://htmlpreview.github.io/?https://github.com/hailaobao2026/ai-teaching-video-platform/blob/main/docs/demo.html) 临时预览播放页。更多截图与讲解见 [学科案例与演示视频](#学科案例与演示视频)。
+**方式 A：打开在线播放页（多视频切换）**
+
+1. [htmlpreview 在线播放页（无需启用 Pages，推送后即可用）](https://htmlpreview.github.io/?https://github.com/hailaobao2026/ai-teaching-video-platform/blob/main/docs/demo.html)
+2. [GitHub Pages 播放页（需先在仓库启用 Pages）](https://hailaobao2026.github.io/ai-teaching-video-platform/demo.html)
+3. 本地双击打开：[`docs/demo.html`](docs/demo.html)
+
+**方式 B：直接点 CDN 链接，浏览器原生播放单个 mp4（最稳）**
+
+| 学科 | 主题 | 浏览器在线播放（jsDelivr） | 仓库源文件 |
+|------|------|---------------------------|-----------|
+| 物理 | 能量守恒定律 | [▶️ 在线播放](https://cdn.jsdelivr.net/gh/hailaobao2026/ai-teaching-video-platform@main/docs/videos/physics-energy-conservation.mp4) | [mp4](docs/videos/physics-energy-conservation.mp4) |
+| 数学 | 勾股定理 | [▶️ 在线播放](https://cdn.jsdelivr.net/gh/hailaobao2026/ai-teaching-video-platform@main/docs/videos/math-pythagorean-theorem.mp4) | [mp4](docs/videos/math-pythagorean-theorem.mp4) |
+| 化学 | 二氧化碳与石灰水反应 | [▶️ 在线播放](https://cdn.jsdelivr.net/gh/hailaobao2026/ai-teaching-video-platform@main/docs/videos/chemistry-co2-limewater.mp4) | [mp4](docs/videos/chemistry-co2-limewater.mp4) |
+| 历史 | 工业革命 | [▶️ 在线播放](https://cdn.jsdelivr.net/gh/hailaobao2026/ai-teaching-video-platform@main/docs/videos/history-industrial-revolution.mp4) | [mp4](docs/videos/history-industrial-revolution.mp4) |
+| 语文 | 诗词意象 | [▶️ 在线播放](https://cdn.jsdelivr.net/gh/hailaobao2026/ai-teaching-video-platform@main/docs/videos/chinese-poetry-imagery.mp4) | [mp4](docs/videos/chinese-poetry-imagery.mp4) |
+
+> 推送到 GitHub 后，jsDelivr 可能有短暂缓存延迟（通常几分钟）。若打不开，可在链接中把 `@main` 改成具体 commit SHA。更多案例截图见 [学科案例与演示视频](#学科案例与演示视频)。
+
+### 启用 GitHub Pages（可选，获得更正式的播放域名）
+
+当前仓库已有工作流 [`.github/workflows/pages.yml`](.github/workflows/pages.yml)，但若 Pages 未开启，Actions 会在 `Setup Pages` 失败。请手动：
+
+1. 打开仓库 **Settings → Pages**
+2. **Build and deployment → Source** 选择 **GitHub Actions**
+3. 重新运行 workflow，或再 push 一次 `main`
+4. 访问：[https://hailaobao2026.github.io/ai-teaching-video-platform/demo.html](https://hailaobao2026.github.io/ai-teaching-video-platform/demo.html)
 
 ## 项目介绍
 
@@ -259,19 +281,22 @@ K12 教学视频生成与分享管理平台
 
 ### 学科案例与演示视频
 
-平台按学科知识逻辑出片。下面是真实生成样例（仓库内本地预览 / 提交 GitHub 后可在线打开）：
+平台按学科知识逻辑出片。下面是真实生成样例。  
+**在线播放请点 CDN 链接**（浏览器直接播放）；相对路径的 `<video>` 在 GitHub README 中通常无法内嵌播放。
 
-| 学科 | 主题示例 | 演示视频 | 强调点 | 适用场景 |
-|------|----------|----------|--------|----------|
-| 物理 | 能量守恒定律 | [▶️ 在线播放](https://hailaobao2026.github.io/ai-teaching-video-platform/demo.html#physics) | 定义、转化、条件辨析 | 概念突破、复习导入 |
-| 数学 | 勾股定理 | [▶️ 在线播放](https://hailaobao2026.github.io/ai-teaching-video-platform/demo.html#math) | 定理、几何意义、解题步骤 | 课堂导入、错题前重讲 |
-| 化学 | 二氧化碳与石灰水反应 | [▶️ 在线播放](https://hailaobao2026.github.io/ai-teaching-video-platform/demo.html#chemistry) | 现象、原理、检验方法 | 实验预习、现象判断 |
-| 历史 | 工业革命 | [▶️ 在线播放](https://hailaobao2026.github.io/ai-teaching-video-platform/demo.html#history) | 背景、过程、影响、评价 | 单元串讲、复习提纲 |
-| 语文 | 诗词意象 | [▶️ 在线播放](https://hailaobao2026.github.io/ai-teaching-video-platform/demo.html#chinese) | 意象、象征、情感、答题方法 | 古诗鉴赏、课前导入 |
+| 学科 | 主题示例 | 浏览器在线播放 | 强调点 | 适用场景 |
+|------|----------|----------------|--------|----------|
+| 物理 | 能量守恒定律 | [▶️ 播放](https://cdn.jsdelivr.net/gh/hailaobao2026/ai-teaching-video-platform@main/docs/videos/physics-energy-conservation.mp4) | 定义、转化、条件辨析 | 概念突破、复习导入 |
+| 数学 | 勾股定理 | [▶️ 播放](https://cdn.jsdelivr.net/gh/hailaobao2026/ai-teaching-video-platform@main/docs/videos/math-pythagorean-theorem.mp4) | 定理、几何意义、解题步骤 | 课堂导入、错题前重讲 |
+| 化学 | 二氧化碳与石灰水反应 | [▶️ 播放](https://cdn.jsdelivr.net/gh/hailaobao2026/ai-teaching-video-platform@main/docs/videos/chemistry-co2-limewater.mp4) | 现象、原理、检验方法 | 实验预习、现象判断 |
+| 历史 | 工业革命 | [▶️ 播放](https://cdn.jsdelivr.net/gh/hailaobao2026/ai-teaching-video-platform@main/docs/videos/history-industrial-revolution.mp4) | 背景、过程、影响、评价 | 单元串讲、复习提纲 |
+| 语文 | 诗词意象 | [▶️ 播放](https://cdn.jsdelivr.net/gh/hailaobao2026/ai-teaching-video-platform@main/docs/videos/chinese-poetry-imagery.mp4) | 意象、象征、情感、答题方法 | 古诗鉴赏、课前导入 |
+
+[▶️ 打开多视频在线播放页（htmlpreview）](https://htmlpreview.github.io/?https://github.com/hailaobao2026/ai-teaching-video-platform/blob/main/docs/demo.html) · [GitHub Pages 播放页](https://hailaobao2026.github.io/ai-teaching-video-platform/demo.html)
 
 #### 演示视频总览
 
-> GitHub 网页端支持直接点击下方播放器观看；若当前预览环境不支持内嵌播放，请点击「打开视频文件」链接。
+> 下列链接可在浏览器中直接流式播放（jsDelivr CDN）。仓库相对路径仅用于本地/克隆后预览。
 
 **1. 物理 · 能量守恒定律**
 
@@ -281,14 +306,10 @@ K12 教学视频生成与分享管理平台
 outputProfile=teaching_video_full
 ```
 
-常见 7 段结构：引入 → 核心概念 → 过程拆解 → 关键关系 → 生活例子 → 方法步骤 → 总结。
+常见 7 段结构：引入 → 核心概念 → 过程拆解 → 因果关系 → 生活例子 → 方法步骤 → 总结。
 
-<video src="docs/videos/physics-energy-conservation.mp4" controls width="720" preload="metadata">
-  你的浏览器不支持 video 标签，请
-  <a href="docs/videos/physics-energy-conservation.mp4">打开视频文件</a>
-</video>
-
-[⬇️ 打开 / 下载：physics-energy-conservation.mp4](docs/videos/physics-energy-conservation.mp4)
+**[▶️ 浏览器在线播放 physics-energy-conservation.mp4](https://cdn.jsdelivr.net/gh/hailaobao2026/ai-teaching-video-platform@main/docs/videos/physics-energy-conservation.mp4)**  
+[仓库源文件](docs/videos/physics-energy-conservation.mp4)
 
 ![物理生成结果](docs/images/image-20260723000214954.png)
 
@@ -298,43 +319,27 @@ outputProfile=teaching_video_full
 
 **2. 数学 · 勾股定理**
 
-<video src="docs/videos/math-pythagorean-theorem.mp4" controls width="720" preload="metadata">
-  你的浏览器不支持 video 标签，请
-  <a href="docs/videos/math-pythagorean-theorem.mp4">打开视频文件</a>
-</video>
-
-[⬇️ 打开 / 下载：math-pythagorean-theorem.mp4](docs/videos/math-pythagorean-theorem.mp4)
+**[▶️ 浏览器在线播放 math-pythagorean-theorem.mp4](https://cdn.jsdelivr.net/gh/hailaobao2026/ai-teaching-video-platform@main/docs/videos/math-pythagorean-theorem.mp4)**  
+[仓库源文件](docs/videos/math-pythagorean-theorem.mp4)
 
 **3. 化学 · 二氧化碳与石灰水反应**
 
-<video src="docs/videos/chemistry-co2-limewater.mp4" controls width="720" preload="metadata">
-  你的浏览器不支持 video 标签，请
-  <a href="docs/videos/chemistry-co2-limewater.mp4">打开视频文件</a>
-</video>
-
-[⬇️ 打开 / 下载：chemistry-co2-limewater.mp4](docs/videos/chemistry-co2-limewater.mp4)
+**[▶️ 浏览器在线播放 chemistry-co2-limewater.mp4](https://cdn.jsdelivr.net/gh/hailaobao2026/ai-teaching-video-platform@main/docs/videos/chemistry-co2-limewater.mp4)**  
+[仓库源文件](docs/videos/chemistry-co2-limewater.mp4)
 
 ![化学案例](docs/images/image-20260723003440170.png)
 
 **4. 历史 · 工业革命**
 
-<video src="docs/videos/history-industrial-revolution.mp4" controls width="720" preload="metadata">
-  你的浏览器不支持 video 标签，请
-  <a href="docs/videos/history-industrial-revolution.mp4">打开视频文件</a>
-</video>
-
-[⬇️ 打开 / 下载：history-industrial-revolution.mp4](docs/videos/history-industrial-revolution.mp4)
+**[▶️ 浏览器在线播放 history-industrial-revolution.mp4](https://cdn.jsdelivr.net/gh/hailaobao2026/ai-teaching-video-platform@main/docs/videos/history-industrial-revolution.mp4)**  
+[仓库源文件](docs/videos/history-industrial-revolution.mp4)
 
 ![历史案例](docs/images/image-20260723130205040.png)
 
 **5. 语文 · 诗词意象**
 
-<video src="docs/videos/chinese-poetry-imagery.mp4" controls width="720" preload="metadata">
-  你的浏览器不支持 video 标签，请
-  <a href="docs/videos/chinese-poetry-imagery.mp4">打开视频文件</a>
-</video>
-
-[⬇️ 打开 / 下载：chinese-poetry-imagery.mp4](docs/videos/chinese-poetry-imagery.mp4)
+**[▶️ 浏览器在线播放 chinese-poetry-imagery.mp4](https://cdn.jsdelivr.net/gh/hailaobao2026/ai-teaching-video-platform@main/docs/videos/chinese-poetry-imagery.mp4)**  
+[仓库源文件](docs/videos/chinese-poetry-imagery.mp4)
 
 ![语文案例](docs/images/image-20260723133905389.png)
 
