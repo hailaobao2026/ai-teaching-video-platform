@@ -797,7 +797,7 @@ npm run smoke:mysql
 
 欢迎加入技术交流群，分享你的 Skills 和使用心得：
 
-![技术交流群](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Screenshot_20260713_151346_com.tencent.mm.jpg)
+![技术交流群](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20260719152032463.png)
 
 ## 作者联系
 
@@ -805,7 +805,7 @@ npm run smoke:mysql
 - **微信**: laohaibao2025
 - **邮箱**: 75271002@qq.com
 
-![微信二维码](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Screenshot_20260123_095617_com.tencent.mm.jpg)
+![微信二维码](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20260719152032463.png)
 
 ## 打赏
 
