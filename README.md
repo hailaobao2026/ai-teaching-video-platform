@@ -801,9 +801,9 @@ npm run smoke:mysql
 
 ## 作者联系
 
-- **作者**: 周辉（hailaobao）
+- **作者**: （hailaobao）
 - **微信**: laohaibao2025
-- **邮箱**: 75271002@qq.com
+- **邮箱**: [Ujfgtujghedte@gmail.com](mailto:Ujfgtujghedte@gmail.com)
 
 ![微信二维码](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Screenshot_20260123_095617_com.tencent.mm.jpg)
 
