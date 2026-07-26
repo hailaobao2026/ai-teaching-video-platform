@@ -57,6 +57,15 @@ function segmentPoints(seg = {}, fallback = []) {
 }
 
 
+// 拥有专属动画族/示意图库的学科。其余学科（语文/英语/政治/管理员新增学科）
+// 一律走 generic，避免被调色板兜底或课文中的理科词汇带进别科示意图（勾股图、电路图等）。
+const FAMILY_CAPABLE_SUBJECTS = new Set(['math', 'physics', 'chemistry', 'biology', 'geography', 'history']);
+
+function subjectWithoutFamily(storyboard = {}, input = {}) {
+  const subject = String(input.subject || storyboard.knowledge?.subjectHint || '').toLowerCase();
+  return Boolean(subject) && !FAMILY_CAPABLE_SUBJECTS.has(subject);
+}
+
 function segmentVisualCorpus(seg = {}, storyboard = {}, input = {}) {
   return [
     seg.title,
@@ -81,6 +90,16 @@ export function assembleByVisualKeywords(seg = {}, storyboard = {}, input = {}, 
   // method/summary-ish scenes often better as steps
   if (sceneNo === 6 || /做题|步骤|方法|清单|四步/.test(corpus)) {
     return methodDiagram(seg);
+  }
+
+  // 无专属动画族的学科只用通用图。课文里出现“蒸发、折射”等词是文本内容而非学科主题，
+  // 不能被理科关键词劫持去装电路图/水循环图。
+  if (subjectWithoutFamily(storyboard, input)) {
+    if (/对比|对照|vs|versus|不是|易错/.test(corpus) && sceneNo >= 4) {
+      const pts = segmentPoints(seg, ['要点A', '要点B']);
+      return svgRoot(comparePanels(pts[0] || 'A', pts[1] || 'B', [pts[0] || '条件1', '关键关系'], [pts[1] || '条件2', '常见误区']));
+    }
+    return null;
   }
 
 
@@ -236,6 +255,8 @@ export function detectFamily(storyboard = {}, input = {}) {
   const topic = `${storyboard.topic || ''} ${input.topic || ''}`;
   const palette = String(storyboard.palette || '').toLowerCase();
   const subject = String(input.subject || storyboard.knowledge?.subjectHint || '').toLowerCase();
+  // 无专属动画族的学科，任何关键词/调色板推断都会引入别科内容（如 math 族的勾股图、electric 族的电路图）。
+  if (subjectWithoutFamily(storyboard, input)) return 'generic';
   const titles = (storyboard.segments || []).map((s) => s.title || '').join(' ');
   const corpus = `${topic} ${palette} ${subject} ${titles}`.toLowerCase();
 
@@ -257,6 +278,17 @@ export function detectFamily(storyboard = {}, input = {}) {
 
 /* ---------------- icons ---------------- */
 
+function iconGeneric() {
+  return svgRoot(`
+    <g fill="none" stroke="var(--primary)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 210 60 C 170 40 120 40 90 55 L 90 160 C 120 145 170 145 210 165 C 250 145 300 145 330 160 L 330 55 C 300 40 250 40 210 60 Z" fill="color-mix(in srgb, var(--primary) 8%, #fff)"/>
+      <line x1="210" y1="60" x2="210" y2="165"/>
+      <line x1="120" y1="85" x2="180" y2="85" stroke="var(--accent)" stroke-width="6"/>
+      <line x1="120" y1="110" x2="180" y2="110" stroke="var(--accent)" stroke-width="6"/>
+      <line x1="240" y1="85" x2="300" y2="85" stroke="var(--accent)" stroke-width="6"/>
+      <line x1="240" y1="110" x2="300" y2="110" stroke="var(--accent)" stroke-width="6"/>
+    </g>`, { viewBox: '0 0 420 210' });
+}
 function iconEnergy() {
   return svgRoot(`
     <g id="s1-icon-g" fill="none" stroke="var(--primary)" stroke-width="10" stroke-linecap="round">
@@ -328,8 +360,8 @@ function pickIcon(family) {
     chemistry: iconChemistry,
     geography: iconGeography,
     history: iconHistory,
-    generic: iconEnergy
-  }[family] || iconEnergy)();
+    generic: iconGeneric
+  }[family] || iconGeneric)();
 }
 
 function iconChemistry() {
@@ -565,7 +597,10 @@ function pickDiagram(family, sceneNo, seg, storyboard = {}, input = {}) {
   }
 
   if (family === 'math') {
-    if (sceneNo === 2) return mathTriangleDiagram();
+    // 勾股图只给勾股相关内容；否则“一次函数”等数学课也会被塞进 a²+b²=c²。
+    if (sceneNo === 2 && /勾股|直角三角形|斜边|a²/.test(segmentVisualCorpus(seg, storyboard, input))) {
+      return mathTriangleDiagram();
+    }
     if (sceneNo === 6) return methodDiagram(seg);
     return sceneNo % 2 === 0 ? genericConceptDiagram(seg, sceneNo) : genericProcessDiagram(seg, sceneNo);
   }

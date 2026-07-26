@@ -8,8 +8,11 @@ const PALETTE_BY_SUBJECT = {
   chemistry: 'chemistry',
   geography: 'geography',
   history: 'history',
-  chinese: 'math',
-  english: 'math'
+  // 语文/英语/政治没有专属配色，借用中性色板；不能映射到 math/history/electricity，
+  // 否则会连带命中别科动画族（勾股图、电路图等）或历史专用质量门禁。
+  chinese: 'heat',
+  english: 'light',
+  politics: 'heat'
 };
 
 const GENERIC_BAD_PATTERNS = [
@@ -1304,11 +1307,14 @@ export function listKnowledgePacks() {
   }));
 }
 
-export function findKnowledgePack(topic = '') {
+export function findKnowledgePack(topic = '', subject = '') {
   const t = String(topic || '').trim();
   if (!t) return null;
-  if (KNOWLEDGE_PACKS[t]) return { key: t, ...KNOWLEDGE_PACKS[t] };
-  const hit = Object.keys(KNOWLEDGE_PACKS).find((key) => t.includes(key) || key.includes(t));
+  // 指定了学科时必须与包的学科一致，否则语文 topic 含“定理”会模糊命中勾股定理包，把数学内容灌进别科视频。
+  const subj = String(subject || '').trim().toLowerCase();
+  const subjectOk = (pack) => !subj || !pack.subjectHint || pack.subjectHint === subj;
+  if (KNOWLEDGE_PACKS[t] && subjectOk(KNOWLEDGE_PACKS[t])) return { key: t, ...KNOWLEDGE_PACKS[t] };
+  const hit = Object.keys(KNOWLEDGE_PACKS).find((key) => (t.includes(key) || key.includes(t)) && subjectOk(KNOWLEDGE_PACKS[key]));
   if (!hit) return null;
   return { key: hit, ...KNOWLEDGE_PACKS[hit] };
 }
@@ -1317,7 +1323,7 @@ function heuristicKnowledge(input = {}) {
   const topic = String(input.topic || '知识点').trim();
   const goals = uniqueNonEmpty(input.learningGoals || [], 4);
   const notes = String(input.styleNotes || '').trim();
-  const pack = findKnowledgePack(topic);
+  const pack = findKnowledgePack(topic, input.subject);
   if (pack) {
     return {
       source: 'knowledge_pack',
@@ -1556,7 +1562,7 @@ export async function fetchKnowledgeFromLlm(input = {}, options = {}) {
 
 export async function resolveKnowledge(input = {}, options = {}) {
   const preferPack = String(process.env.STORYBOARD_PREFER_KNOWLEDGE_PACK || 'true').toLowerCase() !== 'false';
-  const pack = findKnowledgePack(input.topic);
+  const pack = findKnowledgePack(input.topic, input.subject);
   if (preferPack && pack) return normalizeKnowledge({ ...pack, source: 'knowledge_pack' }, input);
 
   try {
