@@ -1,3 +1,5 @@
+process.env.MEDIA_SIGNING_SECRET = 'test-secret';
+
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { runCommand, PipelineCancelledError, CommandTimeoutError, resolveImageGenLimits, estimateRenderFrameTarget, countCapturedFrames, mapHyperframesRenderProgress, mapPool, resolveHyperframesRenderOptions, RENDER_PROGRESS_START, RENDER_PROGRESS_END } from '../services/teachingMediaPipeline.js';

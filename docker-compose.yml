@@ -46,7 +46,7 @@ services:
       DEMO_TEACHER_PASSWORD: ${DEMO_TEACHER_PASSWORD:-demo123}
       DEMO_STUDENT_EMAIL: ${DEMO_STUDENT_EMAIL:-student@demo.local}
       DEMO_STUDENT_PASSWORD: ${DEMO_STUDENT_PASSWORD:-demo123}
-      MEDIA_SIGNING_SECRET: ${MEDIA_SIGNING_SECRET:-change-me-media-secret}
+      MEDIA_SIGNING_SECRET: ${MEDIA_SIGNING_SECRET:?必须设置，可用 openssl rand -base64 32 生成}
       TEACHING_MEDIA_ROOT: /opt/ai-teaching-media
       ARTIFACTS_ROOT: /data/jobs
       DEFAULT_TTS_PROVIDER: ${DEFAULT_TTS_PROVIDER:-edge}

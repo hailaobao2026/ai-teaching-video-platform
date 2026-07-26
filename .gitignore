@@ -4,6 +4,7 @@ dist
 server/node_modules
 server/data/memory-db.json
 server/data/jobs
+server/data/.media-secret
 server/uploads/videos/*
 server/uploads/covers/*
 server/uploads/artifacts/*

@@ -845,7 +845,9 @@ export async function runTeachingMediaPipeline(job, { artifactsRoot, onProgress,
   const uploadsRoot = path.resolve(__dirname, '../uploads');
   fs.mkdirSync(workDir, { recursive: true });
   for (const sub of ['videos', 'covers', 'artifacts']) fs.mkdirSync(path.join(uploadsRoot, sub), { recursive: true });
-  writeJson(path.join(workDir, 'input.json'), { ...input, outputProfile: profile });
+  // 凭证只在内存里传给子进程，绝不落盘。
+  const { providerRuntimeEnv: _runtimeEnv, provider_runtime_env: _legacyRuntimeEnv, ...persistableInput } = input;
+  writeJson(path.join(workDir, 'input.json'), { ...persistableInput, outputProfile: profile });
   const report = (stage, progress, extra = {}) => onProgress?.({ stage, progress, ...extra });
 
   let result = { assets: [] };

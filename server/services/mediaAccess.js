@@ -1,10 +1,53 @@
 import crypto from 'crypto';
+import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_TTL_SECONDS = 7 * 24 * 60 * 60;
 
+let cachedSecret = null;
+
+function devSecretFile() {
+  return process.env.MEDIA_SECRET_FILE || path.join(__dirname, '../data/.media-secret');
+}
+
+// API 与 worker 是两个进程，必须拿到同一个密钥，否则 worker 签发的 URL 在 API 侧验不过。
+// 未配置环境变量时落到同一个文件上，wx 让并发首启只有一个进程写成功、其余读回。
+function loadDevSecret() {
+  const file = devSecretFile();
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  try {
+    const generated = crypto.randomBytes(32).toString('base64url');
+    fs.writeFileSync(file, generated, { flag: 'wx', mode: 0o600 });
+    console.warn(`[media] MEDIA_SIGNING_SECRET 未配置，已生成开发密钥 ${file}（生产环境必须显式设置）`);
+    return generated;
+  } catch (error) {
+    if (error.code !== 'EEXIST') throw error;
+    // 另一进程可能刚 create 还没写完；空密钥做 HMAC 会静默产生弱签名，必须拒绝。
+    for (let i = 0; i < 50; i++) {
+      const existing = fs.readFileSync(file, 'utf8').trim();
+      if (existing) return existing;
+      const until = Date.now() + 5;
+      while (Date.now() < until);
+    }
+    throw new Error(`开发密钥文件 ${file} 为空，请删除该文件后重启`);
+  }
+}
+
 function secret() {
-  return process.env.MEDIA_SIGNING_SECRET || process.env.SESSION_SECRET || 'atv-development-media-secret';
+  if (cachedSecret) return cachedSecret;
+  const configured = process.env.MEDIA_SIGNING_SECRET || process.env.SESSION_SECRET;
+  if (configured) return (cachedSecret = configured);
+  if (process.env.NODE_ENV === 'production') {
+    throw new Error('MEDIA_SIGNING_SECRET 未配置，生产环境拒绝启动');
+  }
+  cachedSecret = loadDevSecret();
+  return cachedSecret;
+}
+
+export function assertMediaSigningSecret() {
+  secret();
 }
 
 export function normalizeStorageKey(value) {
@@ -44,4 +87,4 @@ export function verifyMediaSignature(assetId, expiresAt, signature) {
   return actual.length === expected.length && crypto.timingSafeEqual(Buffer.from(actual), Buffer.from(expected));
 }
 
-export default { normalizeStorageKey, resolveMediaFile, signMedia, signedMediaUrl, verifyMediaSignature };
+export default { assertMediaSigningSecret, normalizeStorageKey, resolveMediaFile, signMedia, signedMediaUrl, verifyMediaSignature };

@@ -5,7 +5,9 @@ import { fileURLToPath } from 'url';
 import db, { initDb } from '../db.js';
 import { PipelineCancelledError, runTeachingMediaPipeline } from '../services/teachingMediaPipeline.js';
 import { runMediaPreflight } from '../services/mediaPreflight.js';
-import { signedMediaUrl } from '../services/mediaAccess.js';
+import { assertMediaSigningSecret, signedMediaUrl } from '../services/mediaAccess.js';
+import { resolveJobRuntimeCredentials } from '../services/jobCredentials.js';
+import { PAID_IMAGE_PROVIDERS, PAID_TTS_PROVIDERS } from '../services/modelSettings.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -39,19 +41,23 @@ async function tick() {
 
     try {
       const jobInput = job.input_json || {};
-      // Apply per-job provider credentials (teacher/student personal keys or admin env snapshot).
-      const runtimeEnv = jobInput.providerRuntimeEnv || jobInput.provider_runtime_env || {};
-      if (runtimeEnv && typeof runtimeEnv === 'object') {
-        for (const [key, value] of Object.entries(runtimeEnv)) {
-          if (value != null && String(value).trim() !== '') process.env[key] = String(value);
-        }
+      // 凭证在执行时现场解析，只留在内存里：不写回 job，也不写进 process.env（否则会跨任务串用）。
+      const cred = await resolveJobRuntimeCredentials(job);
+      // 建任务时校验过，但排队期间用户可能删了 key 或被降级，这里 fail-fast 换成可读的错误。
+      if (PAID_TTS_PROVIDERS.has(cred.effective.ttsProvider) && !cred.credentialSnapshot.ttsApiKeySet) {
+        throw new Error(`TTS 凭证已失效，请在个人中心重新配置 ${cred.effective.ttsProvider} API Key`);
+      }
+      if (PAID_IMAGE_PROVIDERS.has(cred.effective.imageProvider) && !cred.credentialSnapshot.imageApiKeySet) {
+        throw new Error(`图片凭证已失效，请在个人中心重新配置 ${cred.effective.imageProvider} API Key`);
       }
       const preflight = await runMediaPreflight(job.output_profile || job.outputProfile, {
-        imageProvider: jobInput.imageProvider,
-        ttsProvider: jobInput.ttsProvider || (await db.getConfig()).default_tts_provider
+        runtimeEnv: cred.runtimeEnv,
+        imageProvider: cred.effective.imageProvider,
+        ttsProvider: cred.effective.ttsProvider
       });
       if (!preflight.ok) throw new Error(`媒体依赖未就绪: ${preflight.missing.join(', ')}`);
-      const result = await runTeachingMediaPipeline(job, {
+      const jobForRun = { ...job, input_json: { ...jobInput, providerRuntimeEnv: cred.runtimeEnv } };
+      const result = await runTeachingMediaPipeline(jobForRun, {
         artifactsRoot,
         signal: controller.signal,
         onProgress: async ({ stage, progress }) => {
@@ -127,7 +133,11 @@ function stop(signal) {
 
 process.on('SIGTERM', () => stop());
 process.on('SIGINT', () => stop());
+process.on('unhandledRejection', reason => {
+  console.error('[worker] unhandled rejection', reason);
+});
 
+assertMediaSigningSecret();
 await initDb();
 console.log('[worker] teachingMediaWorker started');
 console.log(`[worker] artifactsRoot=${artifactsRoot}`);

@@ -122,7 +122,7 @@ if (useMysql) {
 }
 
 export function generateId(prefix = 'id') {
-  return `${prefix}_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
+  return `${prefix}_${Date.now().toString(36)}_${crypto.randomBytes(4).toString('hex').slice(0, 6)}`;
 }
 
 function legacyHashPassword(password) {
@@ -622,6 +622,41 @@ export async function initDb() {
   return { mode: useMysql ? 'mysql' : 'memory' };
 }
 
+// 只应由 API 进程在启动时调用一次；worker 也调 initDb()，放进去会被反复执行。
+// 两步都按形态过滤，重复执行无副作用。
+export async function runStartupMaintenance() {
+  const result = { droppedSessions: 0, scrubbedJobs: 0 };
+  if (useMysql) {
+    // 旧 token 由 generateId('tok') 生成，可预测，一律作废。
+    const [sessions] = await pool.execute("DELETE FROM sessions WHERE token LIKE 'tok\\_%'");
+    result.droppedSessions = sessions.affectedRows || 0;
+    const [jobs] = await pool.execute(
+      "UPDATE generation_jobs SET input_json = JSON_REMOVE(input_json, '$.providerRuntimeEnv', '$.provider_runtime_env') "
+      + "WHERE JSON_EXTRACT(input_json, '$.providerRuntimeEnv') IS NOT NULL "
+      + "OR JSON_EXTRACT(input_json, '$.provider_runtime_env') IS NOT NULL"
+    );
+    result.scrubbedJobs = jobs.affectedRows || 0;
+  } else {
+    refreshMemory();
+    const kept = memory.sessions.filter(s => !String(s.token || '').startsWith('tok_'));
+    result.droppedSessions = memory.sessions.length - kept.length;
+    memory.sessions = kept;
+    for (const job of memory.jobs || []) {
+      const input = job.input_json;
+      if (!input || typeof input !== 'object') continue;
+      if (!('providerRuntimeEnv' in input) && !('provider_runtime_env' in input)) continue;
+      delete input.providerRuntimeEnv;
+      delete input.provider_runtime_env;
+      result.scrubbedJobs += 1;
+    }
+    saveMemory();
+  }
+  if (result.droppedSessions || result.scrubbedJobs) {
+    console.warn(`[db] 启动维护：作废弱会话 ${result.droppedSessions} 条，清除任务明文凭证 ${result.scrubbedJobs} 条`);
+  }
+  return result;
+}
+
 export const db = {
   async createUser({ email, password, nickname, role = ROLES.STUDENT, teacherSubjects = [], grade = null }) {
     const normalizedRole = normalizeRole(role);
@@ -696,7 +731,7 @@ export const db = {
   },
 
   async createSession(userId) {
-    const token = generateId('tok');
+    const token = crypto.randomBytes(32).toString('base64url');
     if (useMysql) {
       await pool.execute('INSERT INTO sessions (token,user_id,created_at) VALUES (?,?,?)', [token, userId, new Date()]);
       return token;

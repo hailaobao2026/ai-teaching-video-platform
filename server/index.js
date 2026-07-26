@@ -5,16 +5,15 @@ import cors from 'cors';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
-import db, { hashPassword, initDb, needsPasswordRehash, verifyPassword } from './db.js';
+import db, { hashPassword, initDb, needsPasswordRehash, runStartupMaintenance, verifyPassword } from './db.js';
 import { OUTPUT_PROFILES } from './services/teachingMediaPipeline.js';
 import { runMediaPreflight } from './services/mediaPreflight.js';
-import { resolveMediaFile, signedMediaUrl, verifyMediaSignature } from './services/mediaAccess.js';
+import { assertMediaSigningSecret, resolveMediaFile, signedMediaUrl, verifyMediaSignature } from './services/mediaAccess.js';
 import { publicUser as toPublicUser, validateRegisterPayload, validateTeacherSubjects, isAdmin, isTeacher, ROLES, canTeacherReviewCourse, normalizeRole, parseTeacherSubjects } from './services/rbac.js';
 import {
   buildModelCatalog,
   emptyUserModelSettings,
   normalizeUserModelSettings,
-  resolveEffectiveModelConfig,
   toDbModelSettings,
   validateUserModelSettings,
   publicProviderCredentials,
@@ -38,6 +37,32 @@ const uploadsDir = path.join(__dirname, 'uploads');
 for (const sub of ['videos', 'covers', 'artifacts']) {
   fs.mkdirSync(path.join(uploadsDir, sub), { recursive: true });
 }
+
+// Express 4 不捕获 async handler 的 rejection，一次 DB 抖动就会打死进程。
+// 在注册任何路由前包装这几个方法，62 个路由无需逐个改写。
+for (const method of ['get', 'post', 'put', 'patch', 'delete']) {
+  const register = app[method].bind(app);
+  app[method] = (...args) => {
+    // app.get('env') 是 express 的配置读取器，框架内部每个请求都会调用，必须原样放行。
+    if (method === 'get' && args.length === 1) return register(args[0]);
+    return register(args[0], ...args.slice(1).map(handler => {
+      // 4 参是错误中间件，包装会把 length 变成 3，express 就不再认它。
+      if (typeof handler !== 'function' || handler.length >= 4) return handler;
+      return (req, res, next) => {
+        try {
+          const returned = handler(req, res, next);
+          if (returned?.catch) returned.catch(next);
+        } catch (error) {
+          next(error);
+        }
+      };
+    }));
+  };
+}
+
+process.on('unhandledRejection', reason => {
+  console.error('[api] unhandled rejection', reason);
+});
 
 app.use(cors());
 app.use(express.json({ limit: '20mb' }));
@@ -405,13 +430,17 @@ app.get('/api/system/preflight', auth(true), async (req, res) => {
   const outputProfile = String(req.query.outputProfile || 'teaching_video_full');
   if (!OUTPUT_PROFILES.has(outputProfile)) return res.status(400).json({ error: 'outputProfile 无效' });
   const config = await db.getConfig();
-  const resolved = resolveEffectiveModelConfig({
+  // 必须用 resolveRuntimeCredentialsForJob：非管理员的个人 key 不在 process.env 里，
+  // 只看全局 env 会把已配置的 key 误报成"未设置"。
+  const resolved = resolveRuntimeCredentialsForJob({
+    user: req.user,
     userSettings: await db.getUserModelSettings(req.user.id),
     systemConfig: config,
     taskInput: pickTaskModelOverrides(req.query)
   });
   res.json(await runMediaPreflight(outputProfile, {
     skillRoot: config.teaching_media_root,
+    runtimeEnv: resolved.runtimeEnv,
     imageProvider: resolved.effective.imageProvider,
     ttsProvider: resolved.effective.ttsProvider
   }));
@@ -421,13 +450,15 @@ app.post('/api/jobs/preflight', auth(true), async (req, res) => {
   const outputProfile = String(req.body?.outputProfile || 'teaching_video_full');
   if (!OUTPUT_PROFILES.has(outputProfile)) return res.status(400).json({ error: 'outputProfile 无效' });
   const config = await db.getConfig();
-  const resolved = resolveEffectiveModelConfig({
+  const resolved = resolveRuntimeCredentialsForJob({
+    user: req.user,
     userSettings: await db.getUserModelSettings(req.user.id),
     systemConfig: config,
     taskInput: pickTaskModelOverrides(req.body || {})
   });
   res.json(await runMediaPreflight(outputProfile, {
     skillRoot: config.teaching_media_root,
+    runtimeEnv: resolved.runtimeEnv,
     imageProvider: resolved.effective.imageProvider,
     ttsProvider: resolved.effective.ttsProvider
   }));
@@ -554,7 +585,7 @@ app.post('/api/jobs', auth(true), async (req, res) => {
       videoQuality: effective.videoQuality || 'standard',
       videoFps: effective.videoFps,
       modelSnapshot: modelPayload.modelSnapshot,
-      providerRuntimeEnv: modelPayload.runtimeEnv || {},
+      // 明文凭证不入库：worker 执行时按 modelSnapshot 的 provider 现场解析。
       credentialSnapshot: modelPayload.credentialSnapshot || null,
       referenceImages,
       autoCreateCourse: body.autoCreateCourse !== false
@@ -1090,7 +1121,10 @@ app.post('/api/admin/courses/:id/review', auth(true), async (req, res) => {
   res.json(presentMediaFields(updated));
 });
 
+assertMediaSigningSecret();
 await initDb();
+// API 是单实例入口，存量维护只在这里跑一次；worker 也调 initDb，放进去会被反复执行。
+await runStartupMaintenance();
 
 app.use((error, _req, res, _next) => {
   console.error('[api] unhandled request error', error);

@@ -67,6 +67,8 @@ async function pythonPackageCheck(python, packageName) {
 function pythonBin() { return process.env.PYTHON_BIN || (process.platform === 'win32' ? 'python' : 'python3'); }
 
 export async function runMediaPreflight(outputProfile = 'teaching_video_full', options = {}) {
+  // 凭证不再注入全局 process.env，按任务解析出的 runtimeEnv 优先。
+  const envGet = key => options.runtimeEnv?.[key] || process.env[key];
   const checks = [];
   const add = (name, required, result) => checks.push({ name, required, ...result });
   let skillRoot = null;
@@ -81,10 +83,10 @@ export async function runMediaPreflight(outputProfile = 'teaching_video_full', o
   if (IMAGE_PROFILES.has(outputProfile)) {
     const requested = options.imageProvider || process.env.DEFAULT_IMAGE_PROVIDER;
     const keyName = requested && IMAGE_KEYS[requested] ? IMAGE_KEYS[requested] : null;
-    const hasImageKey = (name, key) => Boolean(process.env[key] || (name === 'volcengine' && process.env.ARK_API_KEY));
+    const hasImageKey = (name, key) => Boolean(envGet(key) || (name === 'volcengine' && envGet('ARK_API_KEY')));
     const available = Object.entries(IMAGE_KEYS).filter(([name, key]) => hasImageKey(name, key)).map(([name]) => name);
     const requestedReady = keyName
-      ? Boolean(process.env[keyName] || (requested === 'volcengine' && process.env.ARK_API_KEY))
+      ? Boolean(envGet(keyName) || (requested === 'volcengine' && envGet('ARK_API_KEY')))
       : available.length > 0;
     add('image-api-key', true, {
       ok: requestedReady,
@@ -113,10 +115,11 @@ export async function runMediaPreflight(outputProfile = 'teaching_video_full', o
     add('hyperframes', true, hyper);
     const ttsProvider = options.ttsProvider || process.env.DEFAULT_TTS_PROVIDER || 'edge';
     if (ttsProvider === 'minimax') {
-      add('minimax-api-key', true, { ok: Boolean(process.env.MINIMAX_API_KEY), detail: process.env.MINIMAX_API_KEY ? 'MINIMAX_API_KEY 已设置' : 'MINIMAX_API_KEY 未设置' });
+      const minimaxKey = envGet('MINIMAX_API_KEY');
+      add('minimax-api-key', true, { ok: Boolean(minimaxKey), detail: minimaxKey ? 'MINIMAX_API_KEY 已设置' : 'MINIMAX_API_KEY 未设置' });
     } else if (ttsProvider === 'seed') {
-      const seedKey = process.env.SEED_TTS_API_KEY || process.env.VOLCENGINE_API_KEY || process.env.ARK_API_KEY;
-      const keyName = process.env.SEED_TTS_API_KEY ? 'SEED_TTS_API_KEY' : (process.env.VOLCENGINE_API_KEY ? 'VOLCENGINE_API_KEY' : (process.env.ARK_API_KEY ? 'ARK_API_KEY' : 'SEED_TTS_API_KEY'));
+      const seedKey = envGet('SEED_TTS_API_KEY') || envGet('VOLCENGINE_API_KEY') || envGet('ARK_API_KEY');
+      const keyName = envGet('SEED_TTS_API_KEY') ? 'SEED_TTS_API_KEY' : (envGet('VOLCENGINE_API_KEY') ? 'VOLCENGINE_API_KEY' : (envGet('ARK_API_KEY') ? 'ARK_API_KEY' : 'SEED_TTS_API_KEY'));
       add('seed-tts-api-key', true, { ok: Boolean(seedKey), detail: seedKey ? `${keyName} 已设置` : 'SEED_TTS_API_KEY / VOLCENGINE_API_KEY 未设置' });
     } else if (ttsProvider === 'say') {
       add('macos-say', true, { ok: process.platform === 'darwin', detail: process.platform === 'darwin' ? 'say available' : 'say 仅 macOS' });
