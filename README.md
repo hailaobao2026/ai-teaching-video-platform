@@ -527,6 +527,7 @@ cp .env.example .env
 |------|------|
 | `PORT` | API 端口，默认 `3002` |
 | `USE_MYSQL` | `true` 用 MySQL，否则内存库 |
+| `MEDIA_SIGNING_SECRET` | 媒体链接签名密钥（`openssl rand -base64 32`）。生产必配，缺失拒绝启动；开发缺省自动生成 `server/data/.media-secret`，API 与 Worker 必须同值 |
 | `MYSQL_HOST` / `MYSQL_PORT` / `MYSQL_*` | MySQL 连接 |
 | `TEACHING_MEDIA_ROOT` | ai-teaching-media skill 路径 |
 | `ARTIFACTS_ROOT` | 任务工作区 |
@@ -783,6 +784,31 @@ npm run smoke:mysql
 
 </details>
 
+## 近期更新（2026-07）
+
+### 安全加固
+
+针对多用户 / 生产环境的一批安全修复：
+
+| 修复项 | 说明 | 主要文件 |
+|------|------|------|
+| 会话 token 强随机 | 会话 token 改用 `crypto.randomBytes(32)`（base64url），实体 ID 随机段同步换为强随机；启动时自动清理旧格式（`tok_` 前缀）弱会话，用户需重新登录 | `server/db.js` |
+| 凭证不落库、不落盘 | 用户第三方 API Key 不再写入 `generation_jobs.input_json` 与 `data/jobs/*/input.json`，改为 Worker 执行时现场解析（`resolveJobRuntimeCredentials`），仅存在于内存；启动时自动清洗历史明文凭证 | `server/services/jobCredentials.js`、`teachingMediaPipeline.js` |
+| Worker 不污染全局环境 | 移除把用户 Key 写入 `process.env` 的逻辑，凭证通过 `providerRuntimeEnv` 显式传给子进程，杜绝跨用户串用计费 | `server/workers/teachingMediaWorker.js`、`services/mediaPreflight.js` |
+| async 路由统一兜底 | 自动包装全部 async 路由，未捕获的 Promise rejection 进入全局错误中间件返回 500，单个路由异常不再打死整个 API 进程 | `server/index.js` |
+| 媒体签名密钥去硬编码 | 删除源码中的常量密钥兜底：生产未配置 `MEDIA_SIGNING_SECRET` 直接拒绝启动；开发环境自动生成并持久化 `server/data/.media-secret`（API/Worker 共享） | `server/services/mediaAccess.js`、`docker-compose.yml` |
+
+### 学科内容隔离修复
+
+修复了跨学科内容串扰问题（如语文视频里出现勾股定理、政治视频里出现电路图）：
+
+- **调色板映射修正**（`storyboardBuilder.js`）：语文/英语/政治不再借用 `math` 等学科调色板，改用中性色板（`heat`/`light`），并补齐 politics 映射，避免落到 `electricity` 兜底
+- **知识包学科门禁**（`findKnowledgePack`）：指定学科时只命中 `subjectHint` 一致的知识包，语文 topic 含"定理"等字样不会再模糊匹配到数学知识包
+- **动画族白名单**（`teachingSceneAnimator.js`）：新增 `FAMILY_CAPABLE_SUBJECTS`（math/physics/chemistry/biology/geography/history），白名单之外的学科（含管理员新增学科）一律走 generic 通用动画，不受关键词/调色板推断影响
+- **数学族内部收敛**：勾股三角形示意图只在内容确实含勾股关键词时注入，"一次函数"等其他数学课不再被塞入 `a²+b²=c²`
+
+> 注意：代码修复不改动历史已生成的视频文件，此前受污染的视频需重新发起生成。
+
 ## 验证状态（摘录）
 
 - `teaching_video_full` 真实出片（如能量守恒定律）已跑通  
@@ -821,6 +847,7 @@ npm run smoke:mysql
 
 ### 版本历史
 
+- **v0.1.1** (2026-07) - 安全加固（强随机会话 token、凭证不落库/不落盘、Worker 环境隔离、async 路由兜底、签名密钥去硬编码）与学科内容隔离修复（知识包学科门禁、动画族白名单）  
 - **v0.1.0** (2026-07) - 首个可交付版本：七类产出档位、RBAC 审核、知识点目录、模型设置、Compose 交付与端到端出片闭环  
 
 ## 路线图
@@ -834,6 +861,8 @@ npm run smoke:mysql
 - [x] 学科知识点目录与多科批量同步  
 - [x] 用户模型设置与任务 modelSnapshot  
 - [x] Docker Compose 多服务交付  
+- [x] 后端安全加固（会话/凭证/密钥/异步错误兜底）  
+- [x] 学科内容隔离（知识包学科门禁 + 动画族白名单）  
 
 ### 计划功能
 
