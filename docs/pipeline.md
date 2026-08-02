@@ -40,6 +40,18 @@ ARTIFACTS_ROOT/<jobId>/
 
 实现位置：`server/services/storyboardBuilder.js`
 
+### 任务模型快照与乡村课堂参数
+
+创建任务时，服务端按 **任务覆盖 > 用户模型设置 > 系统配置 > 环境变量** 解析最终模型，并将结果写入 `generation_jobs.input_json.modelSnapshot`。快照用于保证任务排队后即使用户修改个人设置，历史任务仍使用创建时的模型选择。
+
+任务输入同时保存以下乡村课堂上下文：
+
+- `textbookEdition`：教材版本；
+- `classroomScenario`：课堂场景，如 `lesson-prep`、`in-class`；
+- `lowBandwidth`：低带宽优先开关。
+
+Worker 和 `teachingMediaPipeline` 使用快照中的 provider、音色、模型和质量档位；收费 provider 的用户凭证只在执行时解析并注入运行环境。明文凭证不写入 `input_json`、`credentialSnapshot` 或任务工作区输入文件。`lowBandwidth=true` 时，乡村课堂模板和分镜上下文会优先采用轻量、易下载和易播放的生成策略。
+
 ### Stage B — TTS
 ```bash
 python TEACHING_MEDIA_ROOT/edu-teaching-animation/scripts/minimax_tts.py \

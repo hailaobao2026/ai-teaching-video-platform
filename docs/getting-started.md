@@ -1,4 +1,4 @@
-﻿# 开发启动说明
+# 开发启动说明
 
 ## 1. 内存模式（最快验证 API/页面）
 ```bash
@@ -121,15 +121,15 @@ npm run start:mysql-stack   # API :3013 by default
 # export NODE_IMAGE=docker.m.daocloud.io/library/node:22-bookworm
 # export MYSQL_IMAGE=docker.m.daocloud.io/library/mysql:8.0
 npm run compose:up
-# 带前端：WITH_WEB=1 # Docker Hub 不通时指定镜像源
-# export NODE_IMAGE=docker.m.daocloud.io/library/node:22-bookworm
-# export MYSQL_IMAGE=docker.m.daocloud.io/library/mysql:8.0
-npm run compose:up
+# 带前端（先构建 dist，再启用 web profile）
+WITH_WEB=1 npm run compose:up
+# 等价写法：COMPOSE_PROFILES=web npm run compose:up
 npm run compose:down
 ```
 
 默认：
 - API `http://127.0.0.1:3002`
+- 带前端时 Web `http://127.0.0.1:3000`
 - MySQL host `127.0.0.1:3307`
 - 演示账号 `teacher@demo.local` / `demo123`（可用 `.env` 覆盖）
 
@@ -208,3 +208,30 @@ npm run build
 ```
 
 详见 `docs/knowledge-catalog.md` 与 `docs/api.md`。
+
+
+## 11. 百炼 AI 助教与试点记录验证
+
+### 配置百炼兼容模型
+
+只在本机 `.env` 中配置，禁止把 Key 写入仓库：
+
+```env
+ASSISTANT_LLM_ENABLED=true
+ASSISTANT_LLM_API_KEY=<rotated-api-key>
+ASSISTANT_LLM_BASE_URL=<openai-compatible-base-url>
+ASSISTANT_LLM_MODEL=qwen3-max
+BAILIAN_API_KEY=<rotated-api-key>
+BAILIAN_BASE_URL=<openai-compatible-base-url>
+BAILIAN_MODEL=qwen3-max
+```
+
+修改后重启 API 服务和 Worker。无 Key 或远端异常时，AI 助教使用本地知识点目录兜底。已在聊天、截图或日志中暴露过的 Key 必须先轮换。
+
+### 手工验证流程
+
+1. 教师登录“AI 课堂助教”，提问并确认回答包含知识点来源。
+2. “一键备课”设置教材版本、课堂场景和低带宽优先，创建任务。
+3. “课堂播放”确认视频可全屏并可下载到本机。
+4. “试点记录”填写真实授权记录并保存草稿；未确认授权时提交应失败。
+5. 管理员查看全部记录并执行复核；无已提交记录时应显示“暂无真实试点数据”。

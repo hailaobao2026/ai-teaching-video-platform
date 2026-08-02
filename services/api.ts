@@ -1,4 +1,4 @@
-﻿const API_BASE = '';
+const API_BASE = '';
 
 function getToken() {
   return localStorage.getItem('atv_token') || '';
@@ -84,6 +84,32 @@ export const jobService = {
   assets: (id: string) => request<any[]>(`/api/jobs/${id}/assets`)
 };
 
+export const assistantService = {
+  ask: (payload: {
+    question: string;
+    subject?: string;
+    grade?: string;
+    chapter?: string;
+    textbookEdition?: string;
+    history?: Array<{ role: 'user' | 'assistant'; content: string }>;
+  }) => request<any>('/api/assistant/chat', {
+    method: 'POST',
+    body: JSON.stringify(payload)
+  })
+};
+
+export const ruralPilotService = {
+  list: (status?: 'draft' | 'submitted' | 'verified') => {
+    const suffix = status ? `?status=${encodeURIComponent(status)}` : '';
+    return request<any[]>(`/api/rural-pilots${suffix}`);
+  },
+  summary: () => request<any>('/api/rural-pilots/summary'),
+  get: (id: string) => request<any>(`/api/rural-pilots/${encodeURIComponent(id)}`),
+  create: (payload: Record<string, unknown>) => request<any>('/api/rural-pilots', { method: 'POST', body: JSON.stringify(payload) }),
+  update: (id: string, payload: Record<string, unknown>) => request<any>(`/api/rural-pilots/${encodeURIComponent(id)}`, { method: 'PATCH', body: JSON.stringify(payload) }),
+  submit: (id: string) => request<any>(`/api/rural-pilots/${encodeURIComponent(id)}/submit`, { method: 'POST' }),
+  verify: (id: string) => request<any>(`/api/rural-pilots/${encodeURIComponent(id)}/verify`, { method: 'POST' })
+};
 export const courseService = {
   listPublic: (params: Record<string, string> = {}) => {
     const q = new URLSearchParams(params);

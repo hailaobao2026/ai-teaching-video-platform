@@ -61,6 +61,7 @@ const memory = {
   events: [],
   subjects: [],
   knowledge_points: [],
+  rural_pilot_evidence_records: [],
   user_model_settings: {},
   config: {
     teaching_media_root: process.env.TEACHING_MEDIA_ROOT || '',
@@ -72,7 +73,7 @@ const memory = {
     hyperframes_quality: process.env.HYPERFRAMES_QUALITY || 'standard',
     worker_concurrency: process.env.WORKER_CONCURRENCY || '1',
     'models.tts.allowlist': process.env.MODELS_TTS_ALLOWLIST || 'edge,minimax,seed,say',
-    'models.image.allowlist': process.env.MODELS_IMAGE_ALLOWLIST || 'agnes,mulerun,apimart,atlascloud,volcengine',
+    'models.image.allowlist': process.env.MODELS_IMAGE_ALLOWLIST || 'agnes,mulerun,apimart,atlascloud,volcengine,qwenimage',
     'models.video.allowlist': process.env.MODELS_VIDEO_ALLOWLIST || 'hyperframes',
     'models.catalog_version': process.env.MODELS_CATALOG_VERSION || '1'
   }
@@ -98,6 +99,7 @@ function loadMemory() {
   if (!memory.config || typeof memory.config !== 'object') {
     memory.config = {};
   }
+  if (!Array.isArray(memory.rural_pilot_evidence_records)) memory.rural_pilot_evidence_records = [];
 }
 
 function saveMemory() {
@@ -223,7 +225,6 @@ async function ensureMysqlReviewsSchema(conn) {
     await conn.query('ALTER TABLE course_reviews ADD COLUMN subject_scope VARCHAR(64) NULL');
   }
 }
-
 
 function ensureMemoryKnowledgeCatalog() {
   if (!Array.isArray(memory.subjects)) memory.subjects = [];
@@ -474,6 +475,45 @@ async function initMysql() {
         INDEX idx_reviews_reviewer (reviewer_id)
       )`);
     await ensureMysqlReviewsSchema(conn);
+    await conn.query(`
+      CREATE TABLE IF NOT EXISTS rural_pilot_evidence_records (
+        id VARCHAR(64) PRIMARY KEY,
+        created_by VARCHAR(64) NOT NULL,
+        school_name VARCHAR(128) NOT NULL,
+        region VARCHAR(128) NOT NULL,
+        teacher_name VARCHAR(64) NOT NULL,
+        class_name VARCHAR(64) NULL,
+        grade_code VARCHAR(32) NULL,
+        subject_code VARCHAR(64) NULL,
+        textbook_edition VARCHAR(128) NULL,
+        topic VARCHAR(256) NOT NULL,
+        course_id VARCHAR(64) NULL,
+        job_id VARCHAR(64) NULL,
+        student_count INT NULL,
+        prep_before_minutes INT NULL,
+        prep_after_minutes INT NULL,
+        pre_quiz_total INT NULL,
+        pre_quiz_correct INT NULL,
+        post_quiz_total INT NULL,
+        post_quiz_correct INT NULL,
+        teacher_accuracy_score DECIMAL(5,2) NULL,
+        teacher_usefulness_score DECIMAL(5,2) NULL,
+        teacher_feedback TEXT NULL,
+        network_mode VARCHAR(16) NOT NULL DEFAULT 'online',
+        offline_downloaded TINYINT NOT NULL DEFAULT 0,
+        offline_played TINYINT NOT NULL DEFAULT 0,
+        playback_duration_sec INT NULL,
+        playback_interruption_count INT NOT NULL DEFAULT 0,
+        incident_note TEXT NULL,
+        consent_confirmed TINYINT NOT NULL DEFAULT 0,
+        status VARCHAR(16) NOT NULL DEFAULT 'draft',
+        created_at DATETIME NOT NULL,
+        updated_at DATETIME NOT NULL,
+        submitted_at DATETIME NULL,
+        verified_at DATETIME NULL,
+        INDEX idx_pilot_evidence_created_by (created_by),
+        INDEX idx_pilot_evidence_status (status)
+      )`);
     await ensureMysqlKnowledgeCatalog(conn);
   } finally {
     conn.release();
@@ -1642,6 +1682,69 @@ export const db = {
   },
 
 
+  async createRuralPilotEvidence(userId, payload = {}) {
+    const data = normalizeRuralPilotEvidencePayload(payload, { partial: false });
+    const now = new Date().toISOString();
+    const record = { id: generateId('pilot'), created_by: userId, ...data, status: 'draft', created_at: now, updated_at: now, submitted_at: null, verified_at: null };
+    if (useMysql) {
+      const columns = ['id','created_by',...Object.keys(data),'status','created_at','updated_at','submitted_at','verified_at'];
+      const values = [record.id,userId,...Object.entries(data).map(([key,value]) => ['offline_downloaded','offline_played','consent_confirmed'].includes(key) ? (value ? 1 : 0) : value),'draft',new Date(now),new Date(now),null,null];
+      await pool.execute(`INSERT INTO rural_pilot_evidence_records (${columns.join(',')}) VALUES (${columns.map(() => '?').join(',')})`, values);
+      return this.getRuralPilotEvidence(record.id);
+    }
+    refreshMemory(); memory.rural_pilot_evidence_records.unshift(record); saveMemory();
+    return publicRuralPilotEvidenceRecord(record);
+  },
+
+  async getRuralPilotEvidence(id) {
+    if (useMysql) { const [rows] = await pool.execute('SELECT * FROM rural_pilot_evidence_records WHERE id=? LIMIT 1',[id]); return rows[0] ? publicRuralPilotEvidenceRecord(rows[0]) : null; }
+    refreshMemory(); const record = memory.rural_pilot_evidence_records.find((item) => item.id === id); return record ? publicRuralPilotEvidenceRecord(record) : null;
+  },
+
+  async listRuralPilotEvidence({ userId = null, includeAll = false, status = null, limit = 100 } = {}) {
+    const safeLimit = Math.min(500, Math.max(1, Number.parseInt(limit, 10) || 100));
+    if (useMysql) {
+      let sql='SELECT * FROM rural_pilot_evidence_records WHERE 1=1'; const params=[];
+      if (!includeAll) { sql+=' AND created_by=?'; params.push(userId); }
+      if (status) { sql+=' AND status=?'; params.push(status); }
+      sql+=` ORDER BY created_at DESC LIMIT ${safeLimit}`; const [rows]=await pool.execute(sql,params); return rows.map(publicRuralPilotEvidenceRecord);
+    }
+    refreshMemory(); return memory.rural_pilot_evidence_records.filter((item) => (includeAll || item.created_by === userId) && (!status || item.status === status)).sort((a,b) => String(b.created_at).localeCompare(String(a.created_at))).slice(0,safeLimit).map(publicRuralPilotEvidenceRecord);
+  },
+
+  async updateRuralPilotEvidence(id, userId, patch = {}, { allowAdmin = false } = {}) {
+    const current=await this.getRuralPilotEvidence(id); if(!current) return null;
+    if(!allowAdmin && current.createdBy !== userId) throw new Error('无权修改该记录');
+    if(current.status === 'verified') throw new Error('已复核记录不可修改');
+    const partial=normalizeRuralPilotEvidencePayload(patch,{partial:true}); delete partial.status;
+    const base=normalizeRuralPilotEvidencePayload(current,{partial:false}); const data=normalizeRuralPilotEvidencePayload({...base,...partial},{partial:false});
+    if(useMysql){ const entries=Object.entries(data); const values=entries.map(([key,value]) => ['offline_downloaded','offline_played','consent_confirmed'].includes(key) ? (value ? 1 : 0) : value); values.push(new Date(),id); await pool.execute(`UPDATE rural_pilot_evidence_records SET ${entries.map(([key]) => `${key}=?`).join(',')},updated_at=? WHERE id=?`,values); return this.getRuralPilotEvidence(id); }
+    refreshMemory(); const record=memory.rural_pilot_evidence_records.find((item)=>item.id===id); Object.assign(record,data,{updated_at:new Date().toISOString()}); saveMemory(); return publicRuralPilotEvidenceRecord(record);
+  },
+
+  async submitRuralPilotEvidence(id,userId,{allowAdmin=false}={}) {
+    const current=await this.getRuralPilotEvidence(id); if(!current) return null;
+    if(!allowAdmin && current.createdBy!==userId) throw new Error('无权提交该记录');
+    if(!current.consentConfirmed) throw new Error('提交前必须确认已获得学校或教师授权');
+    const now=new Date();
+    if(useMysql){ await pool.execute('UPDATE rural_pilot_evidence_records SET status=?,submitted_at=?,updated_at=? WHERE id=?',['submitted',now,now,id]); return this.getRuralPilotEvidence(id); }
+    refreshMemory(); const record=memory.rural_pilot_evidence_records.find((item)=>item.id===id); Object.assign(record,{status:'submitted',submitted_at:now.toISOString(),updated_at:now.toISOString()}); saveMemory(); return publicRuralPilotEvidenceRecord(record);
+  },
+
+  async verifyRuralPilotEvidence(id) {
+    const current=await this.getRuralPilotEvidence(id); if(!current) return null; const now=new Date();
+    if(useMysql){ await pool.execute('UPDATE rural_pilot_evidence_records SET status=?,verified_at=?,updated_at=? WHERE id=?',['verified',now,now,id]); return this.getRuralPilotEvidence(id); }
+    refreshMemory(); const record=memory.rural_pilot_evidence_records.find((item)=>item.id===id); Object.assign(record,{status:'verified',verified_at:now.toISOString(),updated_at:now.toISOString()}); saveMemory(); return publicRuralPilotEvidenceRecord(record);
+  },
+
+  async summarizeRuralPilotEvidence({userId=null,includeAll=false}={}) {
+    const records=await this.listRuralPilotEvidence({userId,includeAll,limit:500}); const submitted=records.filter((item)=>['submitted','verified'].includes(item.status));
+    const avg=(values)=>values.length?roundPilot(values.reduce((sum,value)=>sum+value,0)/values.length):null;
+    const prep=submitted.filter((item)=>item.prepBeforeMinutes>0 && item.prepAfterMinutes>=0); const pre=submitted.filter((item)=>item.preQuizTotal>0 && item.preQuizCorrect!=null); const post=submitted.filter((item)=>item.postQuizTotal>0 && item.postQuizCorrect!=null);
+    const before=avg(prep.map((item)=>item.prepBeforeMinutes)); const after=avg(prep.map((item)=>item.prepAfterMinutes)); const preAccuracy=avg(pre.map((item)=>item.preQuizCorrect/item.preQuizTotal)); const postAccuracy=avg(post.map((item)=>item.postQuizCorrect/item.postQuizTotal));
+    const accuracy=submitted.map((item)=>item.teacherAccuracyScore).filter(Number.isFinite); const usefulness=submitted.map((item)=>item.teacherUsefulnessScore).filter(Number.isFinite); const modeCounts={online:0,unstable:0,offline:0}; submitted.forEach((item)=>{if(modeCounts[item.networkMode]!==undefined) modeCounts[item.networkMode]+=1;}); const offlinePlayedCount=submitted.filter((item)=>item.offlinePlayed).length;
+    return {hasData:submitted.length>0,recordCount:records.length,submittedRecordCount:submitted.length,prep:{sampleCount:prep.length,beforeAvgMinutes:before,afterAvgMinutes:after,savedAvgMinutes:before==null||after==null?null:roundPilot(before-after),savedRate:before?roundPilot((before-after)/before):null},quiz:{sampleCount:Math.min(pre.length,post.length),preAccuracy,postAccuracy,improvement:preAccuracy==null||postAccuracy==null?null:roundPilot(postAccuracy-preAccuracy)},teacher:{sampleCount:Math.min(accuracy.length,usefulness.length),accuracyAvg:avg(accuracy),usefulnessAvg:avg(usefulness)},network:{modeCounts,offlinePlayedCount,offlinePlaybackRate:submitted.length?roundPilot(offlinePlayedCount/submitted.length):null}};
+  },
   async listSubjects({ includeDisabled = false } = {}) {
     if (useMysql) {
       const sql = includeDisabled
@@ -2452,7 +2555,7 @@ export const db = {
         worker_concurrency: process.env.WORKER_CONCURRENCY || '1',
         hyperframes_quality: process.env.HYPERFRAMES_QUALITY || 'standard',
         'models.tts.allowlist': process.env.MODELS_TTS_ALLOWLIST || 'edge,minimax,seed,say',
-        'models.image.allowlist': process.env.MODELS_IMAGE_ALLOWLIST || 'agnes,mulerun,apimart,atlascloud,volcengine',
+        'models.image.allowlist': process.env.MODELS_IMAGE_ALLOWLIST || 'agnes,mulerun,apimart,atlascloud,volcengine,qwenimage',
         'models.video.allowlist': process.env.MODELS_VIDEO_ALLOWLIST || 'hyperframes',
         'models.catalog_version': process.env.MODELS_CATALOG_VERSION || '1'
       };
@@ -2610,4 +2713,118 @@ function toSnake(key) {
   return key.replace(/[A-Z]/g, m => `_${m.toLowerCase()}`);
 }
 
+function pilotNumber(value) {
+  if (value == null || value === '') return null;
+  const number = Number(value);
+  return Number.isFinite(number) ? number : null;
+}
+
+function roundPilot(value) {
+  return Number(Number(value).toFixed(4));
+}
+
+function publicRuralPilotEvidenceRecord(record) {
+  return {
+    id: record.id,
+    createdBy: record.created_by || record.createdBy,
+    schoolName: record.school_name ?? record.schoolName,
+    region: record.region,
+    teacherName: record.teacher_name ?? record.teacherName,
+    className: record.class_name ?? record.className ?? null,
+    gradeCode: record.grade_code ?? record.gradeCode ?? null,
+    subjectCode: record.subject_code ?? record.subjectCode ?? null,
+    textbookEdition: record.textbook_edition ?? record.textbookEdition ?? null,
+    topic: record.topic,
+    courseId: record.course_id ?? record.courseId ?? null,
+    jobId: record.job_id ?? record.jobId ?? null,
+    studentCount: pilotNumber(record.student_count ?? record.studentCount),
+    prepBeforeMinutes: pilotNumber(record.prep_before_minutes ?? record.prepBeforeMinutes),
+    prepAfterMinutes: pilotNumber(record.prep_after_minutes ?? record.prepAfterMinutes),
+    preQuizTotal: pilotNumber(record.pre_quiz_total ?? record.preQuizTotal),
+    preQuizCorrect: pilotNumber(record.pre_quiz_correct ?? record.preQuizCorrect),
+    postQuizTotal: pilotNumber(record.post_quiz_total ?? record.postQuizTotal),
+    postQuizCorrect: pilotNumber(record.post_quiz_correct ?? record.postQuizCorrect),
+    teacherAccuracyScore: pilotNumber(record.teacher_accuracy_score ?? record.teacherAccuracyScore),
+    teacherUsefulnessScore: pilotNumber(record.teacher_usefulness_score ?? record.teacherUsefulnessScore),
+    teacherFeedback: record.teacher_feedback ?? record.teacherFeedback ?? null,
+    networkMode: record.network_mode ?? record.networkMode ?? 'online',
+    offlineDownloaded: Boolean(record.offline_downloaded ?? record.offlineDownloaded),
+    offlinePlayed: Boolean(record.offline_played ?? record.offlinePlayed),
+    playbackDurationSec: pilotNumber(record.playback_duration_sec ?? record.playbackDurationSec),
+    playbackInterruptionCount: pilotNumber(record.playback_interruption_count ?? record.playbackInterruptionCount) ?? 0,
+    incidentNote: record.incident_note ?? record.incidentNote ?? null,
+    consentConfirmed: Boolean(record.consent_confirmed ?? record.consentConfirmed),
+    status: record.status || 'draft',
+    createdAt: record.created_at || record.createdAt,
+    updatedAt: record.updated_at || record.updatedAt,
+    submittedAt: record.submitted_at || record.submittedAt || null,
+    verifiedAt: record.verified_at || record.verifiedAt || null
+  };
+}
+
+function normalizeRuralPilotEvidencePayload(payload = {}, { partial = false } = {}) {
+  const source = payload || {};
+  const read = (camel, snake) => source[camel] !== undefined ? source[camel] : source[snake];
+  const has = (camel, snake) => source[camel] !== undefined || source[snake] !== undefined;
+  const text = (value, maxLength, required = false) => {
+    const normalized = value == null ? '' : String(value).trim();
+    if (required && !normalized) throw new Error('必填信息不完整');
+    return normalized ? normalized.slice(0, maxLength) : null;
+  };
+  const integer = (value, label) => {
+    if (value == null || value === '') return null;
+    const normalized = Number(value);
+    if (!Number.isInteger(normalized) || normalized < 0) throw new Error(`${label} 必须是非负整数`);
+    return normalized;
+  };
+  const score = (value, label) => {
+    if (value == null || value === '') return null;
+    const normalized = Number(value);
+    if (!Number.isFinite(normalized) || normalized < 1 || normalized > 5) throw new Error(`${label} 必须在 1-5 之间`);
+    return normalized;
+  };
+  const result = {};
+  const textFields = [
+    ['schoolName', 'school_name', 128, true], ['region', 'region', 128, true],
+    ['teacherName', 'teacher_name', 64, true], ['className', 'class_name', 64, false],
+    ['gradeCode', 'grade_code', 32, false], ['subjectCode', 'subject_code', 64, false],
+    ['textbookEdition', 'textbook_edition', 128, false], ['topic', 'topic', 256, true],
+    ['courseId', 'course_id', 64, false], ['jobId', 'job_id', 64, false],
+    ['teacherFeedback', 'teacher_feedback', 4000, false], ['incidentNote', 'incident_note', 4000, false]
+  ];
+  for (const [camel, snake, maxLength, required] of textFields) {
+    if (!partial || has(camel, snake)) result[snake] = text(read(camel, snake), maxLength, required && !partial);
+  }
+  const integerFields = [
+    ['studentCount', 'student_count', '学生人数'], ['prepBeforeMinutes', 'prep_before_minutes', '使用前备课时长'],
+    ['prepAfterMinutes', 'prep_after_minutes', '使用后备课时长'], ['preQuizTotal', 'pre_quiz_total', '课前题目数'],
+    ['preQuizCorrect', 'pre_quiz_correct', '课前答对数'], ['postQuizTotal', 'post_quiz_total', '课后题目数'],
+    ['postQuizCorrect', 'post_quiz_correct', '课后答对数'], ['playbackDurationSec', 'playback_duration_sec', '播放时长'],
+    ['playbackInterruptionCount', 'playback_interruption_count', '播放中断次数']
+  ];
+  for (const [camel, snake, label] of integerFields) {
+    if (!partial || has(camel, snake)) result[snake] = integer(read(camel, snake), label);
+  }
+  if (!partial || has('teacherAccuracyScore', 'teacher_accuracy_score')) result.teacher_accuracy_score = score(read('teacherAccuracyScore', 'teacher_accuracy_score'), 'AI 回答准确率评分');
+  if (!partial || has('teacherUsefulnessScore', 'teacher_usefulness_score')) result.teacher_usefulness_score = score(read('teacherUsefulnessScore', 'teacher_usefulness_score'), 'AI 可用性评分');
+  if (!partial || has('networkMode', 'network_mode')) {
+    const networkMode = String(read('networkMode', 'network_mode') || 'online');
+    if (!['online', 'unstable', 'offline'].includes(networkMode)) throw new Error('networkMode 无效');
+    result.network_mode = networkMode;
+  }
+  if (!partial || has('offlineDownloaded', 'offline_downloaded')) result.offline_downloaded = Boolean(read('offlineDownloaded', 'offline_downloaded'));
+  if (!partial || has('offlinePlayed', 'offline_played')) result.offline_played = Boolean(read('offlinePlayed', 'offline_played'));
+  if (!partial || has('consentConfirmed', 'consent_confirmed')) result.consent_confirmed = Boolean(read('consentConfirmed', 'consent_confirmed'));
+  if (!partial) {
+    result.network_mode = result.network_mode || 'online';
+    result.offline_downloaded = Boolean(result.offline_downloaded);
+    result.offline_played = Boolean(result.offline_played);
+    result.consent_confirmed = Boolean(result.consent_confirmed);
+    result.playback_interruption_count = result.playback_interruption_count ?? 0;
+  }
+  if (result.pre_quiz_total != null && result.pre_quiz_correct != null && result.pre_quiz_correct > result.pre_quiz_total) throw new Error('课前答对数不能大于题目数');
+  if (result.post_quiz_total != null && result.post_quiz_correct != null && result.post_quiz_correct > result.post_quiz_total) throw new Error('课后答对数不能大于题目数');
+  if (result.offline_played && !result.offline_downloaded) throw new Error('离线播放前必须先记录已下载');
+  return result;
+}
 export default db;

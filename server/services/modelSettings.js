@@ -2,7 +2,7 @@ import { normalizeRole, ROLES } from './rbac.js';
 import { OUTPUT_PROFILES } from './teachingMediaPipeline.js';
 
 export const TTS_PROVIDERS = ['edge', 'minimax', 'seed', 'say'];
-export const IMAGE_PROVIDERS = ['agnes', 'mulerun', 'apimart', 'atlascloud', 'volcengine'];
+export const IMAGE_PROVIDERS = ['agnes', 'mulerun', 'apimart', 'atlascloud', 'volcengine', 'qwenimage'];
 export const VIDEO_PROVIDERS = ['hyperframes']; // §13: only hyperframes in v1
 export const VIDEO_QUALITIES = ['draft', 'standard', 'high'];
 
@@ -11,14 +11,15 @@ const IMAGE_KEY_ENV = {
   mulerun: 'MULERUN_API_KEY',
   apimart: 'APIMART_API_KEY',
   atlascloud: 'ATLASCLOUD_API_KEY',
-  volcengine: 'VOLCENGINE_API_KEY'
+  volcengine: 'VOLCENGINE_API_KEY',
+  qwenimage: 'QWEN_IMAGE_API_KEY'
 };
 
 // Paid providers require personal credentials for student/teacher.
 // Admin may fall back to process.env (.env / .env.compose).
 export const FREE_TTS_PROVIDERS = new Set(['edge', 'say']);
 export const PAID_TTS_PROVIDERS = new Set(['seed', 'minimax']);
-export const PAID_IMAGE_PROVIDERS = new Set(['agnes', 'mulerun', 'apimart', 'atlascloud', 'volcengine']);
+export const PAID_IMAGE_PROVIDERS = new Set(['agnes', 'mulerun', 'apimart', 'atlascloud', 'volcengine', 'qwenimage']);
 
 export const PROVIDER_CREDENTIAL_SCHEMAS = {
   seed: {
@@ -72,6 +73,24 @@ export const PROVIDER_CREDENTIAL_SCHEMAS = {
     defaults: {
       apiUrl: 'https://ark.cn-beijing.volces.com/api/plan/v3',
       model: 'doubao-seedream-5.0-lite'
+    }
+  },
+  qwenimage: {
+    kind: 'image',
+    label: '阿里 Qwen-Image',
+    fields: [
+      { key: 'apiKey', label: 'API Key', required: true, secret: true, placeholder: 'sk-ws-xxx' },
+      { key: 'apiUrl', label: 'API Base URL', required: false, secret: false, placeholder: 'https://.../compatible-mode/v1' },
+      { key: 'model', label: '模型名称', required: false, secret: false, placeholder: 'qwen-image-2.0-pro-2026-06-22' }
+    ],
+    env: {
+      apiKey: ['QWEN_IMAGE_API_KEY'],
+      apiUrl: ['QWEN_IMAGE_BASE_URL', 'QWEN_IMAGE_API_URL'],
+      model: ['QWEN_IMAGE_MODEL']
+    },
+    defaults: {
+      apiUrl: 'https://dashscope.aliyuncs.com/api/v1',
+      model: 'qwen-image-2.0-pro-2026-06-22'
     }
   },
   agnes: {
@@ -299,6 +318,10 @@ export function buildRuntimeProviderEnv(provider, credential = {}) {
     }
     if (cred.apiUrl) env.VOLCENGINE_API_BASE_URL = cred.apiUrl;
     if (cred.model) env.VOLCENGINE_IMAGE_MODEL = cred.model;
+  } else if (provider === 'qwenimage') {
+    if (cred.apiKey) env.QWEN_IMAGE_API_KEY = cred.apiKey;
+    if (cred.apiUrl) env.QWEN_IMAGE_BASE_URL = cred.apiUrl;
+    if (cred.model) env.QWEN_IMAGE_MODEL = cred.model;
   } else if (provider === 'agnes') {
     if (cred.apiKey) env.AGNES_API_KEY = cred.apiKey;
     if (cred.apiUrl) env.AGNES_API_BASE_URL = cred.apiUrl;
@@ -531,7 +554,8 @@ export function buildModelCatalog(user, systemConfig = {}, userSettings = null) 
     mulerun: 'MuleRun（需 API Key）',
     apimart: 'APImart（需 API Key）',
     atlascloud: 'Atlas Cloud（需 API Key）',
-    volcengine: '火山引擎 Seedream（需 API Key）'
+    volcengine: '火山引擎 Seedream（需 API Key）',
+    qwenimage: '阿里 Qwen-Image（需 API Key）'
   };
   const image = IMAGE_PROVIDERS.filter(p => imageAllow.has(p)).map(provider => {
     const status = providerCredentialReady(provider, { userSettings: settings, role });

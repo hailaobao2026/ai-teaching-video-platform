@@ -1,6 +1,6 @@
-# AI Teaching Video Platform
+# 大山里的 AI 课：乡村课堂 AI 助教
 
-K12 教学视频生成与分享管理平台
+面向乡村教师和学生的 K12 课堂助教、备课视频生成与分享管理平台
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Version](https://img.shields.io/badge/version-v0.1.0-green.svg)
@@ -59,6 +59,23 @@ GitHub 渲染 `README.md` 时会过滤/限制 HTML 的 `<video>` 标签，因此
 
 ## 项目介绍
 
+项目已从通用教学视频生成器扩展为“乡村课堂 AI 助教”：教师可以按教材和课堂场景提问、一键载入生活化备课模板、生成低带宽优先的教学视频，并在课堂大屏播放或提前下载离线使用。模型不可用时，问答会自动回退项目知识库。
+
+### 比赛方向：乡村课堂 AI 助教
+
+本项目当前重点对齐“乡村课堂 AI 助教”方向，形成：
+
+```text
+教材知识点
+  → AI 课堂助教问答（知识点来源 + 百炼模型 + 本地兜底）
+  → 一键乡村备课（教材版本 / 课堂场景 / 低带宽优先）
+  → 教学视频生成
+  → 课堂大屏播放 / 全屏 / 下载离线视频
+  → 真实试点记录与管理员复核
+```
+
+比赛示范与真实试点记录方案见 [`docs/rural-classroom-pilot.md`](docs/rural-classroom-pilot.md)。当前仓库不预置真实学校、教师或学生效果数据，所有比赛结论必须来自后续获得授权的真实试点。
+
 用户按学科 / 年级选择或输入知识点，平台异步调用本地 **ai-teaching-media** 技能流水线，生成教学视频、信息图、文章插图、章节解说视频与封面，并将成片按课程分类入库，支持角色化审核、课程广场与学科知识点管理。
 
 工程形态参考 [genai-craft](../genai-craft)：React + Vite、Express + MySQL、异步 Job Worker。  
@@ -106,7 +123,10 @@ GitHub 渲染 `README.md` 时会过滤/限制 HTML 的 `<video>` 标签，因此
 | 七类产出档位 | 完整教学视频、组合包、信息图、插图、解说视频、封面、纯图 |
 | 任务中心 | 排队、阶段进度、失败重试/取消、产物查看 |
 | 课程广场 | 审核通过后公开展示；管理员可删除 |
-| 模型设置 | 个人 TTS / 文生图 / 视频渲染偏好；管理员系统默认 |
+| 模型设置 | 个人 TTS / 文生图 / 视频渲染偏好；收费 provider 支持个人凭证；管理员系统默认与 allowlist |
+| 乡村课堂 AI 助教 | 教材问答、知识点来源、百炼兼容模型、本地知识库兜底 |
+| 低带宽课堂 | 乡村备课模板、低带宽优先、课堂大屏、全屏和离线下载 |
+| 真实试点证据 | 备课耗时、课前/课后小题、教师评分、弱网/离线记录、提交/复核 |
 | 知识驱动动画 | 分镜质量门禁 + 学科 SVG 零件动画（光/力/电/化学/地理/历史等） |
 
 ## 功能清单
@@ -159,6 +179,25 @@ GitHub 渲染 `README.md` 时会过滤/限制 HTML 的 `<video>` 标签，因此
 
 ![登录页](docs/images/image-20260722233231161.png)
 
+### 乡村课堂 AI 助教
+
+教师可在「AI 课堂助教」中围绕教材版本、年级、章节和知识点提问，系统先检索项目知识点目录，再调用 OpenAI-compatible 模型组织回答，并返回知识点来源。远端模型未配置、超时或调用失败时，自动回退到本地知识库，不阻断课堂备课流程。
+
+支持的典型问题包括：
+
+- 概念解释、易错点和生活化案例
+- 面向乡村课堂的口语化讲解
+- 随堂小题、课前导入和课后复习提示
+- 根据教材版本和年级调整表达难度
+
+相关实现：`server/services/ruralTeachingAssistant.js`、`/api/assistant/chat`。
+
+### 真实试点证据闭环
+
+教师和管理员可在「试点记录」中记录真实课堂证据，包括备课前后耗时、学生课前/课后小题、教师对 AI 的准确率与可用性评价，以及弱网/离线播放现场。系统只汇总已提交或已复核记录；无真实数据时不会展示虚构效果结论。
+
+相关实现：`rural_pilot_evidence_records`、`/api/rural-pilots/*`、`server/tests/rural-pilot-evidence.test.js`。
+
 ### 1. 学科与知识点管理
 
 内容底座模块。把学科、年级、章节、知识点、学习目标和动画资源组织成结构化知识库，减少手工写复杂提示词。
@@ -192,7 +231,7 @@ GitHub 渲染 `README.md` 时会过滤/限制 HTML 的 `<video>` 标签，因此
 2. 选择学科、年级、章节、知识点 / 课程主题  
 3. 选择产出档位（如完整教学视频、视频+信息图+封面）  
 4. 选择语音模型：免费 `edge-tts`，或 Seed TTS 等  
-5. 如需图片/封面，选择 Agnes / Seedream 等 Provider  
+5. 如需图片/封面，选择 Agnes / Seedream / Qwen-Image 等 Provider
 6. 提交任务，到「我的任务」查看进度  
 7. 生成成功后预览视频、封面、信息图、分镜，并形成课程草稿  
 
@@ -267,7 +306,7 @@ GitHub 渲染 `README.md` 时会过滤/限制 HTML 的 `<video>` 标签，因此
 
 ### 6. 个人中心与模型设置
 
-用户可在个人中心配置 TTS / 文生图 / 视频渲染偏好；创建任务时固化 `modelSnapshot`，保证同一任务生成过程模型一致。
+用户可在个人中心配置 TTS / 文生图 / 视频渲染偏好；收费 provider 可填写个人凭证。创建任务时固化 `modelSnapshot`，保证同一任务生成过程模型一致；任务输入和工作区不保存明文凭证。
 
 ![个人中心](docs/images/profile-basic.png)
 
@@ -406,7 +445,7 @@ outputProfile=teaching_video_full
 | Chrome headless / Playwright | 渲染浏览器 |
 | ffmpeg | 音视频合成 |
 | Edge TTS / Seed TTS / Minimax | 语音合成 |
-| Agnes / Volcengine Seedream 等 | 可选文生图 |
+| Agnes / Volcengine Seedream / Qwen-Image 等 | 可选文生图 |
 
 ### 基础设施
 
@@ -427,7 +466,7 @@ outputProfile=teaching_video_full
 ┌─────────────▼────────────┐
 │  API Server (Express)    │
 │  Auth · Course · Job     │
-│  Catalog · Admin · Upload│
+│  Catalog · Assistant · Admin│
 └──────┬───────────┬───────┘
        │           │
 ┌──────▼─────┐ ┌───▼────────────┐
@@ -498,7 +537,7 @@ ai-teaching-video-platform/
 | Chrome / chrome-headless-shell | — | HyperFrames 渲染 |
 | ai-teaching-media | 本地 skill 目录 | 通过 `TEACHING_MEDIA_ROOT` 指向 |
 
-可选 Provider Key（按需）：`AGNES_API_KEY`、`VOLCENGINE_API_KEY`、`SEED_TTS_API_KEY`、`MINIMAX_API_KEY`、`LLM_API_KEY` 等。**不要把真实 API Key 提交进仓库。**
+可选平台 Provider Key（按需）：`AGNES_API_KEY`、`VOLCENGINE_API_KEY`、`SEED_TTS_API_KEY`、`MINIMAX_API_KEY`、`LLM_API_KEY` 等。教师和学生也可以在个人中心为收费 provider 配置个人凭证；当前凭证保存在 `user_model_settings.extra_json`，API 只返回掩码值，生产环境应进一步使用 KMS 或应用层加密。**不要把真实 API Key 提交进仓库。**
 
 ### 安装步骤
 
@@ -535,6 +574,10 @@ cp .env.example .env
 | `DEFAULT_IMAGE_PROVIDER` | 默认 `volcengine` 等 |
 | `HYPERFRAMES_FPS` / `HYPERFRAMES_WORKERS` | 渲染性能参数 |
 | `HYPERFRAMES_BROWSER_PATH` | Chrome headless 路径 |
+| `ASSISTANT_LLM_ENABLED` | 是否启用远端 AI 助教，异常时仍可本地知识库兜底 |
+| `ASSISTANT_LLM_API_KEY` / `ASSISTANT_LLM_BASE_URL` / `ASSISTANT_LLM_MODEL` | AI 助教 OpenAI-compatible 模型配置 |
+| `BAILIAN_API_KEY` / `BAILIAN_BASE_URL` / `BAILIAN_MODEL` | 百炼兼容模型配置；默认模型可用 `qwen3-max` |
+| `MODELS_TTS_ALLOWLIST` / `MODELS_IMAGE_ALLOWLIST` / `MODELS_VIDEO_ALLOWLIST` | 管理员开放的 provider 列表；视频首期仅 `hyperframes` |
 | `AGNES_API_KEY` / `VOLCENGINE_API_KEY` / `SEED_TTS_API_KEY` | 可选 Provider Key |
 | `ADMIN_EMAIL` / `ADMIN_PASSWORD` | 引导管理员账号 |
 | `SEED_DEMO_ACCOUNTS` | 是否注入演示账号 |
@@ -614,15 +657,20 @@ npm run start:mysql-stack   # 默认 API :3013
 # export NODE_IMAGE=docker.m.daocloud.io/library/node:22-bookworm
 # export MYSQL_IMAGE=docker.m.daocloud.io/library/mysql:8.0
 npm run compose:up
-# 带前端：WITH_WEB=1 npm run compose:up
+# 带前端（web 会在 :3000 提供 dist/）：
+WITH_WEB=1 npm run compose:up
+# 等价写法：COMPOSE_PROFILES=web npm run compose:up
 npm run compose:down
 ```
 
 默认：
 
 - API：`http://127.0.0.1:3002`
+- 带前端时 Web：`http://127.0.0.1:3000`
 - MySQL：`127.0.0.1:3307`
 - 演示账号：`teacher@demo.local` / `demo123`
+
+Compose 注意：前端修改后先执行 `npm run build`，再刷新或重启 `web`；后端修改后执行 `docker compose --env-file .env.compose up -d --build api worker`。`web` 服务只读挂载宿主机 `dist/`，不会自动编译 `App.tsx`。
 
 ### 常用脚本
 
@@ -646,7 +694,8 @@ npm run compose:down
 4. 产出档位选 `teaching_video_full`，TTS 选 `edge`  
 5. 提交任务，在「我的任务」等待 `succeeded`  
 6. 预览成片，形成课程草稿并提交审核  
-7. 管理员/对口教师审核通过后，在「课程广场」查看  
+7. 管理员/对口教师审核通过后，在「课程广场」查看
+8. 教师进入「试点记录」，填写真实授权的课堂使用数据并提交复核
 
 ## 文档地址
 
@@ -661,6 +710,9 @@ npm run compose:down
 | [docs/product.md](docs/product.md) | 产品说明 |
 | [docs/PRD.md](docs/PRD.md) | 需求（角色/审核/注册） |
 | [docs/user-model-settings.md](docs/user-model-settings.md) | 个人模型设置 |
+| [docs/bailian-integration.md](docs/bailian-integration.md) | 百炼模型接入与安全 |
+| [docs/rural-classroom-pilot.md](docs/rural-classroom-pilot.md) | 乡村课堂试点流程与证据 |
+| [docs/2026-08-01-update-summary.md](docs/2026-08-01-update-summary.md) | 今日功能与文档更新摘要 |
 | [docs/roadmap.md](docs/roadmap.md) | 路线图 |
 | [docs/regression-checklist.md](docs/regression-checklist.md) | 回归清单 |
 | [docs/概要设计.md](docs/概要设计.md) / [详细设计.md](docs/详细设计.md) | 设计文档 |
@@ -784,7 +836,7 @@ npm run smoke:mysql
 
 </details>
 
-## 近期更新（2026-07）
+## 近期更新（2026-08）
 
 ### 安全加固
 
@@ -793,7 +845,7 @@ npm run smoke:mysql
 | 修复项 | 说明 | 主要文件 |
 |------|------|------|
 | 会话 token 强随机 | 会话 token 改用 `crypto.randomBytes(32)`（base64url），实体 ID 随机段同步换为强随机；启动时自动清理旧格式（`tok_` 前缀）弱会话，用户需重新登录 | `server/db.js` |
-| 凭证不落库、不落盘 | 用户第三方 API Key 不再写入 `generation_jobs.input_json` 与 `data/jobs/*/input.json`，改为 Worker 执行时现场解析（`resolveJobRuntimeCredentials`），仅存在于内存；启动时自动清洗历史明文凭证 | `server/services/jobCredentials.js`、`teachingMediaPipeline.js` |
+| 任务凭证隔离 | 用户 API Key 不写入 `generation_jobs.input_json`、`data/jobs/*/input.json` 或 `credentialSnapshot`，Worker 执行时现场解析并注入运行环境；个人模型设置中的凭证保存于 `extra_json`，API 返回掩码 | `server/services/jobCredentials.js`、`server/services/modelSettings.js` |
 | Worker 不污染全局环境 | 移除把用户 Key 写入 `process.env` 的逻辑，凭证通过 `providerRuntimeEnv` 显式传给子进程，杜绝跨用户串用计费 | `server/workers/teachingMediaWorker.js`、`services/mediaPreflight.js` |
 | async 路由统一兜底 | 自动包装全部 async 路由，未捕获的 Promise rejection 进入全局错误中间件返回 500，单个路由异常不再打死整个 API 进程 | `server/index.js` |
 | 媒体签名密钥去硬编码 | 删除源码中的常量密钥兜底：生产未配置 `MEDIA_SIGNING_SECRET` 直接拒绝启动；开发环境自动生成并持久化 `server/data/.media-secret`（API/Worker 共享） | `server/services/mediaAccess.js`、`docker-compose.yml` |
@@ -847,7 +899,9 @@ npm run smoke:mysql
 
 ### 版本历史
 
-- **v0.1.1** (2026-07) - 安全加固（强随机会话 token、凭证不落库/不落盘、Worker 环境隔离、async 路由兜底、签名密钥去硬编码）与学科内容隔离修复（知识包学科门禁、动画族白名单）  
+- **v0.1.1** (2026-07) - 安全加固（强随机会话 token、任务凭证隔离、Worker 环境隔离、async 路由兜底、签名密钥去硬编码）与学科内容隔离修复（知识包学科门禁、动画族白名单）
+- **2026-08-01** - 乡村课堂 AI 助教方向增强：百炼兼容模型、乡村备课参数、低带宽/离线课堂播放、真实试点证据闭环
+- **2026-08-02** - 修复 `App.tsx` 中文乱码和管理后台白屏问题，补充 `qwenimage`、个人 provider 凭证、Compose 前端构建与文档说明
 - **v0.1.0** (2026-07) - 首个可交付版本：七类产出档位、RBAC 审核、知识点目录、模型设置、Compose 交付与端到端出片闭环  
 
 ## 路线图
@@ -862,11 +916,13 @@ npm run smoke:mysql
 - [x] 用户模型设置与任务 modelSnapshot  
 - [x] Docker Compose 多服务交付  
 - [x] 后端安全加固（会话/凭证/密钥/异步错误兜底）  
-- [x] 学科内容隔离（知识包学科门禁 + 动画族白名单）  
+- [x] 学科内容隔离（知识包学科门禁 + 动画族白名单）
+- [x] 乡村课堂 AI 助教、低带宽备课与离线播放
+- [x] 真实试点证据记录、提交、复核与指标汇总
 
 ### 计划功能
 
-- [ ] 管理员系统默认模型与 allowlist 后台完善  
+- [x] 管理员系统默认模型与 allowlist
 - [ ] 对象存储（MinIO/S3）替换本地 uploads  
 - [ ] 队列升级为 Redis/BullMQ（可选）  
 - [ ] 更多学科动画包与模板化讲稿  
@@ -885,11 +941,3 @@ npm run smoke:mysql
 SPDX-License-Identifier: MIT
 
 本项目采用 MIT 协议开源。在遵守协议的前提下，可自由使用、修改与分发。
-
-## Star History
-
-如果觉得项目不错，欢迎点个 Star ⭐
-
-> 将下方 `OWNER/REPO` 替换为实际上游仓库路径后即可显示趋势图。
-
-[![Star History Chart](https://api.star-history.com/svg?repos=hailaobao2026/ai-teaching-video-platform&type=Date)](https://star-history.com/#hailaobao2026/ai-teaching-video-platform&Date)

@@ -100,7 +100,7 @@ system_config (kv)
 审核记录：审核人、审核人角色、动作、意见、学科范围快照、时间。教师/管理员审核均写入。
 
 
-### user_model_settings（规划中）
+### user_model_settings（已实现）
 
 用户级模型偏好。详见 `docs/user-model-settings.md`。
 
@@ -110,10 +110,12 @@ system_config (kv)
 | tts_provider / tts_voice / tts_speed / tts_enabled | TTS 偏好 |
 | image_provider / image_style / image_aspect_ratio / image_enabled | 文生图偏好 |
 | video_provider / video_quality / video_fps / preferred_output_profile / video_enabled | 文生视频/渲染偏好 |
-| extra_json | 扩展 |
+| extra_json | 扩展；当前保存 `providerCredentials`（用户 provider 的 API URL、模型名及凭证） |
 | created_at / updated_at | |
 
-`generation_jobs.input_json` 将增加 `modelSnapshot` 固化本次实际模型。
+`generation_jobs.input_json` 已写入 `modelSnapshot`，固化本次实际使用的 provider、音色/模型和质量档位；同时保存 `textbookEdition`、`classroomScenario`、`lowBandwidth` 等乡村课堂参数。任务输入不保存明文 provider 凭证。
+
+> 安全边界：用户模型设置中的 `providerCredentials` 当前位于 MySQL `extra_json`（memory 模式位于本地 JSON 状态），API 响应只返回掩码后的 API Key。生产环境应进一步使用 KMS 或应用层加密保护该字段。
 
 ### system_config
 KV：默认 provider、并发、skill 路径、是否自动送审、模型 allowlist、默认 video provider/quality 等。详见 `docs/user-model-settings.md`。
@@ -167,3 +169,20 @@ KV：默认 provider、并发、skill 路径、是否自动送审、模型 allow
 | pack_key | 对应 KNOWLEDGE_PACKS 键（同步用） |
 
 管理端支持 `POST /api/admin/knowledge-points/sync` 一键从 `KNOWLEDGE_PACKS` 同步。
+
+
+### rural_pilot_evidence_records
+
+真实乡村课堂试点证据表，同时支持 MySQL 与 memory JSON 模式。
+
+| 字段组 | 字段 | 说明 |
+|---|---|---|
+| 基本信息 | `created_by`, `school_name`, `region`, `teacher_name`, `class_name` | 创建教师与试点现场；公开材料需脱敏 |
+| 教学信息 | `grade_code`, `subject_code`, `textbook_edition`, `topic`, `course_id`, `job_id` | 可关联已有课程与生成任务 |
+| 备课效率 | `prep_before_minutes`, `prep_after_minutes` | 使用平台前后备课耗时 |
+| 学习效果 | `pre_quiz_total`, `pre_quiz_correct`, `post_quiz_total`, `post_quiz_correct` | 匿名汇总小题统计，不记录学生个人信息 |
+| 教师评价 | `teacher_accuracy_score`, `teacher_usefulness_score`, `teacher_feedback` | 1–5 分评价与文字反馈 |
+| 网络现场 | `network_mode`, `offline_downloaded`, `offline_played`, `playback_duration_sec`, `playback_interruption_count`, `incident_note` | 在线、弱网和离线播放证据 |
+| 合规状态 | `consent_confirmed`, `status`, `submitted_at`, `verified_at` | 授权确认与草稿/提交/复核流程 |
+
+状态机：`draft` → `submitted` → `verified`。汇总只使用 `submitted`、`verified` 记录，并且正确率分母必须大于 0；无有效样本时返回 `null`。

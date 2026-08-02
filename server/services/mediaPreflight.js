@@ -23,7 +23,8 @@ function pathResolveHyperframes() {
 const execFileAsync = promisify(execFile);
 const IMAGE_KEYS = {
   mulerun: 'MULERUN_API_KEY', apimart: 'APIMART_API_KEY',
-  atlascloud: 'ATLASCLOUD_API_KEY', agnes: 'AGNES_API_KEY', volcengine: 'VOLCENGINE_API_KEY'
+  atlascloud: 'ATLASCLOUD_API_KEY', agnes: 'AGNES_API_KEY', volcengine: 'VOLCENGINE_API_KEY',
+  qwenimage: 'QWEN_IMAGE_API_KEY'
 };
 const IMAGE_PROFILES = new Set(['image_generation', 'infographic_only', 'short_video_cover', 'tech_article_diagram', 'package_all']);
 const VIDEO_PROFILES = new Set(['teaching_video_full', 'article_explainer_video', 'package_all']);

@@ -1,21 +1,29 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
+  Bot,
   BookOpen,
   CircleUserRound,
   Clapperboard,
   ClipboardCheck,
+  Download,
   GraduationCap,
   Home as HomeIcon,
   Library,
   ListChecks,
   LogIn,
   LogOut,
+  Maximize2,
+  MessageCircle,
+  MonitorPlay,
+  Send,
   Settings,
   Sparkles,
-  WandSparkles
+  WandSparkles,
+  WifiOff
 } from 'lucide-react';
-import type { AppView, CourseItem, GenerationJob, User } from './types';
-import { adminService, authService, catalogService, courseService, jobService, modelSettingsService, teacherService } from './services/api';
+import type { AppView, AssistantResponse, CourseItem, GenerationJob, RuralPilotRecord, RuralPilotSummary, User } from './types';
+import { adminService, assistantService, authService, catalogService, courseService, jobService, modelSettingsService, ruralPilotService, teacherService } from './services/api';
+import { RURAL_LESSON_PRESETS } from './ruralPresets';
 
 const SUBJECTS = [
   { code: 'chinese', name: '语文' },
@@ -68,7 +76,10 @@ export default function App() {
     autoCreateCourse: true,
     imageProvider: '',
     ttsProvider: '',
-    videoQuality: ''
+    videoQuality: '',
+    textbookEdition: '人教版',
+    classroomScenario: 'lesson-prep',
+    lowBandwidth: true
   });
   const [modelHint, setModelHint] = useState<string>('');
 
@@ -132,7 +143,10 @@ export default function App() {
 
   const nav = useMemo(() => ([
     { id: 'home', label: '首页', icon: HomeIcon },
-    { id: 'create', label: '生成教学视频', icon: WandSparkles },
+    { id: 'assistant', label: 'AI 课堂助教', icon: MessageCircle },
+    { id: 'create', label: '一键备课', icon: WandSparkles },
+    { id: 'classroom', label: '课堂播放', icon: MonitorPlay },
+    { id: 'rural-pilot', label: '试点记录', icon: ClipboardCheck },
     { id: 'jobs', label: '我的任务', icon: ListChecks },
     { id: 'courses', label: '课程广场', icon: Library },
     { id: 'my-courses', label: '我的课程', icon: BookOpen },
@@ -142,7 +156,7 @@ export default function App() {
     { id: 'admin-knowledge', label: '学科与知识点', icon: GraduationCap }
   ] as const).filter(item => {
     if (item.id === 'admin' || item.id === 'admin-knowledge') return user?.role === 'admin';
-    if (item.id === 'teacher-review') return user?.role === 'teacher' || user?.role === 'admin';
+    if (item.id === 'teacher-review' || item.id === 'rural-pilot') return user?.role === 'teacher' || user?.role === 'admin';
     return true;
   }), [user?.role]);
 
@@ -207,7 +221,7 @@ export default function App() {
 
   async function handleCreateJob() {
     if (!user) {
-      setMessage('请先登录后再提交生成任务（左侧「登录/注册」）');
+      setMessage('请先登录后再提交生成任务（左侧“登录/注册”）');
       setView('login');
       return;
     }
@@ -240,6 +254,17 @@ export default function App() {
     }
   }
 
+  function applyLessonPreset(preset: (typeof RURAL_LESSON_PRESETS)[number]) {
+    setForm((current) => ({
+      ...current,
+      ...preset.form,
+      learningGoals: [...preset.form.learningGoals]
+    }));
+    setPreflight(null);
+    setMessage(`已载入乡村课堂模板：${preset.title}`);
+    setView('create');
+  }
+
   return (
     <div className="app-shell">
       <a className="skip-link" href="#main-content">跳到主要内容</a>
@@ -247,8 +272,8 @@ export default function App() {
         <div className="brand">
           <span className="brand-mark" aria-hidden="true"><Clapperboard size={22} /></span>
           <span className="brand-copy">
-            <strong>AI 教学</strong>
-            <span>视频创作平台</span>
+            <strong>大山里的 AI 课</strong>
+            <span>乡村课堂 AI 助教</span>
           </span>
         </div>
 
@@ -301,27 +326,40 @@ export default function App() {
           <>
             <div className="hero">
               <div className="card hero-panel">
-                <div className="eyebrow"><Sparkles size={16} aria-hidden="true" /> AI 教学媒体工作台</div>
-                <h1>把 K12 知识点变成可分享的教学动画视频</h1>
+                <div className="eyebrow"><Sparkles size={16} aria-hidden="true" /> 乡村课堂 AI 助教</div>
+                <h1>让乡村教师更快备课，让每个孩子都能听懂</h1>
                 <p className="muted">
-                  输入学科与课程内容，平台调用 <code>ai-teaching-media</code> skill，
                   自动完成分镜、配音、渲染，并按课程分类管理上架。
+                  教师保留教学判断，AI 负责准备材料和解释难点。
                 </p>
                 <div className="row" style={{ marginTop: 16 }}>
-                  <button className="btn" onClick={() => setView('create')}><WandSparkles size={18} aria-hidden="true" />开始生成</button>
-                  <button className="btn secondary" onClick={() => setView('courses')}><Library size={18} aria-hidden="true" />课程广场</button>
+                  <button className="btn" onClick={() => setView('assistant')}><MessageCircle size={18} aria-hidden="true" />打开 AI 助教</button>
+                  <button className="btn secondary" onClick={() => setView('create')}><WandSparkles size={18} aria-hidden="true" />一键备课</button>
                 </div>
               </div>
               <div className="stat">
-                <div className="stat-label"><Clapperboard size={17} aria-hidden="true" />核心引擎</div>
-                <strong>ai-teaching-media</strong>
-                <div style={{ opacity: 0.85, marginTop: 8 }}>storyboard → TTS → HyperFrames → MP4</div>
+                <div className="stat-label"><WifiOff size={17} aria-hidden="true" />乡村适配</div>
+                <strong>低带宽优先</strong>
+                <div style={{ opacity: 0.85, marginTop: 8 }}>本地知识库兜底 · 可下载视频 · 大屏课堂模式</div>
               </div>
             </div>
             <div className="grid cols-3 feature-grid">
-              <div className="card feature-step"><span>01</span><h3>课程输入</h3><p className="muted">学科 / 年级 / 知识点 / 学习目标</p></div>
-              <div className="card feature-step"><span>02</span><h3>异步生成</h3><p className="muted">Worker 调用 skill，产出 1080p 配音视频</p></div>
-              <div className="card feature-step"><span>03</span><h3>分类分享</h3><p className="muted">审核后进入广场，同学可学习与再创作</p></div>
+              <div className="card feature-step"><span>01</span><h3>随时提问</h3><p className="muted">按学科、年级和教材上下文解释知识难点</p></div>
+              <div className="card feature-step"><span>02</span><h3>一键备课</h3><p className="muted">乡村生活化案例 + 分镜 + 配音 + 教学动画</p></div>
+              <div className="card feature-step"><span>03</span><h3>课堂使用</h3><p className="muted">大屏播放、暂停提问、视频下载后离线授课</p></div>
+            </div>
+            <div className="section-heading">
+              <div><span className="eyebrow">示范备课场景</span><h2>三类模板直接开始</h2></div>
+              <span className="muted">模板用于演示，真实课堂效果需通过试点数据验证</span>
+            </div>
+            <div className="grid cols-3">
+              {RURAL_LESSON_PRESETS.map((preset) => (
+                <button className="card preset-card" key={preset.id} onClick={() => applyLessonPreset(preset)}>
+                  <strong>{preset.title}</strong>
+                  <span>{preset.description}</span>
+                  <em>载入模板 →</em>
+                </button>
+              ))}
             </div>
           </>
         )}
@@ -334,7 +372,7 @@ export default function App() {
               <button className={authMode === 'register' ? 'btn' : 'btn secondary'} onClick={() => setAuthMode('register')}>注册</button>
             </div>
             {authMode === 'login' ? (
-              <p className="muted">支持管理员 / 教师 / 学生登录。管理员账号由系统初始化，不走公开注册。</p>
+              <p className="muted">支持管理员 / 教师 / 学生登录。管理员账号由系统初始化，不走公开注册</p>
             ) : (
               <p className="muted">公开注册仅支持学生或教师；教师须至少选择一个授课学科。管理员不可公开注册。</p>
             )}
@@ -432,6 +470,29 @@ export default function App() {
           </div>
         )}
 
+        {view === 'assistant' && (
+          <AssistantView
+            user={user}
+            subjects={subjectOptions.length ? subjectOptions : SUBJECTS}
+            grades={gradeOptions.length ? gradeOptions : GRADES}
+            onLogin={() => setView('login')}
+          />
+        )}
+
+        {view === 'classroom' && (
+          <ClassroomView courses={courses} onCreate={() => setView('create')} />
+        )}
+
+        {view === 'rural-pilot' && (
+          <RuralPilotView
+            user={user}
+            courses={myCourses}
+            subjects={subjectOptions.length ? subjectOptions : SUBJECTS}
+            grades={gradeOptions.length ? gradeOptions : GRADES}
+            onLogin={() => setView('login')}
+          />
+        )}
+
         {view === 'create' && (
           <div className="grid cols-2">
             <div className="card">
@@ -444,6 +505,28 @@ export default function App() {
                   value={form}
                   onChange={(patch) => setForm((current) => ({ ...current, ...patch }))}
                 />
+                <div className="grid cols-3">
+                  <label>教材版本
+                    <select value={form.textbookEdition} onChange={e => setForm({ ...form, textbookEdition: e.target.value })}>
+                      <option value="人教版">人教版</option>
+                      <option value="部编版">部编版</option>
+                      <option value="北师大版">北师大版</option>
+                      <option value="苏教版">苏教版</option>
+                      <option value="校本教材">校本教材</option>
+                    </select>
+                  </label>
+                  <label>课堂场景
+                    <select value={form.classroomScenario} onChange={e => setForm({ ...form, classroomScenario: e.target.value })}>
+                      <option value="lesson-prep">课前备课</option>
+                      <option value="in-class">课堂讲解</option>
+                      <option value="review">课后复习</option>
+                      <option value="mixed-grade">复式/混龄课堂</option>
+                    </select>
+                  </label>
+                  <label className="checkbox-field">
+                    <input type="checkbox" checked={form.lowBandwidth} onChange={e => setForm({ ...form, lowBandwidth: e.target.checked, videoQuality: e.target.checked ? 'draft' : form.videoQuality })} />
+                    低带宽优先                  </label>
+                </div>
                 <label>补充说明<textarea value={form.styleNotes} onChange={e => setForm({ ...form, styleNotes: e.target.value })} /></label>
                 <label>文章原文（文章插图/章节解说档位必填）<textarea value={form.article} onChange={e => setForm({ ...form, article: e.target.value })} /></label>
                 <label>视觉风格
@@ -475,6 +558,7 @@ export default function App() {
                       <option value="apimart">apimart</option>
                       <option value="atlascloud">atlascloud</option>
                       <option value="volcengine">volcengine (火山 Seedream)</option>
+                      <option value="qwenimage">qwenimage (Alibaba Qwen-Image)</option>
                     </select>
                   </label>
                   <label>TTS 覆盖
@@ -508,11 +592,11 @@ export default function App() {
                 <li>Edge / Minimax TTS 配音</li>
                 <li>scaffold + 场景填充</li>
                 <li>HyperFrames 渲染 1080p（通常最耗时）</li>
-                <li>若选「视频+信息图+封面」：再串行调用文生图 3 次（信息图/封面/概念图）</li>
+                <li>若选“视频 + 信息图 + 封面”：再串行调用文生图 3 次（信息图/封面/概念图）</li>
                 <li>按课程分类入库，可送审分享</li>
               </ol>
               {form.outputProfile === 'package_all' && (
-                <p className="muted">该模式 = 完整教学视频 + 3 张生图，耗时约为「仅视频」的 1.3~2 倍，主要卡在 HyperFrames 渲染与 Agnes 生图排队。</p>
+                <p className="muted">该模式 = 完整教学视频 + 3 张生图，耗时约为「仅视频」的 1.3~2 倍，主要卡在 HyperFrames 渲染中 Agnes 生图排队</p>
               )}
             </div>
           </div>
@@ -521,7 +605,7 @@ export default function App() {
         {view === 'jobs' && (
           <div className="card">
             <h2>我的任务</h2>
-            <p className="muted">「视频+信息图+封面」成功后，请点「产物」查看封面/信息图/概念图；列表默认只突出视频入口。</p>
+            <p className="muted">“视频 + 信息图 + 封面”成功后，请点“产物”查看封面/信息图/概念图；列表默认只突出视频入口</p>
             <table>
               <thead>
                 <tr>
@@ -596,7 +680,7 @@ export default function App() {
                     <td><span className="badge">{c.publishStatus}</span></td>
                     <td className="muted" style={{ maxWidth: 280 }}>
                       {c.latestReview
-                        ? `${c.latestReview.action}${c.latestReview.comment ? `：${c.latestReview.comment}` : ''}`
+                        ? `${c.latestReview.action}${c.latestReview.comment ? `，${c.latestReview.comment}` : ''}`
                         : (c.publishStatus === 'pending'
                           ? ((c.authorRole === 'student' || c.authorRoleSnapshot === 'student')
                             ? '审核中（学科教师/管理员）'
@@ -630,14 +714,12 @@ export default function App() {
             {user?.role === 'admin' ? (
               <>
                 <p className="muted">
-                  管理员审核全量待审课程（含学生无对口教师兜底、教师作品、管理员作品）。
-                  教师侧「待我审核」只收本学科学生作品，因此管理员自己提交的课程不会出现在教师队列。
                 </p>
                 <AdminReview onDone={refresh} />
               </>
             ) : (
               <>
-                <p className="muted">仅展示本学科学生待审作品；教师/管理员作品由管理员审核。跨学科不可见。</p>
+                <p className="muted">仅展示本学科学生待审作品；教师/管理员作品由管理员审核，跨学科不可见</p>
                 <TeacherReview onDone={refresh} />
               </>
             )}
@@ -658,7 +740,7 @@ export default function App() {
               </div>
               <div className="card">
                 <h3>系统模型默认（TTS / 文生图）</h3>
-                <p className="muted">这里改的是全站默认；各角色可在「个人中心 → 模型设置」覆盖。</p>
+              <p className="muted">这里改的是全站默认；各角色可在“个人中心 → 模型设置”覆盖。</p>
                 <AdminConfig />
               </div>
             </div>
@@ -668,7 +750,7 @@ export default function App() {
             </div>
             <div className="card">
               <h3>学科与知识点</h3>
-              <p className="muted">学科/知识点维护已移到左侧菜单「学科与知识点」，避免管理后台页面过长。</p>
+              <p className="muted">学科/知识点维护已移到左侧菜单“学科与知识点”，避免管理后台页面过长。</p>
               <button className="btn" onClick={() => setView('admin-knowledge')}>打开学科与知识点管理</button>
             </div>
           </div>
@@ -679,7 +761,7 @@ export default function App() {
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
               <div>
                 <h2 style={{ marginBottom: 4 }}>学科与知识点管理</h2>
-                <p className="muted" style={{ margin: 0 }}>维护大类学科与子类知识点；生成页可下拉选择或关键字搜索填入章节/主题。</p>
+                <p className="muted" style={{ margin: 0 }}>维护大类学科与子类知识点；生成页可下拉选择或关键词搜索填入章节/主题。</p>
               </div>
               <button className="btn secondary" onClick={() => setView('admin')}>返回管理后台</button>
             </div>
@@ -689,6 +771,353 @@ export default function App() {
           </div>
         )}
       </main>
+    </div>
+  );
+}
+
+const EMPTY_PILOT_FORM = {
+  schoolName: '', region: '', teacherName: '', className: '', gradeCode: '', subjectCode: '', textbookEdition: '', topic: '', courseId: '', jobId: '',
+  studentCount: '', prepBeforeMinutes: '', prepAfterMinutes: '', preQuizTotal: '', preQuizCorrect: '', postQuizTotal: '', postQuizCorrect: '',
+  teacherAccuracyScore: '', teacherUsefulnessScore: '', teacherFeedback: '', networkMode: 'online', offlineDownloaded: false, offlinePlayed: false,
+  playbackDurationSec: '', playbackInterruptionCount: '0', incidentNote: '', consentConfirmed: false
+};
+
+function RuralPilotView({ user, courses, subjects, grades, onLogin }: {
+  user: User | null;
+  courses: CourseItem[];
+  subjects: { code: string; name: string }[];
+  grades: { code: string; name: string }[];
+  onLogin: () => void;
+}) {
+  const [records, setRecords] = useState<RuralPilotRecord[]>([]);
+  const [summary, setSummary] = useState<RuralPilotSummary | null>(null);
+  const [form, setForm] = useState<any>({ ...EMPTY_PILOT_FORM });
+  const [editingId, setEditingId] = useState('');
+  const [status, setStatus] = useState('');
+  const canUse = user?.role === 'teacher' || user?.role === 'admin';
+
+  async function load() {
+    if (!canUse) return;
+    try {
+      const [recordList, summaryData] = await Promise.all([ruralPilotService.list(), ruralPilotService.summary()]);
+      setRecords(recordList);
+      setSummary(summaryData);
+    } catch (error: any) {
+      setStatus(error.message || '加载试点记录失败');
+    }
+  }
+
+  useEffect(() => { load(); }, [user?.id]);
+
+  function setField(name: string, value: any) {
+    setForm((current: any) => ({ ...current, [name]: value }));
+  }
+
+  function selectCourse(courseId: string) {
+    const course = courses.find((item) => item.id === courseId);
+    setForm((current: any) => ({
+      ...current,
+      courseId,
+      topic: course?.topic || current.topic,
+      subjectCode: course?.subject || current.subjectCode,
+      gradeCode: course?.grade || current.gradeCode
+    }));
+  }
+
+  function numberOrNull(value: string) {
+    return value === '' ? null : Number(value);
+  }
+
+  function payload() {
+    return {
+      ...form,
+      studentCount: numberOrNull(form.studentCount),
+      prepBeforeMinutes: numberOrNull(form.prepBeforeMinutes),
+      prepAfterMinutes: numberOrNull(form.prepAfterMinutes),
+      preQuizTotal: numberOrNull(form.preQuizTotal),
+      preQuizCorrect: numberOrNull(form.preQuizCorrect),
+      postQuizTotal: numberOrNull(form.postQuizTotal),
+      postQuizCorrect: numberOrNull(form.postQuizCorrect),
+      teacherAccuracyScore: numberOrNull(form.teacherAccuracyScore),
+      teacherUsefulnessScore: numberOrNull(form.teacherUsefulnessScore),
+      playbackDurationSec: numberOrNull(form.playbackDurationSec),
+      playbackInterruptionCount: numberOrNull(form.playbackInterruptionCount) ?? 0
+    };
+  }
+
+  async function saveDraft() {
+    try {
+      const saved = editingId ? await ruralPilotService.update(editingId, payload()) : await ruralPilotService.create(payload());
+      setEditingId(saved.id);
+      setStatus('试点记录草稿已保存');
+      await load();
+    } catch (error: any) {
+      setStatus(error.message || '保存失败');
+    }
+  }
+
+  function editRecord(record: RuralPilotRecord) {
+    setEditingId(record.id);
+    setForm({
+      ...EMPTY_PILOT_FORM,
+      ...record,
+      studentCount: record.studentCount ?? '', prepBeforeMinutes: record.prepBeforeMinutes ?? '', prepAfterMinutes: record.prepAfterMinutes ?? '',
+      preQuizTotal: record.preQuizTotal ?? '', preQuizCorrect: record.preQuizCorrect ?? '', postQuizTotal: record.postQuizTotal ?? '', postQuizCorrect: record.postQuizCorrect ?? '',
+      teacherAccuracyScore: record.teacherAccuracyScore ?? '', teacherUsefulnessScore: record.teacherUsefulnessScore ?? '', playbackDurationSec: record.playbackDurationSec ?? '',
+      playbackInterruptionCount: record.playbackInterruptionCount ?? 0
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  async function submitRecord(id: string) {
+    try {
+      await ruralPilotService.submit(id);
+      setStatus('记录已提交，管理员可进行真实性复核');
+      await load();
+    } catch (error: any) {
+      setStatus(error.message || '提交失败');
+    }
+  }
+
+  async function verifyRecord(id: string) {
+    try {
+      await ruralPilotService.verify(id);
+      setStatus('记录已标记为已复核');
+      await load();
+    } catch (error: any) {
+      setStatus(error.message || '复核失败');
+    }
+  }
+
+  const percent = (value: number | null | undefined) => value == null ? '暂无数据' : `${(value * 100).toFixed(1)}%`;
+  const metric = (value: number | null | undefined, suffix = '') => value == null ? '暂无数据' : `${value.toFixed(1)}${suffix}`;
+
+  if (!user) return <div className="card"><h2>真实试点记录</h2><p className="muted">登录教师账号后，可记录备课效率、学生前后测、教师评价与离线播放现场。</p><button className="btn" onClick={onLogin}>登录后填写</button></div>;
+  if (!canUse) return <div className="card"><h2>真实试点记录</h2><p className="muted">该功能面向教师与管理员，用于采集比赛所需的真实课堂证据。</p></div>;
+
+  return (
+    <div className="grid" style={{ gap: 16 }}>
+      <div className="card">
+        <h2>真实乡村课堂试点证据</h2>
+        <p className="muted">这里只保存真实授权数据，不预置演示结论，不记录学生姓名、身份证、联系方式等个人敏感信息</p>
+        {summary?.hasData ? (
+          <div className="grid cols-3" style={{ marginTop: 12 }}>
+            <div className="stat"><div className="stat-label">已提交试点</div><strong>{summary.submittedRecordCount}</strong></div>
+            <div className="stat"><div className="stat-label">平均节省备课</div><strong>{metric(summary.prep.savedAvgMinutes, ' 分钟')}</strong></div>
+            <div className="stat"><div className="stat-label">小题正确率提升</div><strong>{percent(summary.quiz.improvement)}</strong></div>
+            <div className="stat"><div className="stat-label">AI 回答准确率</div><strong>{metric(summary.teacher.accuracyAvg, ' / 5')}</strong></div>
+            <div className="stat"><div className="stat-label">AI 可用性</div><strong>{metric(summary.teacher.usefulnessAvg, ' / 5')}</strong></div>
+            <div className="stat"><div className="stat-label">离线播放记录</div><strong>{summary.network.offlinePlayedCount}</strong></div>
+          </div>
+        ) : <div className="assistant-notice" style={{ marginTop: 12 }}><ClipboardCheck size={17} /><span>暂无真实试点数据。完成课堂试点并提交记录后，系统才会计算效果指标。</span></div>}
+      </div>
+
+      <div className="card">
+        <h3>{editingId ? '编辑试点记录' : '新建试点记录'}</h3>
+        <div className="grid cols-2" style={{ gap: 12 }}>
+          <label>关联课程<select value={form.courseId} onChange={(event) => selectCourse(event.target.value)}><option value="">不关联课</option>{courses.map((course) => <option key={course.id} value={course.id}>{course.title}</option>)}</select></label>
+          <label>学校名称 *<input value={form.schoolName} onChange={(event) => setField('schoolName', event.target.value)} placeholder="真实学校名称；公开展示时建议脱敏" /></label>
+          <label>地区 *<input value={form.region} onChange={(event) => setField('region', event.target.value)} placeholder="省 / 市 / 县 / 乡镇" /></label>
+          <label>教师姓名 *<input value={form.teacherName} onChange={(event) => setField('teacherName', event.target.value)} /></label>
+          <label>班级<input value={form.className} onChange={(event) => setField('className', event.target.value)} /></label>
+          <label>知识点 / 课题 *<input value={form.topic} onChange={(event) => setField('topic', event.target.value)} /></label>
+          <label>学科<select value={form.subjectCode} onChange={(event) => setField('subjectCode', event.target.value)}><option value="">请选择</option>{subjects.map((item) => <option key={item.code} value={item.code}>{item.name}</option>)}</select></label>
+          <label>年级<select value={form.gradeCode} onChange={(event) => setField('gradeCode', event.target.value)}><option value="">请选择</option>{grades.map((item) => <option key={item.code} value={item.code}>{item.name}</option>)}</select></label>
+          <label>教材版本<input value={form.textbookEdition} onChange={(event) => setField('textbookEdition', event.target.value)} placeholder="如：人教版" /></label>
+          <label>学生人数<input type="number" min="0" value={form.studentCount} onChange={(event) => setField('studentCount', event.target.value)} /></label>
+        </div>
+
+        <h4 style={{ marginTop: 20 }}>备课效率</h4>
+        <div className="grid cols-2"><label>使用前备课耗时（分钟）<input type="number" min="0" value={form.prepBeforeMinutes} onChange={(event) => setField('prepBeforeMinutes', event.target.value)} /></label><label>使用后备课耗时（分钟）<input type="number" min="0" value={form.prepAfterMinutes} onChange={(event) => setField('prepAfterMinutes', event.target.value)} /></label></div>
+
+        <h4 style={{ marginTop: 20 }}>学生课前 / 课后小题</h4>
+        <div className="grid cols-2"><label>课前题目<input type="number" min="0" value={form.preQuizTotal} onChange={(event) => setField('preQuizTotal', event.target.value)} /></label><label>课前答对<input type="number" min="0" value={form.preQuizCorrect} onChange={(event) => setField('preQuizCorrect', event.target.value)} /></label><label>课后题目<input type="number" min="0" value={form.postQuizTotal} onChange={(event) => setField('postQuizTotal', event.target.value)} /></label><label>课后答对<input type="number" min="0" value={form.postQuizCorrect} onChange={(event) => setField('postQuizCorrect', event.target.value)} /></label></div>
+
+        <h4 style={{ marginTop: 20 }}>教师评价</h4>
+        <div className="grid cols-2"><label>AI 回答准确率（1-5）<input type="number" min="1" max="5" step="0.5" value={form.teacherAccuracyScore} onChange={(event) => setField('teacherAccuracyScore', event.target.value)} /></label><label>AI 可用性（1-5）<input type="number" min="1" max="5" step="0.5" value={form.teacherUsefulnessScore} onChange={(event) => setField('teacherUsefulnessScore', event.target.value)} /></label></div>
+        <label>教师反馈<textarea value={form.teacherFeedback} onChange={(event) => setField('teacherFeedback', event.target.value)} placeholder="记录准确性、可直接使用部分和需要教师修正部分" /></label>
+
+        <h4 style={{ marginTop: 20 }}>低带宽 / 离线播放现场</h4>
+        <div className="grid cols-2">
+          <label>网络状态<select value={form.networkMode} onChange={(event) => setField('networkMode', event.target.value)}><option value="online">在线稳定</option><option value="unstable">网络不稳定</option><option value="offline">离线环境</option></select></label>
+          <label>播放时长（秒）<input type="number" min="0" value={form.playbackDurationSec} onChange={(event) => setField('playbackDurationSec', event.target.value)} /></label>
+          <label>播放中断次数<input type="number" min="0" value={form.playbackInterruptionCount} onChange={(event) => setField('playbackInterruptionCount', event.target.value)} /></label>
+          <div className="row"><label className="row"><input type="checkbox" checked={form.offlineDownloaded} onChange={(event) => setField('offlineDownloaded', event.target.checked)} />已下载离线视频</label><label className="row"><input type="checkbox" checked={form.offlinePlayed} onChange={(event) => setField('offlinePlayed', event.target.checked)} />已实际离线播放</label></div>
+        </div>
+        <label>现场异常与记录<textarea value={form.incidentNote} onChange={(event) => setField('incidentNote', event.target.value)} placeholder="如：网络中断、设备型号、投影环境、播放是否卡顿" /></label>
+        <label className="row" style={{ marginTop: 12 }}><input type="checkbox" checked={form.consentConfirmed} onChange={(event) => setField('consentConfirmed', event.target.checked)} />已获得学校或教师授权，并确认未填写学生个人敏感信息</label>
+        <div className="row" style={{ marginTop: 16 }}><button className="btn" onClick={saveDraft}>保存草稿</button><button className="btn secondary" onClick={() => { setEditingId(''); setForm({ ...EMPTY_PILOT_FORM }); }}>新建空白记录</button><span className="muted">{status}</span></div>
+      </div>
+
+      <div className="card">
+        <h3>试点记录清单</h3>
+        {!records.length ? <p className="muted">尚未填写真实试点记录</p> : <table><thead><tr><th>学校 / 地区</th><th>课题</th><th>备课耗时</th><th>正确</th><th>网络</th><th>状态</th><th>操作</th></tr></thead><tbody>{records.map((record) => {
+          const preRate = record.preQuizTotal ? record.preQuizCorrect! / record.preQuizTotal : null;
+          const postRate = record.postQuizTotal ? record.postQuizCorrect! / record.postQuizTotal : null;
+          return <tr key={record.id}><td>{record.schoolName}<div className="muted">{record.region}</div></td><td>{record.topic}</td><td>{record.prepBeforeMinutes ?? '-'} → {record.prepAfterMinutes ?? '-'} 分钟</td><td>{preRate == null ? '-' : percent(preRate)} → {postRate == null ? '-' : percent(postRate)}</td><td>{record.networkMode}{record.offlinePlayed ? ' / 已离线播放' : ''}</td><td>{record.status === 'draft' ? '草稿' : record.status === 'submitted' ? '已提交' : '已复核'}</td><td><div className="row"><button className="btn secondary" onClick={() => editRecord(record)}>查看 / 编辑</button>{record.status === 'draft' && <button className="btn" onClick={() => submitRecord(record.id)}>提交</button>}{user.role === 'admin' && record.status === 'submitted' && <button className="btn" onClick={() => verifyRecord(record.id)}>复核</button>}</div></td></tr>;
+        })}</tbody></table>}
+      </div>
+    </div>
+  );
+}
+type AssistantMessage = {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+  result?: AssistantResponse;
+};
+
+function AssistantView({
+  user,
+  subjects,
+  grades,
+  onLogin
+}: {
+  user: User | null;
+  subjects: { code: string; name: string }[];
+  grades: { code: string; name: string }[];
+  onLogin: () => void;
+}) {
+  const [context, setContext] = useState({ subject: 'physics', grade: 'grade8', chapter: '机械能与能量', textbookEdition: '人教版' });
+  const [question, setQuestion] = useState('为什么机械能减少了，能量还可以守恒？');
+  const [loading, setLoading] = useState(false);
+  const [messages, setMessages] = useState<AssistantMessage[]>([
+    { id: 'welcome', role: 'assistant', content: '告诉我学科、年级和问题。我会优先使用项目知识库，模型不可用时自动切换到本地回答。' }
+  ]);
+
+  async function ask(override?: string) {
+    if (!user) {
+      onLogin();
+      return;
+    }
+    const currentQuestion = String(override || question).trim();
+    if (!currentQuestion || loading) return;
+    const userMessage: AssistantMessage = { id: String(Date.now()), role: 'user', content: currentQuestion };
+    const history = messages.filter((item) => item.id !== 'welcome').map((item) => ({ role: item.role, content: item.content }));
+    setMessages((current) => [...current, userMessage]);
+    setQuestion('');
+    setLoading(true);
+    try {
+      const result = await assistantService.ask({ ...context, question: currentQuestion, history });
+      setMessages((current) => [...current, {
+        id: String(Date.now() + 1),
+        role: 'assistant',
+        content: result.answer,
+        result
+      }]);
+    } catch (error: any) {
+      setMessages((current) => [...current, {
+        id: String(Date.now() + 1),
+        role: 'assistant',
+        content: error?.message || '助教暂时无法回答，请稍后重试。'
+      }]);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const lastResult = [...messages].reverse().find((item) => item.result)?.result;
+
+  return (
+    <div className="assistant-layout">
+      <div className="card assistant-context">
+        <div className="eyebrow"><Bot size={16} aria-hidden="true" />课堂上下文</div>
+        <h2>AI 课堂助教</h2>
+        <p className="muted">先限定教材范围，再提问回答用于辅助教师，不替代教师判断</p>
+        <div className="grid" style={{ gap: 12 }}>
+          <label>学科
+            <select value={context.subject} onChange={e => setContext({ ...context, subject: e.target.value })}>
+              {subjects.map((item) => <option key={item.code} value={item.code}>{item.name}</option>)}
+            </select>
+          </label>
+          <label>年级
+            <select value={context.grade} onChange={e => setContext({ ...context, grade: e.target.value })}>
+              {grades.map((item) => <option key={item.code} value={item.code}>{item.name}</option>)}
+            </select>
+          </label>
+          <label>章节<input value={context.chapter} onChange={e => setContext({ ...context, chapter: e.target.value })} /></label>
+          <label>教材版本
+            <select value={context.textbookEdition} onChange={e => setContext({ ...context, textbookEdition: e.target.value })}>
+              <option value="人教版">人教版</option><option value="部编版">部编版</option><option value="北师大版">北师大版</option><option value="苏教版">苏教版</option><option value="校本教材">校本教材</option>
+            </select>
+          </label>
+        </div>
+        <div className="assistant-notice"><WifiOff size={17} aria-hidden="true" /><span>优先使用已配置的大模型结合知识库回答；模型不可用时自动回退本地知识库库。</span></div>
+      </div>
+      <div className="card chat-panel">
+        <div className="chat-header">
+          <div><h2>课堂问答</h2><span className="muted">知识库检索 + 可选大模型解释</span></div>
+          {lastResult && <span className="badge">{lastResult.mode === 'llm' ? '大模型增强' : '本地知识库'}</span>}
+        </div>
+        <div className="chat-messages" aria-live="polite">
+          {messages.map((item) => (
+            <div className={'chat-message ' + item.role} key={item.id}>
+              <div className="chat-role">{item.role === 'assistant' ? 'AI 助教' : user?.nickname || '鎴'}</div>
+              <div className="chat-content">{item.content}</div>
+              {item.result?.sources?.length ? (
+                <div className="source-list">
+                  <span>依据</span>
+                  {item.result.sources.map((source) => <span className="badge" key={source.id}>{source.topic} · {source.chapter}</span>)}
+                </div>
+              ) : null}
+            </div>
+          ))}
+          {loading && <div className="chat-message assistant"><div className="chat-role">AI 助教</div><div className="chat-content">正在检索知识点并组织课堂解释</div></div>}
+        </div>
+        {lastResult?.suggestedQuestions?.length ? (
+          <div className="suggestion-row">
+            {lastResult.suggestedQuestions.map((item) => <button className="btn ghost" key={item} onClick={() => ask(item)}>{item}</button>)}
+          </div>
+        ) : null}
+        <form className="chat-input" onSubmit={(event) => { event.preventDefault(); ask(); }}>
+          <textarea value={question} onChange={e => setQuestion(e.target.value)} placeholder="例如：为什么机械能减少了，能量还可以守恒？" />
+          <button className="btn" type="submit" disabled={loading}><Send size={18} aria-hidden="true" />{user ? '提问' : '登录后提问'}</button>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+function ClassroomView({ courses, onCreate }: { courses: CourseItem[]; onCreate: () => void }) {
+  const playable = courses.filter((course) => Boolean(course.videoUrl));
+  const [selectedId, setSelectedId] = useState(playable[0]?.id || '');
+  const playerRef = useRef<HTMLVideoElement | null>(null);
+  useEffect(() => {
+    if (!playable.some((course) => course.id === selectedId)) setSelectedId(playable[0]?.id || '');
+  }, [courses, selectedId]);
+  const selected = playable.find((course) => course.id === selectedId) || playable[0];
+
+  return (
+    <div className="classroom-layout">
+      <div className="card classroom-stage">
+        <div className="chat-header">
+          <div><div className="eyebrow"><MonitorPlay size={16} aria-hidden="true" />课堂大屏模式</div><h2>{selected?.title || '暂无可播放课'}</h2></div>
+          {selected && <span className="badge">{selected.subject} · {selected.grade}</span>}
+        </div>
+        {selected?.videoUrl ? (
+          <>
+            <video ref={playerRef} src={selected.videoUrl} controls preload="metadata" className="classroom-video" />
+            <div className="row classroom-actions">
+              <button className="btn" onClick={() => playerRef.current?.requestFullscreen?.()}><Maximize2 size={18} aria-hidden="true" />全屏授课</button>
+              <a className="btn secondary" href={selected.videoUrl} download><Download size={18} aria-hidden="true" />下载离线视频</a>
+            </div>
+            <div className="assistant-notice"><WifiOff size={17} aria-hidden="true" /><span>建议课前下载到本机；课堂中可暂停视频，使用 AI 助教补充解释和随堂提问</span></div>
+          </>
+        ) : (
+          <div className="empty-state"><p>课程广场还没有通过审核的教学视频</p><button className="btn" onClick={onCreate}>先去一键备课</button></div>
+        )}
+      </div>
+      <div className="card classroom-playlist">
+        <h3>课堂播放列表</h3>
+        <p className="muted">仅显示已公开且有视频的课程</p>
+        {playable.map((course) => (
+          <button className={'playlist-item ' + (course.id === selected?.id ? 'active' : '')} key={course.id} onClick={() => setSelectedId(course.id)}>
+            <strong>{course.title}</strong>
+            <span>{course.subject} · {course.grade} · {course.chapter}</span>
+          </button>
+        ))}
+        {!playable.length && <div className="muted">暂无课程</div>}
+      </div>
     </div>
   );
 }
@@ -747,7 +1176,7 @@ function AdminConfig() {
       };
       const value = await adminService.updateConfig(payload);
       setConfig((current: any) => ({ ...current, ...value }));
-      setStatus('系统默认配置已保存：新任务与未开启个人设置的用户生效');
+      setStatus('系统默认配置已更新');
     } catch (error: any) {
       setStatus(error.message || '保存失败');
     }
@@ -761,8 +1190,7 @@ function AdminConfig() {
   return (
     <div className="grid" style={{ gap: 14 }}>
       <div className="muted">
-        系统默认优先级：任务覆盖 &gt; 个人模型设置 &gt; 管理后台系统默认 &gt; `.env/.env.compose`。
-        管理员/教师/学生都可在「个人中心 → 模型设置」配置自己的 TTS / 文生图。
+        系统默认优先级：任务覆盖 &gt; 个人模型设置 &gt; 管理后台系统默认 &gt; `.env/.env.compose`。管理员、教师和学生都可在个人中心 → 模型设置中配置自己的 TTS / 文生图。
       </div>
 
       <label>Skill 根目录
@@ -826,6 +1254,7 @@ function AdminConfig() {
               <option value="mulerun">MuleRun</option>
               <option value="apimart">APImart</option>
               <option value="atlascloud">Atlas Cloud</option>
+              <option value="qwenimage">Alibaba Qwen-Image</option>
             </select>
           </label>
           <label>渲染质量（视频）
@@ -844,7 +1273,8 @@ function AdminConfig() {
               ['agnes', 'Agnes'],
               ['mulerun', 'MuleRun'],
               ['apimart', 'APImart'],
-              ['atlascloud', 'Atlas Cloud']
+              ['atlascloud', 'Atlas Cloud'],
+              ['qwenimage', 'Alibaba Qwen-Image']
             ].map(([id, label]) => (
               <label key={id} className="row" style={{ gap: 4 }}>
                 <input type="checkbox" checked={imageAllow.has(id)} onChange={() => toggleList('models.image.allowlist', id)} />
@@ -972,7 +1402,7 @@ function assetLabel(type = '') {
   if (t.startsWith('diagram')) return '概念图';
   if (t.startsWith('video')) return '视频';
   if (t.startsWith('storyboard')) return '分镜';
-  if (t.startsWith('artifacts')) return '清单';
+  if (t.startsWith('artifacts')) return '嵥';
   return t || '资产';
 }
 
@@ -1098,7 +1528,7 @@ function ProfilePanel({ user, subjects, onSaved }: { user: User; subjects: { cod
       </div>
       {tab === 'profile' && (
         <div className="grid" style={{ gap: 12 }}>
-          <div className="muted">角色：{user.role} · 邮箱：{user.email}</div>
+          <div className="muted">角色：{user.role} · 䣺{user.email}</div>
           <label>昵称<input value={nickname} onChange={e => setNickname(e.target.value)} /></label>
           {user.role === 'student' && (
             <label>年级
@@ -1299,8 +1729,7 @@ function ModelSettingsPanel({ onMessage }: { onMessage?: (msg: string) => void }
           </span>
         </div>
         <div className="muted" style={{ marginBottom: 8, fontSize: 13 }}>
-          Edge TTS / say 免费无需 Key。收费 TTS 与文生图：教师/学生必须在此填写自己的 API Key（及可选 URL/模型名）后才能使用。
-          管理员可不填，默认读取服务器 `.env` / `.env.compose`。
+          Edge TTS / say 免费无需 Key。收费 TTS 与文生图：教师、学生必须在此填写自己的 API Key（及可选 URL/模型名）后才能使用。管理员可不填，默认读取服务器 `.env` / `.env.compose`。
         </div>
         <div className="grid cols-3">
           {fields.map((field: any) => (
@@ -1311,7 +1740,7 @@ function ModelSettingsPanel({ onMessage }: { onMessage?: (msg: string) => void }
                 autoComplete="off"
                 placeholder={
                   field.key === 'apiKey'
-                    ? (cred.apiKeySet ? '已保存，留空则保持不变' : (field.placeholder || '请输入 API Key'))
+                    ? (cred.apiKeySet ? '已保存 API Key，留空则保持不变' : (field.placeholder || '请输入 API Key'))
                     : (meta.defaults?.[field.key] || field.placeholder || '')
                 }
                 value={field.key === 'apiKey' ? (String(cred.apiKey || '').includes('••••') ? '' : (cred.apiKey || '')) : (cred[field.key] || '')}
@@ -1338,9 +1767,7 @@ function ModelSettingsPanel({ onMessage }: { onMessage?: (msg: string) => void }
       <div className="card" style={{ boxShadow: 'none', border: '1px solid var(--line)', background: 'var(--surface-warm)' }}>
         <strong>计费说明</strong>
         <div className="muted" style={{ marginTop: 6, fontSize: 13 }}>
-          免费：Edge TTS、macOS say、HyperFrames 本地渲染。收费：Seed TTS / Minimax / 全部文生图模型。
-          教师与学生使用收费模型前，必须在个人中心配置对应 API Key、可选 API URL 与模型名称；管理员默认可直接使用服务器环境变量。
-        </div>
+          免费：Edge TTS、macOS say、HyperFrames 本地渲染。收费：Seed TTS / Minimax / 全部文生图模型。          教师与学生使用收费模型前，必须在个人中心配置对应 API Key、可?API URL 与模型名称；管理员默认可直接使用服务器环境变量?        </div>
       </div>
 
       <div className="card" style={{ boxShadow: 'none', border: '1px solid var(--line)' }}>
@@ -1365,8 +1792,7 @@ function ModelSettingsPanel({ onMessage }: { onMessage?: (msg: string) => void }
               {!activeTtsVoices.length && <option value={settings.ttsVoice || ''}>{settings.ttsVoice || '默认'}</option>}
             </select>
           </label>
-          <label>语速
-            <input type="number" min={0.5} max={2} step={0.1} disabled={!settings.ttsEnabled} value={settings.ttsSpeed ?? 1} onChange={e => setSettings({ ...settings, ttsSpeed: Number(e.target.value) })} />
+          <label>语速            <input type="number" min={0.5} max={2} step={0.1} disabled={!settings.ttsEnabled} value={settings.ttsSpeed ?? 1} onChange={e => setSettings({ ...settings, ttsSpeed: Number(e.target.value) })} />
           </label>
         </div>
         {settings.ttsEnabled && paidTts && <CredentialFields provider={settings.ttsProvider} meta={activeTts} />}
@@ -1529,7 +1955,7 @@ function KnowledgeSelector({
       <label>关键字搜索知识点
         <input
           value={keyword}
-          placeholder="输入关键字匹配，如 守恒 / 等高线 / 1919"
+          placeholder="输入关键词匹配，如：守恒 / 等高线 / 1919"
           onChange={(e) => setKeyword(e.target.value)}
         />
       </label>
@@ -1558,7 +1984,7 @@ function KnowledgeSelector({
           </select>
         )}
       </label>
-      <label>知识点 / 课程主题
+      <label>知识?/ 课程主题
         {manualTopic || filteredTopics.length === 0 ? (
           <input
             value={value.topic}
@@ -1762,7 +2188,7 @@ function AdminKnowledge() {
       });
       await reload();
       setStatus('知识点已保存');
-      focusEditor('知识点已保存，可继续新增');
+      focusEditor(`正在编辑：${pointForm.topic}`);
     } catch (e: any) {
       setStatus(e.message || '保存知识点失败');
     }
@@ -1794,7 +2220,7 @@ function AdminKnowledge() {
   return (
     <div className="grid" style={{ gap: 16 }}>
       <div className="row" style={{ justifyContent: 'space-between' }}>
-        <div className="muted">左侧浏览知识点，右侧直接编辑。点击「编辑」会把内容填入右侧并定位到表单。</div>
+        <div className="muted">左侧浏览知识点，右侧直接编辑；点击“编辑”会把内容填入右侧并定位到表单。</div>
         <div className="row">
           <button className="btn secondary" onClick={() => setShowSubjectPanel((v) => !v)}>
             {showSubjectPanel ? '收起学科维护' : '维护学科大类'}
@@ -1844,7 +2270,7 @@ function AdminKnowledge() {
             </select>
             <input
               value={filterQ}
-              placeholder="搜索知识点/章节/关键词"
+              placeholder="搜索知识点、章节/关键词"
               onChange={(e) => setFilterQ(e.target.value)}
               onKeyDown={(e) => { if (e.key === 'Enter') applySearch(); }}
               style={{ flex: 1, minWidth: 180 }}
@@ -1854,7 +2280,7 @@ function AdminKnowledge() {
               className="btn secondary"
               onClick={async () => {
                 try {
-                  setStatus('正在从 KNOWLEDGE_PACKS 同步…');
+                  setStatus('正在?KNOWLEDGE_PACKS 同步');
                   const summary = await adminService.syncKnowledgePacks({ overwrite: true });
                   await reload();
                   setStatus(`同步完成：新增 ${summary.created}，更新 ${summary.updated}，跳过 ${summary.skipped}，共 ${summary.total} 个动画知识包`);
@@ -2000,7 +2426,7 @@ function AdminKnowledge() {
                 </div>
               );
             })}
-            {!points.length && <div className="muted">暂无知识点，可点右上角「新增知识点」或「一键同步动画知识包」。</div>}
+            {!points.length && <div className="muted">暂无知识点，可点击右上角“新增知识点”或“一键同步动画知识包”。</div>}
           </div>
         </div>
 
@@ -2049,8 +2475,7 @@ function AdminKnowledge() {
                 placeholder={'理解定义\n会画示意图\n能做基础题'}
               />
             </label>
-            <label>关联动画包
-              <select value={pointForm.animationPack || 'generic'} onChange={(e) => setPointForm({ ...pointForm, animationPack: e.target.value })}>
+            <label>关联动画包              <select value={pointForm.animationPack || 'generic'} onChange={(e) => setPointForm({ ...pointForm, animationPack: e.target.value })}>
                 {animationPacks.map((p) => <option key={p.code} value={p.code}>{p.name}</option>)}
               </select>
             </label>

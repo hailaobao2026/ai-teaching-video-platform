@@ -25,7 +25,8 @@ const IMAGE_KEYS = {
   apimart: 'APIMART_API_KEY',
   atlascloud: 'ATLASCLOUD_API_KEY',
   agnes: 'AGNES_API_KEY',
-  volcengine: 'VOLCENGINE_API_KEY'
+  volcengine: 'VOLCENGINE_API_KEY',
+  qwenimage: 'QWEN_IMAGE_API_KEY'
 };
 
 function providerRuntimeEnv(input = {}) {
@@ -490,7 +491,7 @@ function resolveImageProvider(input, config = {}) {
     return false;
   }).map(([name]) => name);
   if (available.length === 1) return available[0];
-  if (!available.length) throw new Error('未配置生图 API Key，请设置 MULERUN/APIMART/ATLASCLOUD/AGNES/VOLCENGINE_API_KEY（或个人中心配置）');
+  if (!available.length) throw new Error('未配置生图 API Key，请设置 MULERUN/APIMART/ATLASCLOUD/AGNES/VOLCENGINE/QWEN_IMAGE_API_KEY（或个人中心配置）');
   throw new Error('检测到多个生图 API Key，请设置 DEFAULT_IMAGE_PROVIDER 或在任务中指定 imageProvider');
 }
 
@@ -555,6 +556,11 @@ async function generateImage({ job, input, config, skillRoot, workDir, uploadsRo
       VOLCENGINE_HTTP_RETRIES: String(limits.httpRetries),
       // Allow ARK_API_KEY alias for Volcengine Seedream
       VOLCENGINE_API_KEY: process.env.VOLCENGINE_API_KEY || process.env.ARK_API_KEY || '',
+      QWEN_IMAGE_API_KEY: process.env.QWEN_IMAGE_API_KEY || '',
+      QWEN_IMAGE_BASE_URL: process.env.QWEN_IMAGE_BASE_URL || process.env.QWEN_IMAGE_API_URL || '',
+      QWEN_IMAGE_MODEL: process.env.QWEN_IMAGE_MODEL || '',
+      QWEN_IMAGE_HTTP_TIMEOUT: String(limits.httpTimeoutSec),
+      QWEN_IMAGE_HTTP_RETRIES: String(limits.httpRetries),
     })
   });
   const png = newestFile(outputDir, '.png');
@@ -817,7 +823,12 @@ async function runArticleDiagrams({ job, input, config, skillRoot, workDir, uplo
         AGNES_HTTP_RETRIES: String(limits.httpRetries),
         IMAGE_HTTP_TIMEOUT: String(limits.httpTimeoutSec),
         IMAGE_HTTP_RETRIES: String(limits.httpRetries),
-        VOLCENGINE_API_KEY: process.env.VOLCENGINE_API_KEY || process.env.ARK_API_KEY || ''
+        VOLCENGINE_API_KEY: process.env.VOLCENGINE_API_KEY || process.env.ARK_API_KEY || '',
+        QWEN_IMAGE_API_KEY: process.env.QWEN_IMAGE_API_KEY || '',
+        QWEN_IMAGE_BASE_URL: process.env.QWEN_IMAGE_BASE_URL || process.env.QWEN_IMAGE_API_URL || '',
+        QWEN_IMAGE_MODEL: process.env.QWEN_IMAGE_MODEL || '',
+        QWEN_IMAGE_HTTP_TIMEOUT: String(limits.httpTimeoutSec),
+        QWEN_IMAGE_HTTP_RETRIES: String(limits.httpRetries)
       })
     });
   } catch (error) {
@@ -841,7 +852,7 @@ export async function runTeachingMediaPipeline(job, { artifactsRoot, onProgress,
   const input = job.input_json || {};
   const profile = input.outputProfile || job.output_profile || 'teaching_video_full';
   if (!OUTPUT_PROFILES.has(profile)) throw new Error(`不支持的 outputProfile: ${profile}`);
-  const workDir = path.join(artifactsRoot, job.id);
+  const workDir = path.resolve(artifactsRoot, job.id);
   const uploadsRoot = path.resolve(__dirname, '../uploads');
   fs.mkdirSync(workDir, { recursive: true });
   for (const sub of ['videos', 'covers', 'artifacts']) fs.mkdirSync(path.join(uploadsRoot, sub), { recursive: true });

@@ -131,6 +131,7 @@ test('model settings API: catalog, put, get, reset, job snapshot', async () => {
     assert.equal(cat.status, 200);
     assert.ok(Array.isArray(cat.data.tts));
     assert.ok(cat.data.video.some(v => v.provider === 'hyperframes'));
+    assert.ok(cat.data.image.some(v => v.provider === 'qwenimage'));
 
     const put = await req(base, 'PUT', '/api/me/model-settings', {
       token,
@@ -157,7 +158,7 @@ test('model settings API: catalog, put, get, reset, job snapshot', async () => {
     const get = await req(base, 'GET', '/api/me/model-settings', { token });
     assert.equal(get.status, 200);
     assert.equal(get.data.settings.ttsEnabled, true);
-    assert.equal(get.data.effective.imageProvider, process.env.DEFAULT_IMAGE_PROVIDER || 'volcengine');
+    assert.equal(get.data.effective.imageProvider, 'agnes');
 
     const job = await req(base, 'POST', '/api/jobs', {
       token,

@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url';
 import db, { hashPassword, initDb, needsPasswordRehash, runStartupMaintenance, verifyPassword } from './db.js';
 import { OUTPUT_PROFILES } from './services/teachingMediaPipeline.js';
 import { runMediaPreflight } from './services/mediaPreflight.js';
+import { answerRuralTeachingQuestion } from './services/ruralTeachingAssistant.js';
 import { assertMediaSigningSecret, resolveMediaFile, signedMediaUrl, verifyMediaSignature } from './services/mediaAccess.js';
 import { publicUser as toPublicUser, validateRegisterPayload, validateTeacherSubjects, isAdmin, isTeacher, ROLES, canTeacherReviewCourse, normalizeRole, parseTeacherSubjects } from './services/rbac.js';
 import {
@@ -426,6 +427,93 @@ app.get('/api/catalog/knowledge-points/:id', async (req, res) => {
   }
 });
 
+app.post('/api/assistant/chat', auth(true), async (req, res) => {
+  const body = req.body || {};
+  const question = String(body.question || '').trim();
+  if (!question) return res.status(400).json({ error: '请输入问题' });
+  if (question.length > 1200) return res.status(400).json({ error: '问题过长，请控制在 1200 字以内' });
+  const history = Array.isArray(body.history) ? body.history.slice(-6) : [];
+  if (history.some((item) => !item || !['user', 'assistant'].includes(item.role) || typeof item.content !== 'string')) {
+    return res.status(400).json({ error: 'history 格式无效' });
+  }
+  const subject = String(body.subject || '').trim() || null;
+  const grade = String(body.grade || '').trim() || null;
+  const knowledgePoints = await db.listKnowledgePoints({ subject, grade, limit: 500 });
+  const result = await answerRuralTeachingQuestion({
+    question,
+    subject: subject || '',
+    grade: grade || '',
+    chapter: String(body.chapter || '').slice(0, 200),
+    textbookEdition: String(body.textbookEdition || '').slice(0, 80),
+    history: history.map((item) => ({ role: item.role, content: item.content.slice(0, 2000) }))
+  }, { knowledgePoints });
+  res.json(result);
+});
+
+// ---- Rural classroom pilot evidence ----
+function canManageRuralPilot(user) {
+  const role = normalizeRole(user?.role);
+  return role === ROLES.ADMIN || role === ROLES.TEACHER;
+}
+
+app.get('/api/rural-pilots/summary', auth(true), async (req, res) => {
+  if (!canManageRuralPilot(req.user)) return res.status(403).json({ error: '需要教师或管理员权限' });
+  const includeAll = normalizeRole(req.user.role) === ROLES.ADMIN;
+  res.json(await db.summarizeRuralPilotEvidence({ userId: req.user.id, includeAll }));
+});
+
+app.get('/api/rural-pilots', auth(true), async (req, res) => {
+  if (!canManageRuralPilot(req.user)) return res.status(403).json({ error: '需要教师或管理员权限' });
+  const includeAll = normalizeRole(req.user.role) === ROLES.ADMIN;
+  const status = req.query.status ? String(req.query.status) : null;
+  if (status && !['draft', 'submitted', 'verified'].includes(status)) return res.status(400).json({ error: 'status 无效' });
+  res.json(await db.listRuralPilotEvidence({ userId: req.user.id, includeAll, status, limit: req.query.limit }));
+});
+
+app.post('/api/rural-pilots', auth(true), async (req, res) => {
+  if (!canManageRuralPilot(req.user)) return res.status(403).json({ error: '需要教师或管理员权限' });
+  try {
+    res.status(201).json(await db.createRuralPilotEvidence(req.user.id, req.body || {}));
+  } catch (error) {
+    res.status(400).json({ error: error.message || '创建试点记录失败' });
+  }
+});
+
+app.get('/api/rural-pilots/:id', auth(true), async (req, res) => {
+  if (!canManageRuralPilot(req.user)) return res.status(403).json({ error: '需要教师或管理员权限' });
+  const record = await db.getRuralPilotEvidence(req.params.id);
+  if (!record) return res.status(404).json({ error: '试点记录不存在' });
+  if (normalizeRole(req.user.role) !== ROLES.ADMIN && record.createdBy !== req.user.id) return res.status(404).json({ error: '试点记录不存在' });
+  res.json(record);
+});
+
+app.patch('/api/rural-pilots/:id', auth(true), async (req, res) => {
+  if (!canManageRuralPilot(req.user)) return res.status(403).json({ error: '需要教师或管理员权限' });
+  try {
+    const record = await db.updateRuralPilotEvidence(req.params.id, req.user.id, req.body || {}, { allowAdmin: normalizeRole(req.user.role) === ROLES.ADMIN });
+    if (!record) return res.status(404).json({ error: '试点记录不存在' });
+    res.json(record);
+  } catch (error) {
+    res.status(/无权/.test(error.message || '') ? 403 : 400).json({ error: error.message || '更新试点记录失败' });
+  }
+});
+
+app.post('/api/rural-pilots/:id/submit', auth(true), async (req, res) => {
+  if (!canManageRuralPilot(req.user)) return res.status(403).json({ error: '需要教师或管理员权限' });
+  try {
+    const record = await db.submitRuralPilotEvidence(req.params.id, req.user.id, { allowAdmin: normalizeRole(req.user.role) === ROLES.ADMIN });
+    if (!record) return res.status(404).json({ error: '试点记录不存在' });
+    res.json(record);
+  } catch (error) {
+    res.status(/无权/.test(error.message || '') ? 403 : 400).json({ error: error.message || '提交试点记录失败' });
+  }
+});
+
+app.post('/api/rural-pilots/:id/verify', auth(true), requireRole(ROLES.ADMIN), async (req, res) => {
+  const record = await db.verifyRuralPilotEvidence(req.params.id);
+  if (!record) return res.status(404).json({ error: '试点记录不存在' });
+  res.json(record);
+});
 app.get('/api/system/preflight', auth(true), async (req, res) => {
   const outputProfile = String(req.query.outputProfile || 'teaching_video_full');
   if (!OUTPUT_PROFILES.has(outputProfile)) return res.status(400).json({ error: 'outputProfile 无效' });
@@ -588,6 +676,9 @@ app.post('/api/jobs', auth(true), async (req, res) => {
       // 明文凭证不入库：worker 执行时按 modelSnapshot 的 provider 现场解析。
       credentialSnapshot: modelPayload.credentialSnapshot || null,
       referenceImages,
+      textbookEdition: String(body.textbookEdition || '').slice(0, 80),
+      classroomScenario: String(body.classroomScenario || 'lesson-prep').slice(0, 40),
+      lowBandwidth: body.lowBandwidth === true,
       autoCreateCourse: body.autoCreateCourse !== false
     });
     res.json({ jobId: job.id, status: job.status, modelSnapshot: modelPayload.modelSnapshot });

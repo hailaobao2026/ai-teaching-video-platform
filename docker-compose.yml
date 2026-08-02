@@ -56,7 +56,7 @@ services:
       DEFAULT_DIAGRAM_STYLE: ${DEFAULT_DIAGRAM_STYLE:-cozy-handdrawn}
       DEFAULT_SEED_VOICE: ${DEFAULT_SEED_VOICE:-zh_female_vv_uranus_bigtts}
       MODELS_TTS_ALLOWLIST: ${MODELS_TTS_ALLOWLIST:-edge,minimax,seed,say}
-      MODELS_IMAGE_ALLOWLIST: ${MODELS_IMAGE_ALLOWLIST:-agnes,mulerun,apimart,atlascloud,volcengine}
+      MODELS_IMAGE_ALLOWLIST: ${MODELS_IMAGE_ALLOWLIST:-agnes,mulerun,apimart,atlascloud,volcengine,qwenimage}
       MODELS_VIDEO_ALLOWLIST: ${MODELS_VIDEO_ALLOWLIST:-hyperframes}
       WORKER_POLL_MS: ${WORKER_POLL_MS:-3000}
       WORKER_CONCURRENCY: ${WORKER_CONCURRENCY:-1}
@@ -83,6 +83,20 @@ services:
       VOLCENGINE_HTTP_TIMEOUT: ${VOLCENGINE_HTTP_TIMEOUT:-180}
       VOLCENGINE_HTTP_RETRIES: ${VOLCENGINE_HTTP_RETRIES:-2}
       VOLCENGINE_WATERMARK: ${VOLCENGINE_WATERMARK:-false}
+      QWEN_IMAGE_API_KEY: ${QWEN_IMAGE_API_KEY:-}
+      QWEN_IMAGE_BASE_URL: ${QWEN_IMAGE_BASE_URL:-https://llm-hed5mn2ug7z7kn53.cn-beijing.maas.aliyuncs.com/compatible-mode/v1}
+      QWEN_IMAGE_MODEL: ${QWEN_IMAGE_MODEL:-qwen-image-2.0-pro-2026-06-22}
+      QWEN_IMAGE_HTTP_TIMEOUT: ${QWEN_IMAGE_HTTP_TIMEOUT:-240}
+      QWEN_IMAGE_HTTP_RETRIES: ${QWEN_IMAGE_HTTP_RETRIES:-1}
+      QWEN_IMAGE_WATERMARK: ${QWEN_IMAGE_WATERMARK:-false}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_BASE_URL: ${LLM_BASE_URL:-https://llm-hed5mn2ug7z7kn53.cn-beijing.maas.aliyuncs.com/compatible-mode/v1}
+      LLM_MODEL: ${LLM_MODEL:-qwen3.7-max}
+      ASSISTANT_LLM_ENABLED: ${ASSISTANT_LLM_ENABLED:-true}
+      ASSISTANT_LLM_API_KEY: ${ASSISTANT_LLM_API_KEY:-}
+      ASSISTANT_LLM_BASE_URL: ${ASSISTANT_LLM_BASE_URL:-https://llm-hed5mn2ug7z7kn53.cn-beijing.maas.aliyuncs.com/compatible-mode/v1}
+      ASSISTANT_LLM_MODEL: ${ASSISTANT_LLM_MODEL:-qwen3.7-max}
+      ASSISTANT_LLM_TIMEOUT_MS: ${ASSISTANT_LLM_TIMEOUT_MS:-60000}
       MINIMAX_API_KEY: ${MINIMAX_API_KEY:-}
       SEED_TTS_API_KEY: ${SEED_TTS_API_KEY:-}
       SEED_TTS_URL: ${SEED_TTS_URL:-https://openspeech.bytedance.com/api/v3/plan/tts/unidirectional}

@@ -1500,24 +1500,33 @@ function buildLlmPrompt(input = {}) {
     `学段：${mapGrade(input.grade)}`,
     `学科：${input.subject || '未指定'}`,
     `章节：${input.chapter || '未指定'}`,
+    `教材版本：${input.textbookEdition || '未指定'}`,
+    `课堂场景：${input.classroomScenario || '常规课堂'}`,
+    `网络条件：${input.lowBandwidth ? '低带宽，画面与讲解应简洁清晰' : '常规网络'}`,
     `学习目标：${goals}`,
     `风格备注：${input.styleNotes || '无'}`
   ].join('\n');
 }
 
 function llmConfigFromEnv() {
-  const apiKey = process.env.LLM_API_KEY
+  const apiKey = process.env.BAILIAN_API_KEY
+    || process.env.DASHSCOPE_API_KEY
+    || process.env.LLM_API_KEY
     || process.env.OPENAI_API_KEY
     || process.env.STORYBOARD_LLM_API_KEY
     || '';
-  const baseUrl = (process.env.LLM_BASE_URL
+  const baseUrl = (process.env.BAILIAN_BASE_URL
+    || process.env.DASHSCOPE_BASE_URL
+    || process.env.LLM_BASE_URL
     || process.env.OPENAI_BASE_URL
     || process.env.STORYBOARD_LLM_BASE_URL
     || 'https://api.openai.com/v1').replace(/\/$/, '');
-  const model = process.env.LLM_MODEL
+  const model = process.env.BAILIAN_MODEL
+    || process.env.DASHSCOPE_MODEL
+    || process.env.LLM_MODEL
     || process.env.OPENAI_MODEL
     || process.env.STORYBOARD_LLM_MODEL
-    || 'gpt-4o-mini';
+    || 'qwen3-max';
   const enabled = String(process.env.STORYBOARD_LLM_ENABLED || (apiKey ? 'true' : 'false')).toLowerCase() !== 'false';
   const timeoutMs = Math.max(3000, Number(process.env.STORYBOARD_LLM_TIMEOUT_MS || 25000));
   return { apiKey, baseUrl, model, enabled, timeoutMs };

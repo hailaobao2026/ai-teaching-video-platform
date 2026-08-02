@@ -1,5 +1,8 @@
 export type AppView =
   | 'home'
+  | 'assistant'
+  | 'classroom'
+  | 'rural-pilot'
   | 'create'
   | 'jobs'
   | 'courses'
@@ -33,6 +36,52 @@ export interface User {
   grade?: string | null;
 }
 
+export interface RuralPilotRecord {
+  id: string;
+  createdBy: string;
+  schoolName: string;
+  region: string;
+  teacherName: string;
+  className?: string | null;
+  gradeCode?: string | null;
+  subjectCode?: string | null;
+  textbookEdition?: string | null;
+  topic: string;
+  courseId?: string | null;
+  jobId?: string | null;
+  studentCount?: number | null;
+  prepBeforeMinutes?: number | null;
+  prepAfterMinutes?: number | null;
+  preQuizTotal?: number | null;
+  preQuizCorrect?: number | null;
+  postQuizTotal?: number | null;
+  postQuizCorrect?: number | null;
+  teacherAccuracyScore?: number | null;
+  teacherUsefulnessScore?: number | null;
+  teacherFeedback?: string | null;
+  networkMode: 'online' | 'unstable' | 'offline';
+  offlineDownloaded: boolean;
+  offlinePlayed: boolean;
+  playbackDurationSec?: number | null;
+  playbackInterruptionCount: number;
+  incidentNote?: string | null;
+  consentConfirmed: boolean;
+  status: 'draft' | 'submitted' | 'verified';
+  createdAt: string;
+  updatedAt: string;
+  submittedAt?: string | null;
+  verifiedAt?: string | null;
+}
+
+export interface RuralPilotSummary {
+  hasData: boolean;
+  recordCount: number;
+  submittedRecordCount: number;
+  prep: { sampleCount: number; beforeAvgMinutes: number | null; afterAvgMinutes: number | null; savedAvgMinutes: number | null; savedRate: number | null };
+  quiz: { sampleCount: number; preAccuracy: number | null; postAccuracy: number | null; improvement: number | null };
+  teacher: { sampleCount: number; accuracyAvg: number | null; usefulnessAvg: number | null };
+  network: { modeCounts: Record<'online' | 'unstable' | 'offline', number>; offlinePlayedCount: number; offlinePlaybackRate: number | null };
+}
 export interface CreateJobRequest {
   subject: string;
   grade: string;
@@ -47,6 +96,26 @@ export interface CreateJobRequest {
   style?: string;
   imageProvider?: string;
   referenceImages?: string[];
+  textbookEdition?: string;
+  classroomScenario?: 'lesson-prep' | 'in-class' | 'review' | 'mixed-grade';
+  lowBandwidth?: boolean;
+}
+
+export interface AssistantSource {
+  id: string;
+  topic: string;
+  chapter: string;
+  summary: string;
+  subjectCode: string;
+  gradeCode: string;
+}
+
+export interface AssistantResponse {
+  answer: string;
+  mode: 'llm' | 'local';
+  model?: string | null;
+  sources: AssistantSource[];
+  suggestedQuestions: string[];
 }
 
 export interface GenerationJob {

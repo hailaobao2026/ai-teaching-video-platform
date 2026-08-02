@@ -13,17 +13,18 @@
 
 ### 1.1 现状问题
 
-当前模型相关配置主要分两层：
+当前模型相关配置分为四层：
 
 1. **平台/环境默认**：`DEFAULT_TTS_PROVIDER`、`DEFAULT_IMAGE_PROVIDER`、`HYPERFRAMES_QUALITY` 等。
 2. **管理员系统配置**：`/api/admin/config`（全站默认 TTS/图片 provider、音色、渲染质量）。
-3. **任务级零散覆盖**：创建任务时可传 `imageProvider`，TTS/视频渲染仍主要吃全站默认。
+3. **用户个人设置**：`user_model_settings` 保存 TTS/生图/视频渲染偏好，收费 provider 可保存个人凭证。
+4. **任务级覆盖**：创建任务时可传 `ttsProvider`、`imageProvider`、`videoProvider`、`videoQuality` 等字段。
 
-结果是：
+当前实现解决了上述分层问题：
 
-- 学生/教师无法按自己需求固定偏好；
-- 文生视频链路缺少用户可选模型/渲染档位；
-- 管理员只能改全站默认，无法区分“平台兜底”与“个人偏好”。
+- 学生、教师和管理员均可保存自己的模型偏好；
+- 任务创建时服务端固化 `modelSnapshot`，避免排队期间设置变化影响历史任务；
+- 管理员系统默认和 allowlist 继续作为用户设置缺失时的兜底。
 
 ### 1.2 目标
 
@@ -37,9 +38,9 @@
 
 创建生成任务时，按 **任务覆盖 > 用户模型设置 > 系统配置 > 环境变量** 解析最终模型。
 
-### 1.3 非目标（本轮不做）
+### 1.3 当前边界与非目标
 
-- 用户自带/粘贴第三方 API Key 明文存库（安全风险高，见 §8）
+- 已支持用户为收费 TTS/生图 provider 配置个人凭证；当前实现不写入任务 `input_json` 或任务工作区输入文件，但会将凭证保存到个人设置的 `extra_json`，生产环境仍需加密改造（见 §8）
 - 完整多云视频大模型实时生成（Sora/Runway 等）作为默认主链路
 - 按学校/班级统一下发模型策略（可后续）
 - 计费与额度扣减（仅预留字段）
@@ -89,7 +90,7 @@
 
 | 字段 | 类型 | 说明 | 示例 |
 |---|---|---|---|
-| `ttsProvider` | enum | TTS 服务商 | `edge` / `minimax` / `say` |
+| `ttsProvider` | enum | TTS 服务商 | `edge` / `minimax` / `seed` / `say` |
 | `ttsVoice` | string | 音色 ID | `zh-CN-XiaoxiaoNeural` |
 | `ttsSpeed` | number | 语速，可选，默认 1.0 | `0.8~1.5` |
 | `ttsEnabled` | bool | 是否启用自定义；false 表示完全跟随系统 | `true` |
@@ -97,21 +98,21 @@
 业务规则：
 
 1. `ttsProvider=edge` 时，`ttsVoice` 必须属于 Edge 音色白名单。
-2. `ttsProvider=minimax` 时，平台需具备 `MINIMAX_API_KEY`；否则该选项对用户灰显/不可选。
+2. `ttsProvider=minimax|seed` 时，教师/学生需要在个人设置中提供对应 API Key；管理员可使用个人设置或服务器环境变量。
 3. 无效组合保存时返回 400。
 
 ### 3.3 文生图片配置项
 
 | 字段 | 类型 | 说明 | 示例 |
 |---|---|---|---|
-| `imageProvider` | enum | 生图服务商 | `agnes` / `mulerun` / `apimart` / `atlascloud` |
+| `imageProvider` | enum | 生图服务商 | `agnes` / `mulerun` / `apimart` / `atlascloud` / `volcengine` / `qwenimage` |
 | `imageStyle` | string | 默认风格，可选 | `cozy-handdrawn` |
 | `imageAspectRatio` | string | 默认比例偏好，可选 | `16:9` / `9:16` / `3:4` |
 | `imageEnabled` | bool | 是否启用自定义 | `true` |
 
 业务规则：
 
-1. 仅展示平台已配置对应 API Key 的 provider。
+1. provider 必须在管理员 allowlist 中；教师/学生使用收费 provider 时需要个人 API Key，管理员也可使用服务器环境变量。
 2. 任务若显式传 `imageProvider`，优先任务值。
 3. 信息图/封面等档位仍可按产物强制比例，用户比例仅作默认偏好。
 
@@ -199,8 +200,8 @@
 3. **管理员降级渲染质量做调试**  
    管理员个人设置 `videoQuality=draft`，自己的试跑更快；全站默认仍可保持 `standard`。
 
-4. **无 Key 的 provider 不可选**  
-   平台未配置 Minimax Key 时，用户设置页 TTS 不展示/禁用 minimax，并提示“平台未开通”。
+4. **未配置凭证的 provider 不可选**
+   教师/学生未配置 Minimax 或 Qwen-Image 等收费 provider 的个人 Key 时，保存会被拒绝并提示先配置凭证；管理员可使用服务器环境变量。
 
 5. **恢复默认**  
    用户点击“恢复系统默认”后，个人设置清空/disabled，后续跟随管理员系统配置。
@@ -273,11 +274,13 @@
 - `videoProvider` / `videoQuality`
 - `modelSnapshot`（服务端写入，只读回显）
 
-### 5.4 不落库内容
+### 5.4 凭证保存边界
 
-- 任何用户 API Key
-- provider 原始密钥
-- 临时调试 token
+- 不写入 `generation_jobs.input_json` 的内容：用户 provider API Key、原始凭证和临时调试 token。
+- 不写入任务工作区输入文件的内容：用户 provider API Key 和原始凭证。
+- 当前 `user_model_settings.extra_json` 会保存 `providerCredentials`，包括已配置 provider 的 API Key、API URL 和模型名；这是当前实现事实，不应再描述为“完全不落库”。
+- `GET/PUT /api/me/model-settings` 响应只返回掩码 API Key（如 `sk-1••••abcd`）和 `apiKeySet`，不会返回明文。
+- 生产部署应使用 KMS 或应用层加密保护 `extra_json.providerCredentials`，并限制数据库、备份和日志访问。
 
 ---
 
@@ -392,6 +395,24 @@
 - 校验失败 400；无登录 401。
 - 成功返回与 GET 相同结构。
 
+收费 provider 的凭证通过 `providerCredentials` 提交，例如：
+
+```json
+{
+  "imageProvider": "qwenimage",
+  "imageEnabled": true,
+  "providerCredentials": {
+    "qwenimage": {
+      "apiKey": "sk-xxx",
+      "apiUrl": "https://.../compatible-mode/v1",
+      "model": "qwen-image-2.0-pro-2026-06-22"
+    }
+  }
+}
+```
+
+保存时服务端会按 provider schema 校验凭证和 allowlist；后续读取只返回掩码值。管理员可使用服务器环境变量作为凭证来源，教师和学生使用收费 provider 时需要个人 API Key。
+
 ### 6.4 重置我的模型设置
 
 `POST /api/me/model-settings/reset`
@@ -466,15 +487,12 @@
 
 ## 8. 安全与合规设计
 
-1. **密钥仅服务端环境变量/密钥管理**，用户设置只存 provider 名称与参数，不存 Key。  
+1. 平台级密钥使用服务端环境变量或密钥管理；用户收费 provider 的凭证当前存放在 `user_model_settings.extra_json.providerCredentials`，API 返回仅掩码。生产环境必须增加 KMS/应用层加密和密钥轮换。
 2. 用户不可通过设置绕过 allowlist 使用未授权 provider。  
 3. preflight 与创建任务双校验，防止前端篡改。  
 4. 日志可记录 provider 名，禁止记录密钥与完整 prompt 中的敏感信息（沿用现有脱敏策略）。  
-5. 若二期支持“用户自带 Key”：
-   - 必须加密存储（KMS/应用层加密）
-   - 默认关闭
-   - 仅教师/管理员可选
-   - 需要单独安全评审（本轮明确不做）
+5. 用户凭证进入 Worker 前只通过运行时环境注入；`credentialSnapshot` 只记录 provider、来源、URL/模型和 `apiKeySet`，不记录明文 API Key。
+6. 日志、错误信息、任务输入和导出材料都不得包含明文 API Key；已泄露的 Key 必须立即轮换。
 
 ---
 
@@ -513,7 +531,7 @@
 | 项 | 默认 |
 |---|---|
 | TTS | `edge` + `zh-CN-XiaoxiaoNeural` |
-| 图片 | `agnes`（若 Key 存在） |
+| 图片 | `volcengine`（若 Key 存在） |
 | 视频 | `hyperframes` + **`standard`**（开发/compose 可显式改为 draft） |
 
 ### 10.2 用户新建设置默认
@@ -582,4 +600,3 @@
 | 任务 `imageProvider` | task override |
 | `HYPERFRAMES_QUALITY` / `hyperframes_quality` | system default videoQuality |
 | 未来外部 T2V provider | `videoProvider` 扩展 |
-
