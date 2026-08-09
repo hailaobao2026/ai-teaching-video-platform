@@ -15,6 +15,14 @@
 
 ## 演示视频
 
+体验地址
+
+https://www.modelscope.cn/studios/wwwzhouhui/ai-teaching-video-platform
+
+魔搭社区-创空间-搜索ai-teaching-video-platform
+
+![image-20260809112842994](https://mypicture-1258720957.cos.ap-nanjing.myqcloud.com/Obsidian/image-20260809112842994.png)
+
 先看 30 秒到 2 分钟样片，比只看截图更容易理解「知识点 → 教学动画视频」的效果。
 
 ### 重要说明：GitHub README 本身不能可靠内嵌播放 mp4
